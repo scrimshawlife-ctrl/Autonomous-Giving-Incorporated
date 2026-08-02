@@ -11,7 +11,7 @@ const fallback: PublicSignals = { source: "fallback", fundIntel: { updatedAt: co
 
 export async function getPublicSignals(): Promise<PublicSignals> {
   try {
-    const [campaignResponse, impactResponse] = await Promise.all([fetch(fundIntelUrl, { next: { revalidate: 3600 } }), fetch(impactRelayUrl, { next: { revalidate: 3600 } })]);
+    const [campaignResponse, impactResponse] = await Promise.all([fetch(fundIntelUrl, { cache: "force-cache" }), fetch(impactRelayUrl, { cache: "force-cache" })]);
     if (!campaignResponse.ok || !impactResponse.ok) return fallback;
     const campaign = await campaignResponse.json() as PublicCampaign;
     const impact = await impactResponse.json() as PublicImpact;

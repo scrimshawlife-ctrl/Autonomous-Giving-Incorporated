@@ -1,2 +1,3 @@
 import type { MetadataRoute } from "next";
-export default function sitemap(): MetadataRoute.Sitemap { return [{ url: "https://autonomous-giving-incorporated.vercel.app", lastModified: new Date() }]; }
+export const dynamic = "force-static";
+export default function sitemap(): MetadataRoute.Sitemap { return [{ url: "https://scrimshawlife-ctrl.github.io/Autonomous-Giving-Incorporated/", lastModified: new Date() }]; }
