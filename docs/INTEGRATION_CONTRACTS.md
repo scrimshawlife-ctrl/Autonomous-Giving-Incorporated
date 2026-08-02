@@ -11,4 +11,8 @@ These Phase 1 artifacts are not endpoints, credentials, or an implemented connec
 - `verified` reflects source-system verification, not individual donor attribution.
 - Unknown, delayed, or rejected records must never become inferred evidence.
 
-Before implementation, both source-system owners must approve semantic fields, identifiers, freshness, retention/redaction, and publication authorization. v0.2 remains read-only and retains the deterministic scenario as fallback.
+## Implemented public-source seam
+
+AGI now reads the published aggregate documents from Fund Intel's `data/public-campaign.json` and Impact Relay's `data/public-impact.json` on GitHub. It accepts Fund Intel only when it declares `advisory_only`, and Impact Relay only when it declares `public_aggregate_only` and has a verified outcome. Failed, malformed, or unapproved sources fall back to the deterministic scenario. No donor or raw-evidence document is requested.
+
+The public source URLs are intentionally fixed in `integration/public-sources.ts` until a production configuration and freshness policy are approved. v0.2 remains read-only and retains the deterministic scenario as fallback.
