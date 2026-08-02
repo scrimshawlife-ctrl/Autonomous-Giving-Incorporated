@@ -1,7 +1,196 @@
 "use client";
-import { Check, ChevronRight, Info, Play, RotateCcw } from "lucide-react";
+
+import { Play, RotateCcw } from "lucide-react";
 import { useEffect, useState } from "react";
 import { scenario } from "@/demo/scenario";
-const steps = ["Donation received", "Assigned to Community Hardware Fund", "Raspberry Pi kits selected", "Purchase approved", "Receipt attached", "Equipment delivered", "Intro to Robotics workshop held", "Attendance verified: 18 students", "Donor notification delivered"];
-export function DonationDemo() { const [step, setStep] = useState(-1); const [why, setWhy] = useState(false); const running = step >= 0 && step < steps.length - 1; useEffect(() => { if (!running) return; const timer = window.setTimeout(() => setStep(s => s + 1), 3500); return () => window.clearTimeout(timer); }, [step, running]); const start = () => { setWhy(false); setStep(0); }; return <section id="demo" className="scroll-mt-24 py-24"><div className="mx-auto max-w-6xl px-6"><p className="text-sm font-semibold uppercase tracking-[.2em] text-amber-300">A complete story</p><h2 className="mt-3 max-w-2xl text-4xl font-semibold tracking-tight md:text-5xl">One contribution. A visible chain of evidence.</h2><p className="mt-5 max-w-2xl text-lg leading-8 text-slate-400">A deterministic representation of allocation-backed transparency—not a live payment or one-to-one attribution system.</p><div className="glass mt-10 overflow-hidden rounded-3xl"><div className="grid lg:grid-cols-[.9fr_1.1fr]"><div className="border-b border-white/10 p-6 lg:border-b-0 lg:border-r md:p-9"><div className="flex items-center justify-between"><span className="text-sm text-slate-400">Donation lifecycle</span><span className="rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-sm text-amber-200">${scenario.donation.amount}</span></div><ol className="mt-7 space-y-2" aria-live="polite" aria-label="Donation lifecycle status">{steps.map((title, index) => { const done = index <= step; return <li key={title} className={`flex gap-3 rounded-xl p-3 text-sm ${done ? "bg-emerald-400/10 text-white" : "text-slate-500"}`}><span className={`mt-.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs ${done ? "bg-emerald-400 text-slate-950" : "border border-slate-600"}`}>{done ? <Check size={13} strokeWidth={3}/> : index + 1}</span><span>{title}</span></li> })}</ol><div className="mt-7 flex flex-wrap gap-3">{step < 0 ? <button className="focus-ring inline-flex items-center gap-2 rounded-full bg-amber-300 px-5 py-3 font-semibold text-slate-950" onClick={start}><Play size={16} fill="currentColor"/>Donate $250</button> : <button className="focus-ring inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 font-semibold" onClick={() => setStep(-1)}><RotateCcw size={16}/>Reset demo</button>}{step === steps.length - 1 && <button className="focus-ring inline-flex items-center gap-2 rounded-full px-3 py-3 text-sm text-sky-300 hover:bg-sky-400/10" onClick={() => setWhy(!why)} aria-expanded={why}><Info size={16}/>Why was I notified?</button>}</div></div><div className="relative p-6 md:p-9"><p className="text-sm text-slate-400">Evidence ledger</p>{step < 0 ? <div className="mt-16 text-center"><p className="text-6xl font-semibold tracking-tighter text-amber-300">$250</p><p className="mt-3 text-slate-400">Ready to become visible impact.</p></div> : why ? <div className="mt-7 rounded-2xl border border-sky-400/30 bg-sky-400/5 p-6"><p className="font-medium text-sky-200">Your notification has a provenance chain</p><ol className="mt-5 space-y-3 text-sm text-slate-300">{["Notification", "Workshop verified", "Attendance evidence", "Equipment used", "Receipt approved", "Fund allocation", "Donation"].map((item, i) => <li className="flex items-center gap-3" key={item}><span className="flex h-6 w-6 items-center justify-center rounded-full bg-sky-300/15 text-xs text-sky-200">{i + 1}</span>{item}{i < 6 && <ChevronRight size={15} className="ml-auto text-slate-600"/>}</li>)}</ol></div> : <div className="mt-7 space-y-4">{step >= 1 && <Evidence title="Fund allocation" value={scenario.allocation.name}/>} {step >= 4 && <Evidence title="Approved receipt" value={`${scenario.purchase.item} · ${scenario.purchase.vendor}`}/>} {step >= 6 && <Evidence title="Program event" value={`${scenario.program.name} at ${scenario.organization.name}`}/>} {step >= 7 && <Evidence title="Verified attendance" value={`${scenario.impact.attendees} students`}/>} {step >= 8 && <div className="rounded-2xl border border-emerald-400/30 bg-emerald-400/10 p-5"><p className="text-xs uppercase tracking-wider text-emerald-300">Delivered to Jane</p><p className="mt-2 font-medium">{scenario.notification.title}</p><p className="mt-1 text-sm text-slate-300">{scenario.notification.message}</p></div>} {step === 0 && <p className="pt-16 text-center text-slate-500">Evidence appears as the story advances.</p>}</div>}</div></div></div></div></section> }
-function Evidence({ title, value }: { title: string; value: string }) { return <div className="rounded-2xl border border-white/10 bg-white/[.03] p-5"><p className="text-xs uppercase tracking-wider text-slate-500">{title}</p><p className="mt-2 font-medium">{value}</p><p className="mt-2 text-sm text-emerald-300">Verified record</p></div> }
+
+const steps = [
+  "Donation received",
+  "Assigned to Community Hardware Fund",
+  "Raspberry Pi kits selected",
+  "Purchase approved",
+  "Receipt attached",
+  "Equipment delivered",
+  "Intro to Robotics workshop held",
+  "Attendance verified: 18 students",
+  "Donor notification delivered",
+];
+
+const provenance = [
+  "Notification",
+  "Workshop verified",
+  "Attendance evidence",
+  "Equipment used",
+  "Receipt approved",
+  "Fund allocation",
+  "Donation",
+];
+
+export function DonationDemo() {
+  const [step, setStep] = useState(-1);
+  const [showProvenance, setShowProvenance] = useState(false);
+  const running = step >= 0 && step < steps.length - 1;
+
+  useEffect(() => {
+    if (!running) return;
+    const timer = window.setTimeout(
+      () => setStep((current) => current + 1),
+      3500,
+    );
+    return () => window.clearTimeout(timer);
+  }, [step, running]);
+
+  function start() {
+    setShowProvenance(false);
+    setStep(0);
+  }
+
+  function reset() {
+    setShowProvenance(false);
+    setStep(-1);
+  }
+
+  return (
+    <section className="demo-section" id="demo">
+      <div className="page-shell">
+        <div className="demo-intro">
+          <div>
+            <p className="kicker">Proof timeline</p>
+            <h2 className="section-heading">
+              One contribution. A visible chain of evidence.
+            </h2>
+          </div>
+          <p className="section-copy">
+            A deterministic representation of allocation-backed transparency—not
+            a live payment or one-to-one attribution system.
+          </p>
+        </div>
+
+        <div className="demo-workbench">
+          <div className="timeline">
+            <p className="demo-label">
+              Donation lifecycle · ${scenario.donation.amount}
+            </p>
+            <ol
+              className="timeline-list"
+              aria-live="polite"
+              aria-label="Donation lifecycle status"
+            >
+              {steps.map((title, index) => {
+                const done = index <= step;
+                return (
+                  <li
+                    className={`timeline-item${done ? " is-done" : ""}`}
+                    key={title}
+                  >
+                    <span className="timeline-index" aria-hidden="true">
+                      {done ? "✓" : String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span>{title}</span>
+                  </li>
+                );
+              })}
+            </ol>
+            <div className="demo-actions">
+              {step < 0 ? (
+                <button
+                  className="button button-primary focus-ring"
+                  type="button"
+                  onClick={start}
+                >
+                  <Play aria-hidden="true" fill="currentColor" size={15} />{" "}
+                  Donate $250
+                </button>
+              ) : (
+                <button
+                  className="button button-quiet focus-ring"
+                  type="button"
+                  onClick={reset}
+                >
+                  <RotateCcw aria-hidden="true" size={15} /> Reset demo
+                </button>
+              )}
+              {step === steps.length - 1 ? (
+                <button
+                  className="text-button focus-ring"
+                  type="button"
+                  onClick={() => setShowProvenance((current) => !current)}
+                  aria-expanded={showProvenance}
+                >
+                  {showProvenance
+                    ? "Return to evidence"
+                    : "Why was I notified?"}
+                </button>
+              ) : null}
+            </div>
+          </div>
+
+          <div className="ledger">
+            <p className="demo-label">Evidence ledger</p>
+            {step < 0 ? (
+              <div className="ledger-idle">
+                <p className="ledger-amount">$250</p>
+                <p>Ready to become visible impact.</p>
+              </div>
+            ) : showProvenance ? (
+              <ol className="provenance" aria-label="Notification provenance">
+                {provenance.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ol>
+            ) : (
+              <div className="evidence-list">
+                {step >= 1 ? (
+                  <Evidence
+                    title="Fund allocation"
+                    value={scenario.allocation.name}
+                  />
+                ) : null}
+                {step >= 4 ? (
+                  <Evidence
+                    title="Approved receipt"
+                    value={`${scenario.purchase.item} · ${scenario.purchase.vendor}`}
+                  />
+                ) : null}
+                {step >= 6 ? (
+                  <Evidence
+                    title="Program event"
+                    value={`${scenario.program.name} at ${scenario.organization.name}`}
+                  />
+                ) : null}
+                {step >= 7 ? (
+                  <Evidence
+                    title="Verified attendance"
+                    value={`${scenario.impact.attendees} students`}
+                  />
+                ) : null}
+                {step >= 8 ? (
+                  <div className="notification-row">
+                    <p className="evidence-title">Delivered to Jane</p>
+                    <strong>{scenario.notification.title}</strong>
+                    <p>{scenario.notification.message}</p>
+                  </div>
+                ) : null}
+                {step === 0 ? (
+                  <div className="ledger-idle">
+                    <p>Evidence appears as the story advances.</p>
+                  </div>
+                ) : null}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Evidence({ title, value }: { title: string; value: string }) {
+  return (
+    <div className="evidence-row">
+      <span className="evidence-title">{title}</span>
+      <span className="evidence-value">{value}</span>
+      <span className="evidence-state">Verified</span>
+    </div>
+  );
+}

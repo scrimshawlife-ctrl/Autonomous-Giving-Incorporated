@@ -1,5 +1,74 @@
 "use client";
+
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-const links = [["Platform", "#platform"], ["The demo", "#demo"], ["Fund Intel", "#fund-intel"], ["Impact Relay", "#impact-relay"], ["About", "#about"]] as const;
-export function Navbar() { const [open, setOpen] = useState(false); return <header className="sticky top-0 z-50 border-b border-white/10 bg-[#07090d]/85 backdrop-blur"><nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4" aria-label="Main navigation"><a className="focus-ring text-sm font-bold tracking-[.2em]" href="#top">AGI<span className="text-amber-300">.</span></a><div className="hidden gap-6 md:flex">{links.map(([label, href]) => <a key={href} className="focus-ring text-sm text-slate-300 hover:text-white" href={href}>{label}</a>)}</div><a href="#contact" className="focus-ring hidden rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-950 md:block">Request demo</a><button className="focus-ring md:hidden" onClick={() => setOpen(!open)} aria-expanded={open} aria-label="Toggle menu">{open ? <X/> : <Menu/>}</button></nav>{open && <div className="border-t border-white/10 px-6 py-4 md:hidden">{links.map(([label, href]) => <a key={href} className="block py-3 text-slate-200" href={href} onClick={() => setOpen(false)}>{label}</a>)}</div>}</header> }
+
+const links = [
+  ["Platform", "#platform"],
+  ["Proof", "#demo"],
+  ["Signals", "#signals"],
+  ["About", "#about"],
+] as const;
+
+export function Navbar() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <header className="site-header">
+      <nav className="floating-nav" aria-label="Main navigation">
+        <a
+          className="brand focus-ring"
+          href="#top"
+          aria-label="Autonomous Giving Incorporated, home"
+        >
+          AGI<span className="brand-mark">/</span>
+        </a>
+        <div className="desktop-links">
+          {links.map(([label, href]) => (
+            <a className="nav-link focus-ring" href={href} key={href}>
+              {label}
+            </a>
+          ))}
+        </div>
+        <a className="nav-action focus-ring" href="#contact">
+          Request demo
+        </a>
+        <button
+          className="menu-toggle focus-ring"
+          type="button"
+          onClick={() => setOpen((current) => !current)}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
+          aria-label={open ? "Close navigation" : "Open navigation"}
+        >
+          {open ? (
+            <X aria-hidden="true" size={20} />
+          ) : (
+            <Menu aria-hidden="true" size={20} />
+          )}
+        </button>
+        {open ? (
+          <div className="mobile-menu" id="mobile-navigation">
+            {links.map(([label, href]) => (
+              <a
+                className="nav-link focus-ring"
+                href={href}
+                key={href}
+                onClick={() => setOpen(false)}
+              >
+                {label}
+              </a>
+            ))}
+            <a
+              className="nav-link focus-ring"
+              href="#contact"
+              onClick={() => setOpen(false)}
+            >
+              Request demo
+            </a>
+          </div>
+        ) : null}
+      </nav>
+    </header>
+  );
+}

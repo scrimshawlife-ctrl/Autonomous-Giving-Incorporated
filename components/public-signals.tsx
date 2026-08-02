@@ -1,4 +1,46 @@
-import { CheckCircle2, DatabaseZap } from "lucide-react";
 import type { PublicSignals } from "@/integration/public-sources";
 
-export function PublicSignals({ signals }: { signals: PublicSignals }) { return <section className="border-y border-white/10 bg-white/[.015] py-16"><div className="mx-auto max-w-6xl px-6"><div className="flex flex-wrap items-center justify-between gap-4"><div><p className="text-sm font-semibold uppercase tracking-[.2em] text-emerald-300">Published public signals</p><h2 className="mt-2 text-3xl font-semibold tracking-tight">Evidence without donor data.</h2></div><span className={`rounded-full border px-3 py-1 text-sm ${signals.source === "live" ? "border-emerald-400/30 bg-emerald-400/10 text-emerald-200" : "border-slate-600 bg-white/5 text-slate-300"}`}>{signals.source === "live" ? "Live public projection" : "Deterministic fallback"}</span></div><div className="mt-8 grid gap-4 md:grid-cols-2"><article className="rounded-2xl border border-sky-400/25 bg-sky-400/[.05] p-6"><DatabaseZap className="text-sky-300" size={23}/><p className="mt-4 text-sm text-slate-400">Fund Intel · advisory only</p><p className="mt-1 text-xl font-semibold">Execution: {signals.fundIntel.executionState}</p><p className="mt-3 text-sm text-slate-300">Published {signals.fundIntel.updatedAt}. No campaign or donor record is inferred from this signal.</p></article><article className="rounded-2xl border border-emerald-400/25 bg-emerald-400/[.05] p-6"><CheckCircle2 className="text-emerald-300" size={23}/><p className="mt-4 text-sm text-slate-400">Impact Relay · public aggregate only</p><p className="mt-1 text-xl font-semibold">{signals.impactRelay.participants} participants verified</p><p className="mt-3 text-sm text-slate-300">{signals.impactRelay.programName} · {signals.impactRelay.organizationName}<br/>{signals.impactRelay.allocationName} · published {signals.impactRelay.updatedAt}</p></article></div></div></section> }
+export function PublicSignals({ signals }: { signals: PublicSignals }) {
+  const isLive = signals.source === "live";
+
+  return (
+    <section className="signals section" id="signals">
+      <div className="page-shell">
+        <div className="signals-head">
+          <div>
+            <p className="kicker">Published public signals</p>
+            <h2 className="section-heading">Evidence without donor data.</h2>
+          </div>
+          <span className="status-chip">
+            <span className="status-dot" aria-hidden="true" />
+            {isLive ? "Live public projection" : "Deterministic fallback"}
+          </span>
+        </div>
+        <div className="signal-table" aria-label="Public evidence signals">
+          <article className="signal-row">
+            <p className="signal-source">Fund Intel</p>
+            <p className="signal-value">
+              Execution: {signals.fundIntel.executionState}
+            </p>
+            <p className="signal-detail">
+              Advisory only. No campaign or donor record is inferred.
+            </p>
+            <time className="signal-date">{signals.fundIntel.updatedAt}</time>
+          </article>
+          <article className="signal-row">
+            <p className="signal-source">Impact Relay</p>
+            <p className="signal-value">
+              {signals.impactRelay.participants} participants verified
+            </p>
+            <p className="signal-detail">
+              {signals.impactRelay.programName} ·{" "}
+              {signals.impactRelay.organizationName} ·{" "}
+              {signals.impactRelay.allocationName}
+            </p>
+            <time className="signal-date">{signals.impactRelay.updatedAt}</time>
+          </article>
+        </div>
+      </div>
+    </section>
+  );
+}

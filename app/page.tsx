@@ -1,8 +1,246 @@
-import { ArrowDown, ArrowRight, CheckCircle2, CircleDollarSign, Code2, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import { DonationDemo } from "@/components/donation-demo";
 import { Navbar } from "@/components/navbar";
 import { PublicSignals } from "@/components/public-signals";
 import { getPublicSignals } from "@/integration/public-sources";
-const trust = [["Traditional giving", ["Donate", "Thank-you email", "Silence"]], ["AGI", ["Donate", "Allocate", "Purchase", "Verify", "Impact", "Notify"]]];
-const products = [{ id: "fund-intel", icon: Sparkles, name: "Fund Intel", sub: "Decision intelligence", copy: "A demo representation of the Fund Intel decision layer—where high-impact opportunities, allocation strategies, and decision rationale come into focus.", points: ["Identify high-impact funding opportunities", "Recommend allocation strategies", "Explain why a decision is appropriate"] }, { id: "impact-relay", icon: ShieldCheck, name: "Impact Relay", sub: "Execution transparency", copy: "A demo representation of the Impact Relay transparency layer—where approved use, evidence, and verified impact stay connected.", points: ["Track approved use of funds", "Attach evidence and verification", "Notify donors when impact occurs"] }];
-export default async function Home() { const signals = await getPublicSignals(); return <><Navbar/><main id="top"><section className="grid-bg overflow-hidden border-b border-white/10"><div className="mx-auto max-w-6xl px-6 py-24 md:py-36"><p className="text-sm font-semibold uppercase tracking-[.22em] text-amber-300">Autonomous Giving Incorporated</p><h1 className="mt-5 max-w-4xl text-5xl font-semibold leading-[1.03] tracking-tight md:text-7xl">Giving should not end <span className="text-slate-500">with a receipt.</span></h1><p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">Autonomous Giving Incorporated makes the full lifecycle of a contribution visible—from funding intent to verified community impact.</p><div className="mt-9 flex flex-wrap gap-4"><a className="focus-ring inline-flex items-center gap-2 rounded-full bg-amber-300 px-6 py-3 font-semibold text-slate-950" href="#demo">Experience the demo <ArrowDown size={17}/></a><a className="focus-ring inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 font-semibold" href="#platform">Explore the platform <ArrowRight size={17}/></a></div><div className="glass mt-16 max-w-3xl rounded-2xl p-5 md:p-7"><div className="flex flex-wrap items-center gap-x-4 gap-y-3 text-sm md:text-base"><strong className="text-amber-300">$250 Donation</strong>{["Community Hardware", "Raspberry Pi Kits", "Robotics Workshop", "18 Students", "Verified"].map((x, i) => <span className="flex items-center gap-4" key={x}><ArrowRight size={15} className="text-slate-600"/><span className={i === 4 ? "text-emerald-300" : "text-slate-300"}>{x}</span></span>)}</div></div></div></section><section className="border-b border-white/10 py-24"><div className="mx-auto max-w-6xl px-6"><p className="text-sm font-semibold uppercase tracking-[.2em] text-slate-400">The trust gap</p><h2 className="mt-3 max-w-2xl text-4xl font-semibold tracking-tight">A receipt confirms arrival. It does not explain what happened next.</h2><div className="mt-10 grid gap-5 md:grid-cols-2">{trust.map(([name, items], ix) => <article className={`rounded-2xl border p-7 ${ix ? "border-emerald-400/30 bg-emerald-400/[.04]" : "border-white/10 bg-white/[.02]"}`} key={name as string}><h3 className="text-xl font-semibold">{name as string}</h3><div className="mt-6 space-y-2">{(items as string[]).map((item, i) => <div className="flex items-center gap-3" key={item}><span className={`h-2 w-2 rounded-full ${ix ? "bg-emerald-300" : "bg-slate-600"}`}/><span className={i === (items as string[]).length-1 && !ix ? "text-slate-500" : "text-slate-200"}>{item}</span></div>)}</div></article>)}</div></div></section><section id="platform" className="scroll-mt-24 py-24"><div className="mx-auto max-w-6xl px-6"><p className="text-sm font-semibold uppercase tracking-[.2em] text-sky-300">Trust infrastructure</p><h2 className="mt-3 text-4xl font-semibold tracking-tight">One public experience, connected to the moments that matter.</h2><div className="mt-10 grid gap-4 md:grid-cols-3">{[["Fund Intel", "Where should resources go?", "bg-sky-400/10 border-sky-400/25"], ["Autonomous Giving Inc.", "How the platform is experienced.", "bg-amber-300/10 border-amber-300/25"], ["Impact Relay", "What happened after resources moved?", "bg-emerald-400/10 border-emerald-400/25"]].map(([name, text, color]) => <div className={`rounded-2xl border p-6 ${color}`} key={name}><p className="font-semibold">{name}</p><p className="mt-2 text-sm leading-6 text-slate-300">{text}</p></div>)}</div></div></section><PublicSignals signals={signals}/><DonationDemo/><section className="border-y border-white/10 bg-white/[.015] py-24"><div className="mx-auto max-w-6xl px-6">{products.map(({id, icon: Icon, name, sub, copy, points}) => <article id={id} className="scroll-mt-24 grid gap-8 border-b border-white/10 py-12 first:pt-0 last:border-0 last:pb-0 md:grid-cols-[1fr_1.2fr]" key={id}><div><Icon className={id === "fund-intel" ? "text-sky-300" : "text-emerald-300"} size={30}/><p className="mt-5 text-sm font-semibold uppercase tracking-[.2em] text-slate-400">{sub}</p><h2 className="mt-2 text-4xl font-semibold">{name}</h2></div><div><p className="text-lg leading-8 text-slate-300">{copy}</p><ul className="mt-6 space-y-3">{points.map(point => <li className="flex gap-3 text-slate-200" key={point}><CheckCircle2 size={19} className="mt-.5 shrink-0 text-emerald-300"/>{point}</li>)}</ul></div></article>)}</div></section><section className="py-24"><div className="mx-auto max-w-6xl px-6"><Code2 className="text-sky-300"/><p className="mt-5 text-sm font-semibold uppercase tracking-[.2em] text-slate-400">Developer extensibility</p><h2 className="mt-3 text-4xl font-semibold tracking-tight">Designed for a live future, grounded in a deterministic present.</h2><div className="mt-8 flex flex-wrap items-center gap-3 text-sm"><span className="rounded-full bg-white/5 px-4 py-2">Static scenario today</span><ArrowRight size={16} className="text-slate-600"/><span className="rounded-full bg-sky-400/10 px-4 py-2 text-sky-200">Fund Intel outputs</span><ArrowRight size={16} className="text-slate-600"/><span className="rounded-full bg-emerald-400/10 px-4 py-2 text-emerald-200">Impact Relay events</span><ArrowRight size={16} className="text-slate-600"/><span className="rounded-full bg-amber-300/10 px-4 py-2 text-amber-200">Live AGI experience</span></div></div></section><section id="about" className="border-y border-white/10 py-16"><div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-2"><div><p className="text-sm font-semibold uppercase tracking-[.2em] text-slate-400">About AGI</p><h2 className="mt-3 text-3xl font-semibold">Transparency is a product promise.</h2></div><p className="leading-8 text-slate-300">Autonomous Giving Incorporated is the public flagship for a more legible form of philanthropy: Fund Intel informs decisions, AGI makes their journey understandable, and Impact Relay preserves what was verified after resources moved.</p></div></section><section id="contact" className="py-24"><div className="mx-auto max-w-4xl rounded-3xl border border-amber-300/25 bg-amber-300/[.06] px-6 py-14 text-center"><CircleDollarSign className="mx-auto text-amber-300" size={34}/><h2 className="mt-5 text-4xl font-semibold tracking-tight">Ready to make giving visible?</h2><p className="mx-auto mt-5 max-w-xl leading-7 text-slate-300">Build trust by showing donors not only that their contribution was received, but what it enabled.</p><div className="mt-8 flex justify-center gap-4"><a className="focus-ring rounded-full bg-amber-300 px-6 py-3 font-semibold text-slate-950" href="mailto:hello@autonomousgiving.org?subject=Request%20a%20demo">Request a demo</a><a className="focus-ring rounded-full border border-white/20 px-6 py-3 font-semibold" href="#platform">View the platform</a></div></div></section></main><footer className="border-t border-white/10 px-6 py-8 text-center text-sm text-slate-500">© 2026 Autonomous Giving Incorporated · Deterministic public demonstration</footer></> }
+
+const lifecycle = [
+  ["01", "Contribution received", "recorded"],
+  ["02", "Community Hardware allocation", "assigned"],
+  ["03", "Raspberry Pi kits", "approved"],
+  ["04", "Robotics workshop · 18 students", "verified"],
+];
+
+const system = [
+  [
+    "01",
+    "Fund Intel",
+    "Finds high-impact opportunities and documents allocation rationale.",
+    "advisory",
+  ],
+  [
+    "02",
+    "Autonomous Giving Inc.",
+    "Makes the contribution journey legible to the people who funded it.",
+    "experience",
+  ],
+  [
+    "03",
+    "Impact Relay",
+    "Preserves approved use, evidence, and verified program outcomes.",
+    "evidence",
+  ],
+];
+
+const products = [
+  {
+    id: "fund-intel",
+    name: "Fund Intel",
+    sub: "Decision intelligence",
+    copy: "A demonstration of the decision layer—where high-impact opportunities, allocation strategies, and the reasoning behind them come into focus.",
+    points: [
+      "Identify high-impact funding opportunities",
+      "Recommend allocation strategies",
+      "Explain why a decision is appropriate",
+    ],
+  },
+  {
+    id: "impact-relay",
+    name: "Impact Relay",
+    sub: "Execution transparency",
+    copy: "A demonstration of the transparency layer—where approved use, supporting evidence, and verified impact remain connected.",
+    points: [
+      "Track approved use of funds",
+      "Attach evidence and verification",
+      "Notify donors when impact occurs",
+    ],
+  },
+];
+
+export default async function Home() {
+  const signals = await getPublicSignals();
+
+  return (
+    <>
+      <Navbar />
+      <main id="top">
+        <section className="hero page-shell">
+          <div>
+            <p className="kicker">Autonomous Giving Incorporated</p>
+            <h1 className="hero-title">
+              Giving should not end <span>with a receipt.</span>
+            </h1>
+            <p className="hero-copy">
+              Follow a contribution from funding intent to verified community
+              impact—with the evidence needed to understand what happened next.
+            </p>
+            <div className="hero-actions">
+              <a className="button button-primary focus-ring" href="#demo">
+                Experience the proof <ArrowDown aria-hidden="true" size={16} />
+              </a>
+              <a className="button button-quiet focus-ring" href="#platform">
+                Inspect the system <ArrowRight aria-hidden="true" size={16} />
+              </a>
+            </div>
+          </div>
+          <aside
+            className="hero-instrument"
+            aria-label="Example contribution lifecycle"
+          >
+            <div className="instrument-head">
+              <strong>$250</strong>
+              <span>Evidence chain 04/04</span>
+            </div>
+            {lifecycle.map(([index, label, state]) => (
+              <div className="instrument-row" key={index}>
+                <span className="instrument-index">{index}</span>
+                <span>{label}</span>
+                <span className="instrument-state">{state}</span>
+              </div>
+            ))}
+          </aside>
+        </section>
+
+        <section className="section">
+          <div className="page-shell trust-layout">
+            <div>
+              <h2 className="section-heading">
+                A receipt confirms arrival. It does not explain what happened
+                next.
+              </h2>
+            </div>
+            <div className="comparison">
+              <article className="comparison-row">
+                <h3>Traditional giving</h3>
+                <div className="comparison-flow">
+                  <strong>Donate</strong>
+                  <span className="flow-separator">→</span>
+                  <span>Thank-you email</span>
+                  <span className="flow-separator">→</span>
+                  <span>Silence</span>
+                </div>
+              </article>
+              <article className="comparison-row">
+                <h3>With AGI</h3>
+                <div className="comparison-flow">
+                  {[
+                    "Donate",
+                    "Allocate",
+                    "Purchase",
+                    "Verify",
+                    "Impact",
+                    "Notify",
+                  ].map((item, index) => (
+                    <span key={item}>
+                      <strong>{item}</strong>
+                      {index < 5 ? (
+                        <span className="flow-separator"> → </span>
+                      ) : null}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section className="section" id="platform">
+          <div className="page-shell">
+            <p className="kicker">Trust infrastructure</p>
+            <h2 className="section-heading">
+              Three layers. One inspectable story.
+            </h2>
+            <p className="section-copy">
+              The platform connects decision rationale, donor experience, and
+              outcome evidence without pretending they are the same record.
+            </p>
+            <div className="system-map">
+              {system.map(([index, name, copy, state]) => (
+                <article className="system-row" key={name}>
+                  <span className="system-row-number">{index}</span>
+                  <h3>{name}</h3>
+                  <p>{copy}</p>
+                  <span className="system-row-state">{state}</span>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <PublicSignals signals={signals} />
+        <DonationDemo />
+
+        <section className="section">
+          <div className="page-shell">
+            <h2 className="section-heading">
+              Decision quality before funding. Accountability after it.
+            </h2>
+            {products.map(({ id, name, sub, copy, points }) => (
+              <article className="product-row" id={id} key={id}>
+                <div>
+                  <h3 className="product-name">{name}</h3>
+                  <p className="product-sub">{sub}</p>
+                </div>
+                <div>
+                  <p className="product-copy">{copy}</p>
+                  <ul className="product-points">
+                    {points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="page-shell contract-block">
+            <div>
+              <h2 className="section-heading">
+                Deterministic now. Ready for live evidence later.
+              </h2>
+            </div>
+            <pre className="contract-code" aria-label="Platform data flow">
+              <code>{`static scenario
+  → Fund Intel recommendation
+  → approved allocation
+  → Impact Relay evidence event
+  → AGI donor notification`}</code>
+            </pre>
+          </div>
+        </section>
+
+        <section className="section" id="about">
+          <div className="page-shell about-strip">
+            <h2 className="section-heading">
+              Transparency is a product promise.
+            </h2>
+            <p>
+              Autonomous Giving Incorporated is the public flagship for a more
+              legible form of philanthropy: Fund Intel informs decisions, AGI
+              makes their journey understandable, and Impact Relay preserves
+              what was verified after resources moved.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer className="statement-footer" id="contact">
+        <div className="page-shell">
+          <p className="statement">Ready to make giving visible?</p>
+          <a
+            className="statement-link focus-ring"
+            href="mailto:hello@autonomousgiving.org?subject=Request%20a%20demo"
+          >
+            Request a demo <ArrowRight aria-hidden="true" size={18} />
+          </a>
+          <div className="footer-meta">
+            <span>© 2026 Autonomous Giving Incorporated</span>
+            <span>Deterministic public demonstration</span>
+          </div>
+        </div>
+      </footer>
+    </>
+  );
+}
