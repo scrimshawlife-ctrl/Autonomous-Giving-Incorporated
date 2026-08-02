@@ -1,65 +1,72 @@
 # Continuation plan
 
-This plan starts after the merged v0.1 public demonstration. It protects the current product principle: every new capability must make the path from funding intent to verified impact more legible.
+This plan starts from the deployed GitHub Pages experience. Every new capability must make the path from funding intent to verified impact more legible without overstating attribution or exposing private data.
 
 ## Current baseline
 
-v0.1 is a deployed-code-ready, static Next.js experience with one replayable local scenario. It does not collect donations, persist records, authenticate people, or claim a live connection to Fund Intel or Impact Relay.
+AGI is a static Next.js export deployed from `main` to GitHub Pages. It includes a replayable deterministic scenario and reads two approved public aggregate documents during the build: a Fund Intel advisory state and an Impact Relay verified outcome. Invalid, unavailable, or unapproved source data falls back to the local canonical scenario.
 
-## Phase 0 — Operational readiness (1–2 days)
+The site does not collect donations, persist records, authenticate people, expose donor-level evidence, or perform write operations against either source system.
 
-**Goal:** make the existing public experience launch-ready without changing its product scope.
+## Phase A — Launch hardening
 
-- Configure the production Vercel project and replace the placeholder canonical URL with the production domain.
-- Add a real favicon and Open Graph image.
-- Establish a lightweight release checklist: desktop and mobile smoke test, keyboard-only demo replay, reduced-motion review, and metadata preview.
-- Add privacy-preserving page analytics only after a clear measurement question and privacy review.
+**Goal:** make the current public experience dependable without expanding product scope.
 
-**Exit criteria:** production domain, metadata assets, an accessible release checklist, and no new backend dependency.
+- Keep canonical, sitemap, robots, favicon, and social-preview assets aligned with the GitHub Pages URL and current visual system.
+- Complete a deployed desktop/mobile smoke test, keyboard-only demo replay, reduced-motion review, and metadata preview.
+- Record the release owner, commit, deployment run, and verification timestamp.
+- Add privacy-preserving analytics only after documenting a measurement question and privacy review.
 
-## Phase 1 — Integration contract discovery (3–5 days)
+**Exit criteria:** correct production metadata, a successful Pages deployment, a completed release record, and no new backend dependency.
 
-**Goal:** define the smallest stable data contract before building a connected experience.
+## Phase B — Public-source reliability
 
-- Document a versioned `FundingDecision` shape from Fund Intel: allocation ID, fund, rationale, confidence/status, and published timestamp.
-- Document a versioned `ImpactEvent` shape from Impact Relay: allocation ID, event type, evidence reference, verification status, and occurred timestamp.
-- Define the shared identifiers, status vocabulary, evidence-access rules, and retention/redaction policy.
-- Produce sample fixtures from both systems and validate them against the public narrative without exposing sensitive donor or beneficiary data.
+**Goal:** make the existing read-only source seam operationally explicit.
 
-**Exit criteria:** reviewed schemas, deterministic fixtures, ownership for each field, and explicit rules for what can be public.
+- Define a freshness threshold for both public documents and show when a build contains delayed data.
+- Distinguish live, fallback, stale, malformed, and policy-rejected states without inventing evidence.
+- Add tests for source validation and fallback selection.
+- Document build-time observability for source freshness and validation failures without sensitive data in logs.
 
-## Phase 2 — Read-only live narrative (v0.2, 1–2 weeks)
+**Exit criteria:** deterministic state coverage, reviewed freshness semantics, monitored fallback behavior, and accessible status copy.
 
-**Goal:** replace only the demo inputs with approved live outputs while preserving a safe fallback.
+## Phase C — Contract governance
 
-- Add a narrow read-only server integration layer; do not introduce donor accounts, payments, or write operations.
-- Render approved decision and verified-event records using the Phase 1 schemas.
-- Keep the local canonical scenario as an offline/demo fallback and clearly label which experience is live.
-- Add loading, empty, delayed, and verification-failure states that never invent evidence.
-- Add structured observability for freshness and integration errors, with no sensitive data in logs.
+**Goal:** finish the organizational decisions around the existing versioned TypeScript contracts.
 
-**Exit criteria:** one production-safe end-to-end narrative driven by approved source data, clear freshness labeling, monitored fallback behavior, and an accessibility review.
+- Confirm ownership for every `FundingDecision` and `ImpactEvent` field.
+- Review the shared identifier and status vocabulary with Fund Intel and Impact Relay owners.
+- Approve evidence-access, retention, redaction, and public-publication rules.
+- Validate representative fixtures from both source systems against the public narrative.
 
-## Phase 3 — Authenticated products (v1.0, separately scoped)
+**Exit criteria:** reviewed schemas, approved public-data rules, deterministic fixtures, and named field owners.
 
-**Goal:** introduce donor and organization workflows only after the read-only public narrative is reliable.
+## Phase D — Runtime read-only narrative
 
-- Independently design authorization, consent, data-retention, and audit requirements.
-- Scope donor history and organization evidence workflows as separate vertical slices.
-- Evaluate payments and notification delivery as dedicated workstreams, not additions to the public-site integration.
+**Goal:** move beyond build-time public documents only when a runtime host and operational policy are approved.
 
-**Exit criteria:** approved threat model, privacy review, service ownership, and a product-specific delivery plan.
+- Add a narrow read-only server integration layer; do not introduce accounts, payments, or write operations.
+- Preserve the canonical fallback and clear source/freshness labeling.
+- Add loading, empty, delayed, and verification-failure states.
+- Add structured observability with no sensitive data in logs.
+
+**Exit criteria:** one production-safe runtime narrative, monitored fallback behavior, and an accessibility review.
+
+## Future — Authenticated products
+
+Donor history, organization evidence workflows, payments, and notification delivery remain separately scoped workstreams. They require an approved threat model, consent and privacy review, retention policy, audit requirements, and service ownership before implementation.
 
 ## Decision gates
 
-Do not begin the next phase until its predecessor exits cleanly. Pause or narrow scope if live source data cannot be published safely, identifiers do not join reliably, verification semantics differ between systems, or the new experience makes an attribution claim that the evidence cannot support.
+Pause or narrow scope if public data cannot be published safely, identifiers do not join reliably, verification semantics differ between systems, freshness cannot be explained honestly, or the experience implies one-to-one attribution that the evidence cannot support.
 
 ## Ownership and sequencing
 
-| Area | First owner | Sequence |
-| --- | --- | --- |
-| Production domain and launch checklist | AGI product/design | Phase 0 |
-| Fund Intel decision contract | Fund Intel owner | Phase 1 |
-| Impact Relay event contract | Impact Relay owner | Phase 1 |
-| Public integration adapter and fallback | AGI engineering | Phase 2 |
-| Auth, payments, and notifications | Product/security owners | Phase 3 |
+| Area                                       | First owner             | Sequence |
+| ------------------------------------------ | ----------------------- | -------- |
+| Pages metadata and release verification    | AGI product/design      | Phase A  |
+| Public-source freshness and fallback tests | AGI engineering         | Phase B  |
+| Fund Intel decision contract               | Fund Intel owner        | Phase C  |
+| Impact Relay event contract                | Impact Relay owner      | Phase C  |
+| Runtime adapter and observability          | AGI engineering         | Phase D  |
+| Auth, payments, and notifications          | Product/security owners | Future   |

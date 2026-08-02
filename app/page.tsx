@@ -236,7 +236,7 @@ export default async function Home() {
             Request a demo <ArrowRight aria-hidden="true" size={18} />
           </a>
           <div className="footer-meta">
-            <span>© 2026 Autonomous Giving Incorporated</span>
+            <span>Zero State · Autonomous Giving Incorporated</span>
             <span>Deterministic public demonstration</span>
           </div>
         </div>
