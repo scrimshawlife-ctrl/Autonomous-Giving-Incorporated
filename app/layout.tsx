@@ -1,15 +1,39 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN, absoluteSiteUrl } from "@/site";
 import "./globals.css";
 
+const description =
+  "Autonomous Giving Incorporated shows how contributions move from funding intent to verified community impact through Fund Intel and Impact Relay.";
+
 export const metadata: Metadata = {
-  title: { default: "Autonomous Giving Incorporated", template: "%s | AGI" },
-  description: "Autonomous Giving Incorporated is a transparency-first platform showing how donations move from funding intent to verified community impact through Fund Intel and Impact Relay.",
-  metadataBase: new URL("https://scrimshawlife-ctrl.github.io/Autonomous-Giving-Incorporated/"),
-  openGraph: { title: "Autonomous Giving Incorporated", description: "Giving should not end with a receipt.", type: "website", images: ["/opengraph-image"] },
-  twitter: { card: "summary_large_image", title: "Autonomous Giving Incorporated", description: "Giving should not end with a receipt.", images: ["/opengraph-image"] },
-  robots: { index: true, follow: true }
+  metadataBase: new URL(SITE_ORIGIN),
+  title: {
+    default: "Autonomous Giving Incorporated",
+    template: "%s | AGI",
+  },
+  description,
+  alternates: { canonical: absoluteSiteUrl() },
+  openGraph: {
+    title: "Autonomous Giving Incorporated",
+    description: "Giving should not end with a receipt.",
+    type: "website",
+    url: absoluteSiteUrl(),
+    siteName: "Autonomous Giving Incorporated",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Autonomous Giving Incorporated",
+    description: "Giving should not end with a receipt.",
+  },
+  robots: { index: true, follow: true },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body>{children}</body></html>;
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
 }

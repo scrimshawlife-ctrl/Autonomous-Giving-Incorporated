@@ -2,10 +2,10 @@
 
 Use before each production release.
 
-## Configuration
+## Production metadata
 
-- [ ] Confirm the production Vercel project and custom domain.
-- [ ] Set the production domain in `metadataBase`, `robots.ts`, and `sitemap.ts`.
+- [ ] Confirm the GitHub Pages deployment targets the reviewed `main` commit.
+- [ ] Confirm canonical, Open Graph, Twitter, robots, and sitemap URLs contain the repository base path exactly once.
 - [ ] Confirm the favicon and Open Graph image resolve from the production URL.
 - [ ] Verify no environment variables, preview URLs, or internal contact addresses are exposed.
 

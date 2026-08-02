@@ -1,15 +1,19 @@
 # Roadmap
 
-## v0.1 — Deterministic public demo
-Responsive narrative, replayable local lifecycle, product explanation, accessibility baseline, metadata, CI, and docs.
+## Current — Deployed public evidence workbench
 
-## v0.1.x — Launch readiness
-Production domain configuration, metadata assets, launch QA, and other public-site hardening that preserves the static, deterministic architecture.
+Responsive narrative, replayable local lifecycle, approved public aggregate signals with deterministic fallback, accessibility baseline, metadata, CI, and GitHub Pages deployment.
 
-## v0.2 — Real Fund Intel and Impact Relay outputs
-Read-only consumption of approved decision outputs and verified execution events, after versioned contracts, public-data rules, and deterministic fixtures are reviewed.
+## Next — Launch and source reliability
 
-## v1.0 — Authenticated donor and organization product
-Future account-based workflows; explicitly outside this release.
+Production metadata verification, release records, public-source freshness policy, validation tests, explicit stale/rejected states, and build-time observability.
+
+## Later — Runtime read-only narrative
+
+Runtime consumption of approved decision and verified-event records after hosting, ownership, privacy, and contract-governance decisions are complete.
+
+## Future — Authenticated donor and organization product
+
+Account workflows, payments, and notifications remain explicitly outside the public-site scope and require separate security and privacy work.
 
 See [CONTINUATION_PLAN.md](CONTINUATION_PLAN.md) for phases, decision gates, and exit criteria.
