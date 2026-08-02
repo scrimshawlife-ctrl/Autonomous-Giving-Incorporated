@@ -16,4 +16,4 @@ Click **Donate $250** to replay Jane's local story: Community Hardware Fund → 
 
 `app/` is the App Router site; `components/` holds presentation and the demo; `demo/` holds typed local scenario data; `docs/` holds product and technical decisions. Vercel deployment needs no environment variables or services.
 
-v0.1 intentionally excludes accounts, APIs, databases, payments, CMS, dashboards, real notifications, analytics, and live integrations. Before publishing, follow the [release checklist](docs/RELEASE_CHECKLIST.md). The proposed live-data boundary is in [integration contracts](docs/INTEGRATION_CONTRACTS.md).
+v0.1 intentionally excludes accounts, APIs, databases, payments, CMS, dashboards, real notifications, analytics, and live integrations. Before publishing, follow the [release checklist](docs/RELEASE_CHECKLIST.md). See the [roadmap](docs/ROADMAP.md), [continuation plan](docs/CONTINUATION_PLAN.md), and proposed [integration contracts](docs/INTEGRATION_CONTRACTS.md).
