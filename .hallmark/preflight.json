@@ -1,0 +1,18 @@
+{
+  "genre": "modern-minimal",
+  "macrostructure": "Workbench",
+  "theme": "Cobalt",
+  "enrichment": "none",
+  "nav": "N5 floating pill",
+  "footer": "Ft5 statement",
+  "density": "medium-high",
+  "content": "live public signals plus deterministic contribution scenario",
+  "assets": "none required",
+  "antiSlop": [
+    "no hero media split",
+    "no repeated equal cards",
+    "no nested glass containers",
+    "no decorative icon tiles",
+    "no centered CTA panel"
+  ]
+}
