@@ -11,22 +11,26 @@ This plan translates the roadmap into an engineering sequence. It is intentional
 - Fail-closed fallback for unavailable or disallowed source data.
 - CI for lint, typecheck, and production build.
 
-## Workstream 1 — Public-source reliability
+## Workstream 1 — Public-source reliability (Phase B)
 
 1. Define source freshness thresholds and clock assumptions.
-2. Add runtime schema validation for both public documents.
+2. Add runtime schema validation for both public documents (Fund-Intel schema + Impact-Relay public-impact shape).
 3. Represent `live`, `fallback`, `stale`, `malformed`, and `policy_rejected` as explicit internal states.
 4. Add deterministic tests for every selection and rejection path.
 5. Render accessible freshness and provenance copy without exposing payloads.
 6. Document privacy-safe build diagnostics.
 
-## Workstream 2 — Contract governance
+See the detailed task table in [CONTINUATION_PLAN.md](CONTINUATION_PLAN.md).
+
+## Workstream 2 — Contract governance (Phase C)
 
 1. Name the owner of every shared field.
 2. Reconcile allocation identifiers and status vocabulary across the suite.
 3. Approve public evidence, retention, redaction, and publication rules.
 4. Version incompatible contract changes.
 5. Maintain representative public-safe fixtures in all affected repositories.
+
+Cross-repository surface and checklist live in [THREE_REPO_INTEGRATION.md](THREE_REPO_INTEGRATION.md).
 
 ## Workstream 3 — Release quality
 
