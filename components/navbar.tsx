@@ -9,11 +9,12 @@ const links = [
   ["Proof", "#demo"],
   ["Signals", "#signals"],
   ["About", "#about"],
+  ["Sign in", "https://autogive.app/fund-intel/workspace.html"],
 ] as const;
 
 const suiteLinks = [
-  ["Fund Intel", "https://scrimshawlife-ctrl.github.io/Fund-Intel/"],
-  ["Impact Relay", "https://scrimshawlife-ctrl.github.io/Impact-Relay/"],
+  ["Fund Intel", "https://autogive.app/fund-intel/"],
+  ["Impact Relay", "https://autogive.app/impact-relay/"],
 ] as const;
 
 export function Navbar() {
@@ -25,19 +26,15 @@ export function Navbar() {
         <a
           className="brand focus-ring"
           href="#top"
-          aria-label="Autonomous Giving Incorporated, home"
+          aria-label="Autonomously Giving Incorporated, home"
         >
           <Image
             className="brand-symbol"
-            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/brand/zero-state-mark.svg`}
-            alt=""
-            width="42"
-            height="42"
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/brand/agi-wordmark.png`}
+            alt="Autonomously Giving Incorporated"
+            width="1200"
+            height="290"
           />
-          <span className="brand-lockup">
-            <span className="brand-parent">Zero State</span>
-            <strong>Autonomous Giving</strong>
-          </span>
         </a>
         <div className="desktop-links">
           {links.map(([label, href]) => (
@@ -46,7 +43,7 @@ export function Navbar() {
             </a>
           ))}
         </div>
-        <div className="suite-links" aria-label="Zero State product suite">
+        <div className="suite-links" aria-label="AGI product suite">
           {suiteLinks.map(([label, href]) => (
             <a className="suite-link focus-ring" href={href} key={href}>
               {label}

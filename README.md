@@ -1,19 +1,19 @@
-# Autonomous Giving Incorporated
+# Autonomously Giving Incorporated
 
 [![CI](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Incorporated/actions/workflows/ci.yml/badge.svg)](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Incorporated/actions/workflows/ci.yml)
 [![Deploy GitHub Pages](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Incorporated/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Incorporated/actions/workflows/deploy-pages.yml)
 
-Autonomous Giving Incorporated (AGI) is the public, evidence-first entry point to the Zero State product suite. It explains how a funding decision can become an inspectable impact story without exposing donor records or claiming that this site moves money.
+Autonomously Giving Incorporated (AGI) is the corporate brand and public, evidence-first entry point for its giving platform. It explains how a funding decision can become an inspectable impact story without exposing donor records or claiming that this site moves money. Zero State is the software builder and appears only in the footer credit.
 
-**[View the live GitHub Pages site](https://scrimshawlife-ctrl.github.io/Autonomous-Giving-Incorporated/)**
+**[Visit autogive.app](https://autogive.app/)** · [GitHub Pages fallback](https://scrimshawlife-ctrl.github.io/Autonomous-Giving-Incorporated/)
 
 ## Product suite
 
 | Product      | Role                                     | Live surface                                                                             |
 | ------------ | ---------------------------------------- | ---------------------------------------------------------------------------------------- |
-| AGI          | Explains the funding-to-evidence journey | [Public workbench](https://scrimshawlife-ctrl.github.io/Autonomous-Giving-Incorporated/) |
-| Fund Intel   | Publishes decision and campaign signals  | [Decision workspace](https://scrimshawlife-ctrl.github.io/Fund-Intel/)                   |
-| Impact Relay | Publishes verified aggregate outcomes    | [Public evidence](https://scrimshawlife-ctrl.github.io/Impact-Relay/)                    |
+| AGI          | Explains the funding-to-evidence journey | [Public workbench](https://autogive.app/)             |
+| Fund Intel   | Publishes decision and campaign signals  | [Decision workspace](https://autogive.app/fund-intel/) |
+| Impact Relay | Publishes verified aggregate outcomes    | [Public evidence](https://autogive.app/impact-relay/) |
 
 The visitor journey is **AGI → Fund Intel → Impact Relay**. The data narrative is **Fund Intel decision → AGI explanation → Impact Relay evidence**.
 
@@ -69,7 +69,7 @@ integration/contracts.ts   Versioned narrative contracts
 integration/fixtures.ts    Public-safe deterministic fixtures
 integration/public-sources.ts
                            Build-time public-source adapter and fail-closed fallback
-public/brand/              Zero State brand assets
+public/brand/              AGI corporate identity assets
 docs/                      Product, architecture, delivery, and release records
 site.ts                    Canonical production URL helpers
 tokens.css                 Shared design-token source of truth
