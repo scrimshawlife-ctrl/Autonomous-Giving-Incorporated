@@ -33,4 +33,16 @@ Runtime consumption of approved decision and verified-event records may begin on
 
 Accounts, donor history, organization workflows, payments, and notification delivery are separate products and require their own threat model, consent model, retention policy, audit requirements, and service ownership.
 
+## Product track — Allocation middleware (design approved)
+
+Not a replacement for the public workbench gates above; parallel product track for client operations:
+
+1. every.org connector + campaign pot / program slice balances  
+2. Allocate + approve + exception inbox  
+3. Trail + board packet  
+4. Additional donation-platform adapters  
+5. Funder multi-grantee portfolio (later)  
+
+See [PRODUCT-ALLOCATION-MIDDLEWARE.md](PRODUCT-ALLOCATION-MIDDLEWARE.md).
+
 See [CONTINUATION_PLAN.md](CONTINUATION_PLAN.md) for gates and ownership and [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) for engineering order.
