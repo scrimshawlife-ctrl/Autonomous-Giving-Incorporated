@@ -23,6 +23,13 @@ Pinned platform canon: **[Autonomous Giving Specs v1.0.0](https://github.com/scr
 
 Conformance declaration: [`platform-spec/conformance.yml`](platform-spec/conformance.yml). See [`platform-spec/README.md`](platform-spec/README.md).
 
+## Allocation middleware (product direction)
+
+Transaction-light **middleware** between donation platforms (canonical **every.org**) and human allocation: pots → approve → trail → exception inbox → board packet. Not a finance ledger.
+
+- [docs/PRODUCT-ALLOCATION-MIDDLEWARE.md](docs/PRODUCT-ALLOCATION-MIDDLEWARE.md)  
+- [Full design (Specs)](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Specs/blob/main/docs/superpowers/specs/2026-08-03-allocation-middleware-design.md)
+
 ## Current status
 
 AGI is a static Next.js export deployed from `main` to GitHub Pages. During the production build it requests two approved public aggregate documents:

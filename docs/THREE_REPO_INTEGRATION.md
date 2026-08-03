@@ -8,7 +8,20 @@ This document is the canonical cross-repository integration list for the Autonom
 | **Fund-Intel** | Decision workspace + public advisory campaign state | `data/public-campaign.json` |
 | **Impact-Relay** | Ledger, evidence, impact receipts, public aggregate outcomes | `data/public-impact.json` |
 
-AGI is deliberately the thinnest and most constrained surface. It never writes, never authenticates, and never sees donor-level data.
+AGI public workbench is deliberately the thinnest and most constrained surface today. It never writes, never authenticates, and never sees donor-level data.
+
+## Allocation middleware (future authenticated product)
+
+The approved **allocation middleware** design ([PRODUCT-ALLOCATION-MIDDLEWARE.md](PRODUCT-ALLOCATION-MIDDLEWARE.md)) introduces a separate client-ops surface that *will* authenticate and write tenant data. It is **not** the current public GitHub Pages workbench.
+
+| Concern | Public AGI workbench (now) | Allocation middleware (design) |
+| --- | --- | --- |
+| Auth | None | Org roles (director, funder, board) |
+| Money path | Narrative only | every.org gift summaries → pots → allocation |
+| Writes | None | Pots, allocations, exceptions, proof links |
+| Specs | Pin v1.x | Capability-first modular monolith |
+
+Cross-repo implementation should keep **public aggregate JSON** contracts stable while middleware modules map to Fund Intel (observe/credit), Autonomous Giving (allocate/approve), and Impact Relay (proof/trail) **capabilities**—not three mandatory deployables.
 
 ## Current live integration (build-time only)
 
