@@ -1,7 +1,25 @@
-import type { PublicSignals } from "@/integration/public-sources";
+import type { PublicSignals, SignalSourceState } from "@/integration/public-sources";
+
+const STATUS_LABEL: Record<SignalSourceState, string> = {
+  live: "Live public projection",
+  stale: "Live projection · delayed sources",
+  fallback: "Deterministic fallback",
+  malformed: "Deterministic fallback · malformed source",
+  policy_rejected: "Deterministic fallback · policy rejected",
+};
+
+function formatAge(ageMs: number | null): string | null {
+  if (ageMs === null) return null;
+  const hours = Math.floor(ageMs / (60 * 60 * 1000));
+  if (hours < 24) return `${hours}h old`;
+  const days = Math.floor(hours / 24);
+  return `${days}d old`;
+}
 
 export function PublicSignals({ signals }: { signals: PublicSignals }) {
-  const isLive = signals.source === "live";
+  const statusLabel = STATUS_LABEL[signals.source];
+  const fundAge = formatAge(signals.fundIntel.freshness.ageMs);
+  const impactAge = formatAge(signals.impactRelay.freshness.ageMs);
 
   return (
     <section className="signals section" id="signals">
@@ -13,9 +31,16 @@ export function PublicSignals({ signals }: { signals: PublicSignals }) {
           </div>
           <span className="status-chip">
             <span className="status-dot" aria-hidden="true" />
-            {isLive ? "Live public projection" : "Deterministic fallback"}
+            {statusLabel}
           </span>
         </div>
+
+        {signals.reason ? (
+          <p className="signal-reason" role="status">
+            {signals.reason}
+          </p>
+        ) : null}
+
         <div className="signal-table" aria-label="Public evidence signals">
           <article className="signal-row">
             <p className="signal-source">Fund Intel</p>
@@ -24,6 +49,10 @@ export function PublicSignals({ signals }: { signals: PublicSignals }) {
             </p>
             <p className="signal-detail">
               Advisory only. No campaign or donor record is inferred.
+              {fundAge ? ` · ${fundAge}` : ""}
+              {signals.fundIntel.freshness.label !== "fresh"
+                ? ` · ${signals.fundIntel.freshness.label.replace("_", " ")}`
+                : ""}
             </p>
             <time className="signal-date">{signals.fundIntel.updatedAt}</time>
           </article>
@@ -36,6 +65,10 @@ export function PublicSignals({ signals }: { signals: PublicSignals }) {
               {signals.impactRelay.programName} ·{" "}
               {signals.impactRelay.organizationName} ·{" "}
               {signals.impactRelay.allocationName}
+              {impactAge ? ` · ${impactAge}` : ""}
+              {signals.impactRelay.freshness.label !== "fresh"
+                ? ` · ${signals.impactRelay.freshness.label.replace("_", " ")}`
+                : ""}
             </p>
             <time className="signal-date">{signals.impactRelay.updatedAt}</time>
           </article>
