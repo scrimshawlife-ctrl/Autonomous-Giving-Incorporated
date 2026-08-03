@@ -17,6 +17,12 @@ Autonomously Giving Incorporated (AGI) is the corporate brand and public, eviden
 
 The visitor journey is **AGI → Fund Intel → Impact Relay**. The data narrative is **Fund Intel decision → AGI explanation → Impact Relay evidence**.
 
+## Platform specification
+
+Pinned platform canon: **[Autonomous Giving Specs v1.0.0](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Specs/releases/tag/v1.0.0)**.
+
+Conformance declaration: [`platform-spec/conformance.yml`](platform-spec/conformance.yml). See [`platform-spec/README.md`](platform-spec/README.md).
+
 ## Current status
 
 AGI is a static Next.js export deployed from `main` to GitHub Pages. During the production build it requests two approved public aggregate documents:
