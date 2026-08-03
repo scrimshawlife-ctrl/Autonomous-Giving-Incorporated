@@ -23,23 +23,34 @@ The site does not collect donations, persist records, authenticate people, expos
 
 ## Phase B — Public-source reliability (next)
 
-**Goal:** make the existing read-only source seam operationally explicit.
+**Goal:** make the existing read-only source seam operationally explicit and testable.
 
-- Define a freshness threshold for both public documents and show when a build contains delayed data.
-- Distinguish live, fallback, stale, malformed, and policy-rejected states without inventing evidence.
-- Add tests for source validation and fallback selection.
-- Document build-time observability for source freshness and validation failures without sensitive data in logs.
+### Engineering tasks
+
+| ID | Task | Notes |
+|----|------|-------|
+| B1 | Define freshness thresholds and clock assumptions for both public documents | Document threshold (recommended starting point: 24 h soft / 7 d hard) and how the UI labels delayed data |
+| B2 | Add runtime schema validation for both source documents | Use the published Fund-Intel schema and the current Impact-Relay public-impact shape; fail closed |
+| B3 | Expand internal states to `live` \| `fallback` \| `stale` \| `malformed` \| `policy_rejected` | Keep the deterministic fixture as the only fallback content |
+| B4 | Deterministic tests for every selection and rejection path | Network failure, non-2xx, parse error, wrong authority, missing VERIFIED outcome, stale data |
+| B5 | Accessible provenance and freshness copy | Labels must work with screen readers and reduced motion; never surface raw payloads |
+| B6 | Privacy-safe build diagnostics | CI / build logs report source, age, state, and reason only |
 
 **Exit criteria:** deterministic state coverage, reviewed freshness semantics, monitored fallback behavior, and accessible status copy.
 
 ## Phase C — Contract governance
 
-**Goal:** finish the organizational decisions around the existing versioned TypeScript contracts.
+**Goal:** finish the organizational decisions around the existing versioned TypeScript contracts so the three repositories can share a stable public narrative vocabulary.
 
-- Confirm ownership for every `FundingDecision` and `ImpactEvent` field.
-- Review the shared identifier and status vocabulary with Fund Intel and Impact Relay owners.
-- Approve evidence-access, retention, redaction, and public-publication rules.
-- Validate representative fixtures from both source systems against the public narrative.
+### Engineering / governance tasks
+
+| ID | Task | Notes |
+|----|------|-------|
+| C1 | Name ownership for every `FundingDecision` and `ImpactEvent` field | Record in INTEGRATION_CONTRACTS.md |
+| C2 | Align `allocationId` generation and status vocabulary across Fund-Intel, Impact-Relay, and AGI | Shared glossary + matching fixtures |
+| C3 | Approve evidence-access, retention, redaction, and public-publication rules | Leadership + eng sign-off; referenced by all three repos |
+| C4 | Publish representative public-safe fixtures in all three repositories | Fixtures must validate against the contracts |
+| C5 | Formalize contract versioning and change-management process | Version bump required on any compatibility break |
 
 **Exit criteria:** reviewed schemas, approved public-data rules, deterministic fixtures, and named field owners.
 
@@ -53,6 +64,8 @@ The site does not collect donations, persist records, authenticate people, expos
 - Add structured observability with no sensitive data in logs.
 
 **Exit criteria:** one production-safe runtime narrative, monitored fallback behavior, and an accessibility review.
+
+**Gate:** Phase B and Phase C must be complete and the public contracts must be stable before any runtime work begins.
 
 ## Future — Authenticated products
 
@@ -72,3 +85,5 @@ Pause or narrow scope if public data cannot be published safely, identifiers do 
 | Impact Relay event contract                | Impact Relay owner      | Phase C  |
 | Runtime adapter and observability          | AGI engineering         | Phase D  |
 | Auth, payments, and notifications          | Product/security owners | Future   |
+
+See also [THREE_REPO_INTEGRATION.md](THREE_REPO_INTEGRATION.md) for the complete cross-repository surface and [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) for the engineering sequence.
