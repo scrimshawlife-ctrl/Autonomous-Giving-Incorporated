@@ -2,6 +2,8 @@
 
 AGI has two distinct contract layers: an implemented build-time public projection and versioned narrative contracts for future governed integration. Neither layer authorizes writes, payments, or access to private evidence.
 
+The complete cross-repository checklist lives in [THREE_REPO_INTEGRATION.md](THREE_REPO_INTEGRATION.md).
+
 ## Implemented public projection
 
 `integration/public-sources.ts` retrieves these fixed sources during the static build:
@@ -13,7 +15,7 @@ AGI has two distinct contract layers: an implemented build-time public projectio
 
 The adapter normalizes accepted data into `PublicSignals`. Any failed request, parsing error, unexpected authority, or missing verified outcome returns the bundled deterministic fallback.
 
-The current TypeScript checks are intentionally narrow but are not a full runtime schema validator. Adding explicit schema validation and freshness policy is the next reliability phase.
+The current TypeScript checks are intentionally narrow but are not a full runtime schema validator. Adding explicit schema validation and freshness policy is the next reliability phase (Phase B).
 
 ## Versioned narrative contracts
 
@@ -45,4 +47,4 @@ A contract change must include:
 5. validation and fallback tests;
 6. corresponding updates in Fund Intel and Impact Relay when the shared vocabulary changes.
 
-Runtime APIs, authentication, credentials, and write operations remain outside this contract. See [ARCHITECTURE.md](ARCHITECTURE.md) and [CONTINUATION_PLAN.md](CONTINUATION_PLAN.md).
+Runtime APIs, authentication, credentials, and write operations remain outside this contract. See [ARCHITECTURE.md](ARCHITECTURE.md), [CONTINUATION_PLAN.md](CONTINUATION_PLAN.md), and [THREE_REPO_INTEGRATION.md](THREE_REPO_INTEGRATION.md).
