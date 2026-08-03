@@ -12,16 +12,26 @@ export type ValidationFailure = {
   reason: string;
 };
 
+export type ValidatedCampaignAllocation = {
+  allocationId: string;
+  fundName: string;
+  status: string;
+};
+
 export type ValidatedCampaign = {
   updatedAt: string;
   authority: "advisory_only";
   execution: { state: string; reason: string };
+  /** Optional public allocation registry when Fund-Intel publishes it. */
+  allocations: ValidatedCampaignAllocation[];
 };
 
 export type ValidatedImpactOutcome = {
   organizationName: string;
   programName: string;
   allocationName: string;
+  /** Optional suite join key when Impact-Relay exports it. */
+  allocationId: string | null;
   participantsPublic: number;
   evidenceState: "VERIFIED";
   eventDate: string;
@@ -75,6 +85,32 @@ export function validatePublicCampaign(
     return { kind: "malformed", reason: "campaign.execution.reason missing or empty" };
   }
 
+  const allocations: ValidatedCampaignAllocation[] = [];
+  if (value.allocations !== undefined) {
+    if (!Array.isArray(value.allocations)) {
+      return { kind: "malformed", reason: "campaign.allocations must be an array when present" };
+    }
+    for (const item of value.allocations) {
+      if (!isRecord(item)) {
+        return { kind: "malformed", reason: "campaign.allocations entry is not an object" };
+      }
+      if (!isNonEmptyString(item.allocationId)) {
+        return { kind: "malformed", reason: "campaign.allocations.allocationId missing" };
+      }
+      if (!isNonEmptyString(item.fundName)) {
+        return { kind: "malformed", reason: "campaign.allocations.fundName missing" };
+      }
+      if (!isNonEmptyString(item.status)) {
+        return { kind: "malformed", reason: "campaign.allocations.status missing" };
+      }
+      allocations.push({
+        allocationId: item.allocationId,
+        fundName: item.fundName,
+        status: item.status,
+      });
+    }
+  }
+
   return {
     updatedAt: value.updatedAt,
     authority: "advisory_only",
@@ -82,6 +118,7 @@ export function validatePublicCampaign(
       state: value.execution.state,
       reason: value.execution.reason,
     },
+    allocations,
   };
 }
 
@@ -135,6 +172,10 @@ export function validatePublicImpact(
     return { kind: "malformed", reason: "verified outcome.eventDate missing" };
   }
 
+  const allocationId = isNonEmptyString(verified.allocationId)
+    ? verified.allocationId
+    : null;
+
   return {
     updatedAt: value.updatedAt,
     authority: "public_aggregate_only",
@@ -142,6 +183,7 @@ export function validatePublicImpact(
       organizationName: verified.organizationName,
       programName: verified.programName,
       allocationName: verified.allocationName,
+      allocationId,
       participantsPublic: verified.participantsPublic,
       evidenceState: "VERIFIED",
       eventDate: verified.eventDate,
