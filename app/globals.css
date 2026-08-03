@@ -385,6 +385,13 @@ button:disabled,
   border-radius: 50%;
   background: var(--color-verified);
 }
+.signal-reason {
+  margin: var(--space-4) 0 0;
+  max-width: 70ch;
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  line-height: 1.55;
+}
 .signal-table {
   margin-top: var(--space-7);
   border-top: 2px solid var(--color-ink);

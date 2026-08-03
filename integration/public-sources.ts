@@ -1,22 +1,158 @@
 import { communityHardwareFixture } from "./fixtures";
+import {
+  assessFreshness,
+  isStaleLabel,
+  type FreshnessAssessment,
+} from "./freshness";
+import {
+  validatePublicCampaign,
+  validatePublicImpact,
+  type ValidationFailure,
+} from "./validate-public";
 
-const fundIntelUrl = "https://raw.githubusercontent.com/scrimshawlife-ctrl/Fund-Intel/main/data/public-campaign.json";
-const impactRelayUrl = "https://raw.githubusercontent.com/scrimshawlife-ctrl/Impact-Relay/main/data/public-impact.json";
+const fundIntelUrl =
+  "https://raw.githubusercontent.com/scrimshawlife-ctrl/Fund-Intel/main/data/public-campaign.json";
+const impactRelayUrl =
+  "https://raw.githubusercontent.com/scrimshawlife-ctrl/Impact-Relay/main/data/public-impact.json";
 
-type PublicCampaign = { updatedAt: string; authority: "advisory_only"; execution: { state: string; reason: string } };
-type PublicImpact = { updatedAt: string; authority: "public_aggregate_only"; outcomes: Array<{ organizationName: string; programName: string; allocationName: string; participantsPublic: number; evidenceState: string; eventDate: string }> };
-export type PublicSignals = { source: "live" | "fallback"; fundIntel: { updatedAt: string; executionState: string }; impactRelay: { updatedAt: string; organizationName: string; programName: string; allocationName: string; participants: number; verified: boolean } };
+/** Explicit source states for the public projection seam. */
+export type SignalSourceState =
+  | "live"
+  | "stale"
+  | "fallback"
+  | "malformed"
+  | "policy_rejected";
 
-const fallback: PublicSignals = { source: "fallback", fundIntel: { updatedAt: communityHardwareFixture.decision.publishedAt, executionState: communityHardwareFixture.decision.status }, impactRelay: { updatedAt: communityHardwareFixture.events.at(-1)?.occurredAt ?? communityHardwareFixture.decision.publishedAt, organizationName: "Hacker Dojo", programName: "Intro to Robotics", allocationName: communityHardwareFixture.decision.fundName, participants: 18, verified: true } };
+export type PublicSignals = {
+  source: SignalSourceState;
+  /** Human-readable reason when not fully live. Safe for UI and build logs. */
+  reason?: string;
+  fundIntel: {
+    updatedAt: string;
+    executionState: string;
+    freshness: FreshnessAssessment;
+  };
+  impactRelay: {
+    updatedAt: string;
+    organizationName: string;
+    programName: string;
+    allocationName: string;
+    participants: number;
+    verified: boolean;
+    freshness: FreshnessAssessment;
+  };
+};
 
-export async function getPublicSignals(): Promise<PublicSignals> {
+const fallbackBase = {
+  fundIntel: {
+    updatedAt: communityHardwareFixture.decision.publishedAt,
+    executionState: communityHardwareFixture.decision.status,
+  },
+  impactRelay: {
+    updatedAt:
+      communityHardwareFixture.events.at(-1)?.occurredAt ??
+      communityHardwareFixture.decision.publishedAt,
+    organizationName: "Hacker Dojo",
+    programName: "Intro to Robotics",
+    allocationName: communityHardwareFixture.decision.fundName,
+    participants: 18,
+    verified: true,
+  },
+} as const;
+
+function buildFallback(
+  source: Extract<
+    SignalSourceState,
+    "fallback" | "malformed" | "policy_rejected"
+  >,
+  reason: string,
+  nowMs: number = Date.now(),
+): PublicSignals {
+  return {
+    source,
+    reason,
+    fundIntel: {
+      ...fallbackBase.fundIntel,
+      freshness: assessFreshness(fallbackBase.fundIntel.updatedAt, nowMs),
+    },
+    impactRelay: {
+      ...fallbackBase.impactRelay,
+      freshness: assessFreshness(fallbackBase.impactRelay.updatedAt, nowMs),
+    },
+  };
+}
+
+function failureToFallback(
+  failure: ValidationFailure,
+  nowMs: number,
+): PublicSignals {
+  return buildFallback(failure.kind, failure.reason, nowMs);
+}
+
+export async function getPublicSignals(
+  nowMs: number = Date.now(),
+): Promise<PublicSignals> {
   try {
-    const [campaignResponse, impactResponse] = await Promise.all([fetch(fundIntelUrl, { cache: "force-cache" }), fetch(impactRelayUrl, { cache: "force-cache" })]);
-    if (!campaignResponse.ok || !impactResponse.ok) return fallback;
-    const campaign = await campaignResponse.json() as PublicCampaign;
-    const impact = await impactResponse.json() as PublicImpact;
-    const outcome = impact.outcomes.find((item) => item.evidenceState === "VERIFIED");
-    if (campaign.authority !== "advisory_only" || impact.authority !== "public_aggregate_only" || !outcome) return fallback;
-    return { source: "live", fundIntel: { updatedAt: campaign.updatedAt, executionState: campaign.execution.state }, impactRelay: { updatedAt: impact.updatedAt, organizationName: outcome.organizationName, programName: outcome.programName, allocationName: outcome.allocationName, participants: outcome.participantsPublic, verified: true } };
-  } catch { return fallback; }
+    const [campaignResponse, impactResponse] = await Promise.all([
+      fetch(fundIntelUrl, { cache: "force-cache" }),
+      fetch(impactRelayUrl, { cache: "force-cache" }),
+    ]);
+
+    if (!campaignResponse.ok || !impactResponse.ok) {
+      return buildFallback(
+        "fallback",
+        `source HTTP failure (campaign ${campaignResponse.status}, impact ${impactResponse.status})`,
+        nowMs,
+      );
+    }
+
+    let campaignRaw: unknown;
+    let impactRaw: unknown;
+    try {
+      campaignRaw = await campaignResponse.json();
+      impactRaw = await impactResponse.json();
+    } catch {
+      return buildFallback("malformed", "JSON parse failure", nowMs);
+    }
+
+    const campaign = validatePublicCampaign(campaignRaw);
+    if ("kind" in campaign) {
+      return failureToFallback(campaign, nowMs);
+    }
+
+    const impact = validatePublicImpact(impactRaw);
+    if ("kind" in impact) {
+      return failureToFallback(impact, nowMs);
+    }
+
+    const fundFreshness = assessFreshness(campaign.updatedAt, nowMs);
+    const impactFreshness = assessFreshness(impact.updatedAt, nowMs);
+    const anyStale =
+      isStaleLabel(fundFreshness.label) || isStaleLabel(impactFreshness.label);
+
+    return {
+      source: anyStale ? "stale" : "live",
+      reason: anyStale
+        ? `one or more sources exceeded freshness threshold (fund=${fundFreshness.label}, impact=${impactFreshness.label})`
+        : undefined,
+      fundIntel: {
+        updatedAt: campaign.updatedAt,
+        executionState: campaign.execution.state,
+        freshness: fundFreshness,
+      },
+      impactRelay: {
+        updatedAt: impact.updatedAt,
+        organizationName: impact.outcome.organizationName,
+        programName: impact.outcome.programName,
+        allocationName: impact.outcome.allocationName,
+        participants: impact.outcome.participantsPublic,
+        verified: true,
+        freshness: impactFreshness,
+      },
+    };
+  } catch (error) {
+    const message =
+      error instanceof Error ? error.message : "unknown fetch error";
+    return buildFallback("fallback", message, nowMs);
+  }
 }
