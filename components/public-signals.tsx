@@ -49,6 +49,9 @@ export function PublicSignals({ signals }: { signals: PublicSignals }) {
             </p>
             <p className="signal-detail">
               Advisory only. No campaign or donor record is inferred.
+              {signals.fundIntel.allocationId
+                ? ` · ${signals.fundIntel.allocationId}`
+                : ""}
               {fundAge ? ` · ${fundAge}` : ""}
               {signals.fundIntel.freshness.label !== "fresh"
                 ? ` · ${signals.fundIntel.freshness.label.replace("_", " ")}`
@@ -65,6 +68,9 @@ export function PublicSignals({ signals }: { signals: PublicSignals }) {
               {signals.impactRelay.programName} ·{" "}
               {signals.impactRelay.organizationName} ·{" "}
               {signals.impactRelay.allocationName}
+              {signals.impactRelay.allocationId
+                ? ` · ${signals.impactRelay.allocationId}`
+                : ""}
               {impactAge ? ` · ${impactAge}` : ""}
               {signals.impactRelay.freshness.label !== "fresh"
                 ? ` · ${signals.impactRelay.freshness.label.replace("_", " ")}`

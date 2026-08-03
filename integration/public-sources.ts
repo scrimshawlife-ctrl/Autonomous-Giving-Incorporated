@@ -30,6 +30,8 @@ export type PublicSignals = {
   fundIntel: {
     updatedAt: string;
     executionState: string;
+    /** First published allocation id when Fund-Intel registry is present. */
+    allocationId: string | null;
     freshness: FreshnessAssessment;
   };
   impactRelay: {
@@ -37,6 +39,7 @@ export type PublicSignals = {
     organizationName: string;
     programName: string;
     allocationName: string;
+    allocationId: string | null;
     participants: number;
     verified: boolean;
     freshness: FreshnessAssessment;
@@ -47,6 +50,7 @@ const fallbackBase = {
   fundIntel: {
     updatedAt: communityHardwareFixture.decision.publishedAt,
     executionState: communityHardwareFixture.decision.status,
+    allocationId: communityHardwareFixture.decision.allocationId,
   },
   impactRelay: {
     updatedAt:
@@ -55,6 +59,7 @@ const fallbackBase = {
     organizationName: "Hacker Dojo",
     programName: "Intro to Robotics",
     allocationName: communityHardwareFixture.decision.fundName,
+    allocationId: communityHardwareFixture.decision.allocationId,
     participants: 18,
     verified: true,
   },
@@ -138,6 +143,7 @@ export async function getPublicSignals(
       fundIntel: {
         updatedAt: campaign.updatedAt,
         executionState: campaign.execution.state,
+        allocationId: campaign.allocations[0]?.allocationId ?? null,
         freshness: fundFreshness,
       },
       impactRelay: {
@@ -145,6 +151,7 @@ export async function getPublicSignals(
         organizationName: impact.outcome.organizationName,
         programName: impact.outcome.programName,
         allocationName: impact.outcome.allocationName,
+        allocationId: impact.outcome.allocationId,
         participants: impact.outcome.participantsPublic,
         verified: true,
         freshness: impactFreshness,

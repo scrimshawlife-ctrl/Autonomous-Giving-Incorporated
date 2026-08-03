@@ -19,6 +19,7 @@ const validImpact = {
       organizationName: "Hacker Dojo",
       programName: "Beginner Electronics Class",
       allocationName: "Community Hardware Fund",
+      allocationId: "alloc_community_hardware",
       participantsPublic: 18,
       evidenceState: "VERIFIED",
       eventDate: "2026-09-02",
@@ -32,6 +33,22 @@ describe("validatePublicCampaign", () => {
     assert.ok(!("kind" in result));
     assert.equal(result.authority, "advisory_only");
     assert.equal(result.execution.state, "blocked");
+    assert.equal(result.allocations.length, 0);
+  });
+
+  it("accepts optional allocations registry", () => {
+    const result = validatePublicCampaign({
+      ...validCampaign,
+      allocations: [
+        {
+          allocationId: "alloc_community_hardware",
+          fundName: "Community Hardware Fund",
+          status: "approved",
+        },
+      ],
+    });
+    assert.ok(!("kind" in result));
+    assert.equal(result.allocations[0]?.allocationId, "alloc_community_hardware");
   });
 
   it("rejects non-objects as malformed", () => {
@@ -61,11 +78,22 @@ describe("validatePublicCampaign", () => {
 });
 
 describe("validatePublicImpact", () => {
-  it("accepts a document with a VERIFIED outcome", () => {
+  it("accepts a document with a VERIFIED outcome and allocationId", () => {
     const result = validatePublicImpact(validImpact);
     assert.ok(!("kind" in result));
     assert.equal(result.outcome.participantsPublic, 18);
     assert.equal(result.outcome.evidenceState, "VERIFIED");
+    assert.equal(result.outcome.allocationId, "alloc_community_hardware");
+  });
+
+  it("accepts VERIFIED outcomes without allocationId", () => {
+    const { allocationId: _omit, ...rest } = validImpact.outcomes[0];
+    const result = validatePublicImpact({
+      ...validImpact,
+      outcomes: [rest],
+    });
+    assert.ok(!("kind" in result));
+    assert.equal(result.outcome.allocationId, null);
   });
 
   it("rejects wrong authority as policy_rejected", () => {
