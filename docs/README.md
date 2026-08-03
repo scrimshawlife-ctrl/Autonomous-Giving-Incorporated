@@ -9,6 +9,7 @@ This directory is the source of truth for AGI product intent, architecture, desi
 | [Product](PRODUCT.md)                             | Current users, value proposition, scope, and non-goals          |
 | [Architecture](ARCHITECTURE.md)                   | Runtime model, trust boundaries, components, and deployment     |
 | [Integration contracts](INTEGRATION_CONTRACTS.md) | Accepted public inputs, validation rules, and fallback behavior |
+| [Three-repo integration](THREE_REPO_INTEGRATION.md) | Full cross-repository surface, checklist, and ownership       |
 | [Design system](DESIGN_SYSTEM.md)                 | AGI identity, tokens, composition, and accessibility             |
 
 ## Planning
