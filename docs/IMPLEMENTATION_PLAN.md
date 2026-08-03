@@ -1,5 +1,49 @@
 # Implementation plan
 
-Day 1: scaffold, design system, static scenes.  
-Day 2: interactive demo, product sections, responsive behavior.  
-Day 3: accessibility, polish, validation, deployment prep, documentation.
+This plan translates the roadmap into an engineering sequence. It is intentionally limited to the static, read-only public product.
+
+## Current baseline
+
+- Static Next.js export deployed to GitHub Pages.
+- Zero State visual system and reciprocal suite navigation.
+- Deterministic contribution lifecycle.
+- Build-time Fund Intel and Impact Relay public projections.
+- Fail-closed fallback for unavailable or disallowed source data.
+- CI for lint, typecheck, and production build.
+
+## Workstream 1 — Public-source reliability
+
+1. Define source freshness thresholds and clock assumptions.
+2. Add runtime schema validation for both public documents.
+3. Represent `live`, `fallback`, `stale`, `malformed`, and `policy_rejected` as explicit internal states.
+4. Add deterministic tests for every selection and rejection path.
+5. Render accessible freshness and provenance copy without exposing payloads.
+6. Document privacy-safe build diagnostics.
+
+## Workstream 2 — Contract governance
+
+1. Name the owner of every shared field.
+2. Reconcile allocation identifiers and status vocabulary across the suite.
+3. Approve public evidence, retention, redaction, and publication rules.
+4. Version incompatible contract changes.
+5. Maintain representative public-safe fixtures in all affected repositories.
+
+## Workstream 3 — Release quality
+
+1. Automate internal-link and Markdown checks.
+2. Add focused tests for metadata and source selection.
+3. Maintain desktop/mobile, keyboard, contrast, and reduced-motion smoke coverage.
+4. Record material deployments in `RELEASES.md`.
+
+## Definition of done
+
+A change is complete when:
+
+- behavior and documentation agree;
+- data and authority boundaries remain fail-closed;
+- lint, typecheck, Pages-mode build, and diff checks pass;
+- relevant source and fallback states are exercised;
+- accessibility and responsive behavior are reviewed for UI changes;
+- the production release is linked to its commit, PR, CI, and deployment run.
+
+Runtime APIs, accounts, payments, persistence, and notifications require a new approved plan rather than an extension of these workstreams.
