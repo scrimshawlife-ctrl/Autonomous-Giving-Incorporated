@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const dynamic = "force-static";
 export const alt =
-  "Autonomous Giving Incorporated — Giving should not end with a receipt.";
+  "Autonomously Giving Incorporated — Giving should not end with a receipt.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

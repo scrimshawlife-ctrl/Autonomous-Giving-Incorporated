@@ -12,7 +12,7 @@ Traditional giving commonly ends with a transaction receipt. AGI makes the next 
 
 ## Product role
 
-AGI is the explanatory public entry point to the Zero State suite:
+AGI is the explanatory public entry point to the AGI product suite:
 
 - **Fund Intel** publishes decision and campaign context;
 - **AGI** explains the funding-to-evidence journey;

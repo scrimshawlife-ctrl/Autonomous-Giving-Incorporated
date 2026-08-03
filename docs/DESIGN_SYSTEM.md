@@ -1,13 +1,13 @@
-# Zero State design system
+# AGI corporate design system
 
-AGI is the explanatory entry point to the Zero State product suite. It introduces the allocation-to-evidence journey and links directly to Fund Intel and Impact Relay without collapsing their distinct jobs.
+AGI is the corporate master brand and explanatory entry point to the product suite. It introduces the allocation-to-evidence journey and links directly to Fund Intel and Impact Relay without collapsing their distinct jobs. Zero State is credited only as the software builder in the footer.
 
 ## Shared brand foundation
 
-- Paper `#fbf9f4`; raised surface `#ffffff`; stone `#f4f0e8`.
-- Carbon `#1d2321`; muted ink `#626b67`; rule `#b9b2a7`.
-- Signal yellow `#f2c200` for attention and focus; deep teal `#486f6a` for verified state and suite links.
-- Georgia for display type, Inter for body and interface copy, and IBM Plex Mono for metadata.
+- Paper `#f7f8fa`; raised surface `#ffffff`; cool gray `#e6e9ec`.
+- Ink `#0e1116`; graphite `#1f232b`; rule derived from the cool-gray scale.
+- AGI gold `#e6b23c` for attention and focus; AGI green `#2e7d6b` and mint `#a5cbb8` for verified state and suite links.
+- Space Grotesk for display type, Inter for body and interface copy, and IBM Plex Mono for metadata.
 - Two- and four-pixel corners, thin rules, and no decorative elevation.
 
 All implementation values originate in [`tokens.css`](../tokens.css). Components consume named variables rather than one-off colors.
@@ -16,11 +16,11 @@ All implementation values originate in [`tokens.css`](../tokens.css). Components
 
 The masthead always reads in this order:
 
-1. Zero State mark and wordmark
-2. Autonomous Giving Incorporated product name
+1. Autonomously Giving Incorporated mark and wordmark
+2. Product name or current corporate surface
 3. Current page or workflow context
 
-Fund Intel and Impact Relay appear as reciprocal suite links. Tenant or campaign identity may add context but never replace the Zero State or product identity.
+Fund Intel and Impact Relay appear as reciprocal suite links. Tenant or campaign identity may add context but never replace AGI or product identity. Canonical public links use `autogive.app`; footer governance links are Tokens, Logo use, and Legal, alongside “Software by Zero State.”
 
 ## Composition
 

@@ -20,7 +20,7 @@ const system = [
   ],
   [
     "02",
-    "Autonomous Giving Inc.",
+    "Autonomously Giving Inc.",
     "Makes the contribution journey legible to the people who funded it.",
     "experience",
   ],
@@ -66,7 +66,7 @@ export default async function Home() {
       <main id="top">
         <section className="hero page-shell">
           <div>
-            <p className="kicker">Autonomous Giving Incorporated</p>
+            <p className="kicker">Autonomously Giving Incorporated</p>
             <h1 className="hero-title">
               Giving should not end <span>with a receipt.</span>
             </h1>
@@ -217,7 +217,7 @@ export default async function Home() {
               Transparency is a product promise.
             </h2>
             <p>
-              Autonomous Giving Incorporated is the public flagship for a more
+              Autonomously Giving Incorporated is the public flagship for a more
               legible form of philanthropy: Fund Intel informs decisions, AGI
               makes their journey understandable, and Impact Relay preserves
               what was verified after resources moved.
@@ -231,13 +231,18 @@ export default async function Home() {
           <p className="statement">Ready to make giving visible?</p>
           <a
             className="statement-link focus-ring"
-            href="mailto:hello@autonomousgiving.org?subject=Request%20a%20demo"
+            href="mailto:hello@autogive.app?subject=Request%20a%20demo"
           >
             Request a demo <ArrowRight aria-hidden="true" size={18} />
           </a>
           <div className="footer-meta">
-            <span>Zero State · Autonomous Giving Incorporated</span>
-            <span>Deterministic public demonstration</span>
+            <span>Autonomously Giving Incorporated · autogive.app</span>
+            <nav className="footer-legal" aria-label="Brand and legal">
+              <span className="footer-builder">Software by Zero State</span>
+              <a href="https://autogive.app/brand#tokens">Tokens</a>
+              <a href="https://autogive.app/brand#logo">Logo use</a>
+              <a href="https://autogive.app/legal">Legal</a>
+            </nav>
           </div>
         </div>
       </footer>

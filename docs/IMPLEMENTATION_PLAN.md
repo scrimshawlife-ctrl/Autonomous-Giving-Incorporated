@@ -5,7 +5,7 @@ This plan translates the roadmap into an engineering sequence. It is intentional
 ## Current baseline
 
 - Static Next.js export deployed to GitHub Pages.
-- Zero State visual system and reciprocal suite navigation.
+- AGI visual system and reciprocal suite navigation.
 - Deterministic contribution lifecycle.
 - Build-time Fund Intel and Impact Relay public projections.
 - Fail-closed fallback for unavailable or disallowed source data.

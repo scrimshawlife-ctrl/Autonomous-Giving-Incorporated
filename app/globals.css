@@ -1,6 +1,6 @@
 /* Hallmark · genre: modern-minimal · macrostructure: Workbench · theme: Cobalt · enrichment: none · nav: N5 · footer: Ft5 · contrast: pass (40–41) · slop: pass (42–45) · honest: pass (46) · chrome: pass (47) · tokens: pass (48) · responsive: pass (49) · mobile: pass (34, 49, 50–57) · icons: pass (30) */
 /* Hallmark · pre-emit critique: P5 H5 E4 S5 R5 V5 */
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
 @import "../tokens.css";
 @tailwind base;
 @tailwind components;
@@ -140,26 +140,8 @@ button:disabled,
   gap: var(--space-3);
 }
 .brand-symbol {
-  width: 2.65rem;
-  height: 2.65rem;
-}
-.brand-lockup {
-  display: grid;
-  gap: 0.1rem;
-  line-height: 1.05;
-}
-.brand-parent {
-  color: var(--color-verified);
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-.brand-lockup strong {
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  letter-spacing: -0.01em;
+  width: clamp(10.5rem, 15vw, 13rem);
+  height: auto;
 }
 .desktop-links {
   display: flex;
@@ -704,6 +686,14 @@ button:disabled,
   font-family: var(--font-body);
   font-size: var(--text-xs);
 }
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-2) var(--space-4);
+}
+.footer-legal a:hover { color: var(--color-verified); }
+.footer-builder { color: var(--color-ink-soft); font-weight: 600; }
 
 @media (max-width: 900px) {
   .desktop-links {
