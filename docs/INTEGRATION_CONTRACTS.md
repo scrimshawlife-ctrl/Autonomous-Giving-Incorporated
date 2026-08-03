@@ -1,18 +1,48 @@
-# Proposed read-only integration contracts
+# Integration contracts
 
-These Phase 1 artifacts are not endpoints, credentials, or an implemented connection to Fund Intel or Impact Relay.
+AGI has two distinct contract layers: an implemented build-time public projection and versioned narrative contracts for future governed integration. Neither layer authorizes writes, payments, or access to private evidence.
 
-`FundingDecision` comes from Fund Intel and contains a public allocation ID, fund name, approved rationale, and published timestamp. `ImpactEvent` comes from Impact Relay and contains that allocation ID, event type, timestamp, verification status, and optional public-safe evidence reference. The TypeScript source is [`integration/contracts.ts`](../integration/contracts.ts); deterministic examples are in [`integration/fixtures.ts`](../integration/fixtures.ts).
+## Implemented public projection
+
+`integration/public-sources.ts` retrieves these fixed sources during the static build:
+
+| Source                                 | Required authority      | Data used by AGI                                      |
+| -------------------------------------- | ----------------------- | ----------------------------------------------------- |
+| Fund Intel `data/public-campaign.json` | `advisory_only`         | update timestamp and execution state                  |
+| Impact Relay `data/public-impact.json` | `public_aggregate_only` | update timestamp and one `VERIFIED` aggregate outcome |
+
+The adapter normalizes accepted data into `PublicSignals`. Any failed request, parsing error, unexpected authority, or missing verified outcome returns the bundled deterministic fallback.
+
+The current TypeScript checks are intentionally narrow but are not a full runtime schema validator. Adding explicit schema validation and freshness policy is the next reliability phase.
+
+## Versioned narrative contracts
+
+`integration/contracts.ts` defines:
+
+- `FundingDecision`: a public allocation identifier, fund, approved rationale, status, and publication time;
+- `ImpactEvent`: the same allocation identifier, event identity and type, occurrence time, verification status, and optional public-safe evidence reference;
+- `PublicImpactNarrative`: a decision plus its ordered impact events.
+
+The contract version is an explicit date string. Deterministic examples live in `integration/fixtures.ts`. These contracts describe the intended governed narrative seam; the current public-source adapter does not yet deserialize remote data directly into them.
 
 ## Public-data rules
 
 - Join only by `allocationId`, never donor identity.
-- Evidence references identify approved public records; they do not expose raw documents, personal data, or secret URLs.
-- `verified` reflects source-system verification, not individual donor attribution.
-- Unknown, delayed, or rejected records must never become inferred evidence.
+- Accept only documented public authority values.
+- Evidence references identify approved public records; they are not raw documents, personal data, or secret URLs.
+- Treat `verified` as a source-system state, not individual donor attribution.
+- Do not infer evidence from unknown, delayed, malformed, or rejected records.
+- Keep the deterministic fixture available for development and failure handling.
 
-## Implemented public-source seam
+## Change management
 
-AGI now reads the published aggregate documents from Fund Intel's `data/public-campaign.json` and Impact Relay's `data/public-impact.json` on GitHub. It accepts Fund Intel only when it declares `advisory_only`, and Impact Relay only when it declares `public_aggregate_only` and has a verified outcome. Failed, malformed, or unapproved sources fall back to the deterministic scenario. No donor or raw-evidence document is requested.
+A contract change must include:
 
-The public source URLs are intentionally fixed in `integration/public-sources.ts` until a production configuration and freshness policy are approved. v0.2 remains read-only and retains the deterministic scenario as fallback.
+1. a version change when compatibility is affected;
+2. updated deterministic fixtures;
+3. source ownership for every new field;
+4. public-data, retention, and redaction review;
+5. validation and fallback tests;
+6. corresponding updates in Fund Intel and Impact Relay when the shared vocabulary changes.
+
+Runtime APIs, authentication, credentials, and write operations remain outside this contract. See [ARCHITECTURE.md](ARCHITECTURE.md) and [CONTINUATION_PLAN.md](CONTINUATION_PLAN.md).

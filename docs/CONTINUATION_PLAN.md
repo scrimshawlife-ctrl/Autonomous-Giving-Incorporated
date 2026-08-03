@@ -8,7 +8,7 @@ AGI is a static Next.js export deployed from `main` to GitHub Pages. It includes
 
 The site does not collect donations, persist records, authenticate people, expose donor-level evidence, or perform write operations against either source system.
 
-## Phase A — Launch hardening
+## Phase A — Launch hardening (complete)
 
 **Goal:** make the current public experience dependable without expanding product scope.
 
@@ -19,7 +19,9 @@ The site does not collect donations, persist records, authenticate people, expos
 
 **Exit criteria:** correct production metadata, a successful Pages deployment, a completed release record, and no new backend dependency.
 
-## Phase B — Public-source reliability
+**Status:** completed on 2026-08-02 through [PR #7](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Incorporated/pull/7). CI and the GitHub Pages deployment passed for the merged commit.
+
+## Phase B — Public-source reliability (next)
 
 **Goal:** make the existing read-only source seam operationally explicit.
 

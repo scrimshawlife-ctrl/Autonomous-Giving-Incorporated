@@ -1,0 +1,36 @@
+# Documentation
+
+This directory is the source of truth for AGI product intent, architecture, design, delivery, and release evidence.
+
+## Start here
+
+| Document                                          | Use it for                                                      |
+| ------------------------------------------------- | --------------------------------------------------------------- |
+| [Product](PRODUCT.md)                             | Current users, value proposition, scope, and non-goals          |
+| [Architecture](ARCHITECTURE.md)                   | Runtime model, trust boundaries, components, and deployment     |
+| [Integration contracts](INTEGRATION_CONTRACTS.md) | Accepted public inputs, validation rules, and fallback behavior |
+| [Design system](DESIGN_SYSTEM.md)                 | Zero State identity, tokens, composition, and accessibility     |
+
+## Planning
+
+| Document                                      | Use it for                                    |
+| --------------------------------------------- | --------------------------------------------- |
+| [Roadmap](ROADMAP.md)                         | Ordered product outcomes and release horizons |
+| [Continuation plan](CONTINUATION_PLAN.md)     | Detailed next phases, gates, and ownership    |
+| [Implementation plan](IMPLEMENTATION_PLAN.md) | Engineering sequence and definition of done   |
+
+## Operations and history
+
+| Document                                  | Use it for                                                  |
+| ----------------------------------------- | ----------------------------------------------------------- |
+| [Release checklist](RELEASE_CHECKLIST.md) | Pre-merge, deployment, and post-release verification        |
+| [Release record](RELEASES.md)             | Immutable links to shipped commits, PRs, CI, and Pages runs |
+| [Vision](VISION.md)                       | Long-term product direction and principles                  |
+
+## Maintenance rules
+
+- Update architecture when data flow, deployment, or trust boundaries change.
+- Update integration contracts when accepted fields, authority values, or fallback behavior change.
+- Update the roadmap for priority changes; keep implementation details in the continuation or implementation plan.
+- Add a release record after every material production change.
+- Prefer links to canonical documents over duplicated descriptions.

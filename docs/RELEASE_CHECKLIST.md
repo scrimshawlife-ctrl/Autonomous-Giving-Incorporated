@@ -1,26 +1,37 @@
-# Public launch checklist
+# Public release checklist
 
-Use before each production release.
+Use this checklist for every material production release. Copy the completed evidence into `RELEASES.md`; do not mark the canonical checklist itself complete.
 
-## Production metadata
+## Scope and data safety
 
-- [ ] Confirm the GitHub Pages deployment targets the reviewed `main` commit.
-- [ ] Confirm canonical, Open Graph, Twitter, robots, and sitemap URLs contain the repository base path exactly once.
-- [ ] Confirm the favicon and Open Graph image resolve from the production URL.
-- [ ] Verify no environment variables, preview URLs, or internal contact addresses are exposed.
+- [ ] The change remains within the approved static, read-only product scope or links an approved expansion plan.
+- [ ] No donor-level data, private evidence, credentials, internal addresses, or environment values enter the static output.
+- [ ] Public claims identify their provenance and do not imply payments, causal impact, or one-to-one attribution.
+- [ ] Source failures and rejected authority values remain fail-closed.
 
-## Product and accessibility smoke test
+## Local verification
 
-- [ ] Review the homepage at narrow mobile and desktop widths.
-- [ ] Complete the $250 scenario by keyboard only, then reset and replay it.
-- [ ] Confirm lifecycle status updates are intelligible with a screen reader.
-- [ ] Enable reduced motion and verify the demo remains usable.
-- [ ] Check focus states, contrast, heading order, and CTA destinations.
+- [ ] Run `npm ci` from the committed lockfile.
+- [ ] Run `npm run lint`.
+- [ ] Run `npm run typecheck`.
+- [ ] Run `GITHUB_ACTIONS=true npm run build`.
+- [ ] Run `git diff --check`.
+- [ ] Confirm the generated export uses `/Autonomous-Giving-Incorporated` exactly once for repository-hosted assets and metadata.
 
-## Publishing and verification
+## Product and accessibility review
 
-- [ ] Verify title, description, canonical URL, favicon, Open Graph image, robots, and sitemap.
-- [ ] Run `npm ci`, `npm run lint`, `npm run typecheck`, and `npm run build`.
-- [ ] Review the live page after deployment and record release owner and timestamp.
+- [ ] Review the homepage at narrow mobile and desktop widths without horizontal overflow.
+- [ ] Complete and reset the deterministic scenario by keyboard.
+- [ ] Confirm focus visibility, heading order, landmarks, contrast, and status labels.
+- [ ] Enable reduced motion and verify that the experience remains usable.
+- [ ] Review both live-public-projection and deterministic-fallback states.
+- [ ] Verify AGI, Fund Intel, and Impact Relay navigation destinations.
 
-This checklist does not authorize payments, personal-data collection, or live integrations.
+## Pull request and deployment
+
+- [ ] The pull request explains what changed, why, user impact, and validation.
+- [ ] Required GitHub checks pass against the final head commit.
+- [ ] The reviewed commit is merged to `main`.
+- [ ] The GitHub Pages workflow completes successfully.
+- [ ] The production URL, mark, favicon, Open Graph image, robots, and sitemap resolve.
+- [ ] A release record includes owner, date, merge commit, PR, CI run, Pages run, and production verification.
