@@ -2,6 +2,7 @@ import { ArrowDown, ArrowRight } from "lucide-react";
 import { DonationDemo } from "@/components/donation-demo";
 import { Navbar } from "@/components/navbar";
 import { PublicSignals } from "@/components/public-signals";
+import { formatDiagnosticLine } from "@/integration/diagnostics";
 import { getPublicSignals } from "@/integration/public-sources";
 
 const lifecycle = [
@@ -59,6 +60,9 @@ const products = [
 
 export default async function Home() {
   const signals = await getPublicSignals();
+
+  // Build-time only: privacy-safe selection summary for CI logs.
+  console.info(formatDiagnosticLine(signals));
 
   return (
     <>
