@@ -10,15 +10,18 @@ This document is the canonical cross-repository integration list for the Autonom
 
 AGI public workbench is deliberately the thinnest and most constrained surface today. It never writes, never authenticates, and never sees donor-level data.
 
-## Allocation middleware (future authenticated product)
+## Allocation middleware (authenticated client ops)
 
-The approved **allocation middleware** design ([PRODUCT-ALLOCATION-MIDDLEWARE.md](PRODUCT-ALLOCATION-MIDDLEWARE.md)) introduces a separate client-ops surface that *will* authenticate and write tenant data. It is **not** the current public GitHub Pages workbench.
+The **allocation middleware** product ([PRODUCT-ALLOCATION-MIDDLEWARE.md](PRODUCT-ALLOCATION-MIDDLEWARE.md)) is a separate client-ops surface that authenticates and writes tenant data. It is **not** the current public GitHub Pages workbench.
 
-| Concern | Public AGI workbench (now) | Allocation middleware (design) |
+**Status:** MVP implemented in [Fund-Intel `services/allocation-middleware/`](https://github.com/scrimshawlife-ctrl/Fund-Intel/tree/main/services/allocation-middleware) (Hacker Dojo pilot seed, Supabase director login, every.org webhook). Named host + live webhook are operator steps.
+
+| Concern | Public AGI workbench (now) | Allocation middleware (MVP) |
 | --- | --- | --- |
-| Auth | None | Org roles (director, funder, board) |
+| Auth | None | Supabase director / campaign_lead JWT (operator token fallback) |
 | Money path | Narrative only | every.org gift summaries → pots → allocation |
 | Writes | None | Pots, allocations, exceptions, proof links |
+| Host | GitHub Pages | Fund-Intel Node package (Fly-ready) |
 | Specs | Pin v1.x | Capability-first modular monolith |
 
 Cross-repo implementation should keep **public aggregate JSON** contracts stable while middleware modules map to Fund Intel (observe/credit), Autonomous Giving (allocate/approve), and Impact Relay (proof/trail) **capabilities**—not three mandatory deployables.
