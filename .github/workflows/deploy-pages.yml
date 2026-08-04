@@ -11,6 +11,9 @@ on:
       - "platform-spec/**"
       - ".hallmark/**"
       - "**/*.md"
+      - "LICENSE"
+      - "LICENSE.*"
+      - ".github/dependabot.yml"
   workflow_dispatch:
 
 permissions:
