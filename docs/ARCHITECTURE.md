@@ -19,8 +19,8 @@ The deployed browser receives only static HTML, CSS, JavaScript, brand assets, a
 
 ## Runtime and deployment model
 
-- **Framework:** Next.js App Router with React and TypeScript.
-- **Output:** static export (`output: "export"`).
+- **Framework:** Next.js 16 App Router with React 19 and TypeScript.
+- **Output:** static export (`output: "export"`), Turbopack production build by default.
 - **Hosting:** GitHub Pages under `/Autonomous-Giving-Incorporated`.
 - **Build:** Node.js 22 in GitHub Actions.
 - **State:** local React state for the replayable demonstration; no persistence.
