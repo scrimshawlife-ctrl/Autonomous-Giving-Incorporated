@@ -4,3 +4,8 @@ node_modules
 out
 .env*
 !.env.example
+.DS_Store
+*.log
+coverage
+.vercel
+.turbo

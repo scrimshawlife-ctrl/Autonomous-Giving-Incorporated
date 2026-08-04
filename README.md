@@ -55,8 +55,8 @@ AGI does **not** collect donations, authenticate users, persist records, expose 
 
 ### Prerequisites
 
-- Node.js 22
-- npm, using the committed `package-lock.json`
+- Node.js 22 or newer (`engines.node` in `package.json`)
+- npm, using the committed `package-lock.json` (`npm ci`)
 
 ### Setup
 
