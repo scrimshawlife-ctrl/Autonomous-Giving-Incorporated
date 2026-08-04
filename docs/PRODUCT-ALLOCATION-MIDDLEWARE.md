@@ -1,6 +1,7 @@
 # Product: Allocation middleware
 
-**Status:** Design approved 2026-08-03  
+**Status:** MVP implemented (Fund-Intel) · Hacker Dojo pilot next  
+**Date:** Design approved 2026-08-03 · Implementation refresh 2026-08-03  
 **Canonical design:** [Autonomous-Giving-Specs design doc](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Specs/blob/main/docs/superpowers/specs/2026-08-03-allocation-middleware-design.md)
 
 ## One-sentence pitch
@@ -31,19 +32,31 @@ Available · Allocate · Inbox · Trail · Packet · Settings (every.org + mappi
 
 ## Suite roles
 
-| Surface | Contribution |
-| --- | --- |
-| **AGI** | Brand + primary client UX entry (this product story) |
-| **Fund Intel** | Observation / recommendation patterns; may host intelligence modules later |
-| **Impact Relay** | Proof, public-safe trail projections, evidence discipline |
+| Surface | Contribution | Status |
+| --- | --- | --- |
+| **AGI** | Brand + public narrative of funding-to-evidence | Public workbench shipped; middleware UX entry still via Fund-Intel package |
+| **Fund Intel** | Hosts MVP package: gift credit, pots, allocate, proof, packet | **MVP shipped** (`services/allocation-middleware/`) |
+| **Impact Relay** | Long-term proof/trail discipline and public-safe projections | Role documented; deep IR ledger binding later |
 
 Platform pin: Specs **v1.x** capability-first modular monolith ([SPEC-002A](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Specs/blob/main/specs/SPEC-002A-architectural-principles.md), [SPEC-020](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Specs/blob/main/specs/SPEC-020-reference-deployment-profiles.md)).
 
 ## Connector priority
 
-1. **every.org** (canonical)  
+1. **every.org** (canonical) — webhook, not OAuth  
 2. Manual pots + CSV  
 3. Givebutter, Donorbox, …  
+
+## Implementation snapshot
+
+| Item | State |
+| --- | --- |
+| Code home | [Fund-Intel `services/allocation-middleware/`](https://github.com/scrimshawlife-ctrl/Fund-Intel/tree/main/services/allocation-middleware) |
+| Pilot tenant | `org_hacker_dojo` + seed fixtures |
+| Director login | Supabase JWT + membership (`/login.html`) |
+| Hosted Fly host | Operator-owned |
+| Live every.org gifts | Operator-owned (setup wizard ready) |
+
+Fund-Intel docs: [ALLOCATION-MIDDLEWARE](https://github.com/scrimshawlife-ctrl/Fund-Intel/blob/main/docs/ALLOCATION-MIDDLEWARE.md) · [pilot](https://github.com/scrimshawlife-ctrl/Fund-Intel/blob/main/docs/HACKER-DOJO-ALLOCATION-PILOT.md) · [director login](https://github.com/scrimshawlife-ctrl/Fund-Intel/blob/main/docs/ALLOCATION-DIRECTOR-LOGIN.md)
 
 ## Success (first client)
 

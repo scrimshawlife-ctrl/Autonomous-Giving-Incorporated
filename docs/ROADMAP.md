@@ -33,16 +33,19 @@ Runtime consumption of approved decision and verified-event records may begin on
 
 Accounts, donor history, organization workflows, payments, and notification delivery are separate products and require their own threat model, consent model, retention policy, audit requirements, and service ownership.
 
-## Product track — Allocation middleware (design approved)
+## Product track — Allocation middleware
 
-Not a replacement for the public workbench gates above; parallel product track for client operations:
+Not a replacement for the public workbench gates above; parallel product track for client operations. **MVP code ships in Fund-Intel**; this repo tracks product narrative and suite links.
 
-1. every.org connector + campaign pot / program slice balances  
-2. Allocate + approve + exception inbox  
-3. Trail + board packet  
-4. Additional donation-platform adapters  
-5. Funder multi-grantee portfolio (later)  
+| Step | State |
+| --- | --- |
+| 1. every.org connector + campaign pot / program slice balances | **Shipped** (Fund-Intel package; webhook + CSV) |
+| 2. Allocate + exception inbox | **Shipped** |
+| 3. Trail + board packet + proof SLA | **Shipped** (MVP UI) |
+| 4. Hacker Dojo pilot host (seed → director login → live webhook) | **Active** (operator + acceptance) |
+| 5. Additional donation-platform adapters | Later |
+| 6. Funder multi-grantee portfolio | Later |
 
-See [PRODUCT-ALLOCATION-MIDDLEWARE.md](PRODUCT-ALLOCATION-MIDDLEWARE.md).
+See [PRODUCT-ALLOCATION-MIDDLEWARE.md](PRODUCT-ALLOCATION-MIDDLEWARE.md) and Fund-Intel [HACKER-DOJO-ALLOCATION-PILOT.md](https://github.com/scrimshawlife-ctrl/Fund-Intel/blob/main/docs/HACKER-DOJO-ALLOCATION-PILOT.md).
 
 See [CONTINUATION_PLAN.md](CONTINUATION_PLAN.md) for gates and ownership and [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) for engineering order.

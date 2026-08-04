@@ -23,12 +23,15 @@ Pinned platform canon: **[Autonomous Giving Specs v1.0.0](https://github.com/scr
 
 Conformance declaration: [`platform-spec/conformance.yml`](platform-spec/conformance.yml). See [`platform-spec/README.md`](platform-spec/README.md).
 
-## Allocation middleware (product direction)
+## Allocation middleware
 
-Transaction-light **middleware** between donation platforms (canonical **every.org**) and human allocation: pots → approve → trail → exception inbox → board packet. Not a finance ledger.
+Transaction-light **middleware** between donation platforms (canonical **every.org**) and human allocation: pots → allocate → proof → exception inbox → board packet. Not a finance ledger.
+
+**Status:** MVP lives in [Fund-Intel `services/allocation-middleware/`](https://github.com/scrimshawlife-ctrl/Fund-Intel/tree/main/services/allocation-middleware) with Hacker Dojo pilot seed, director login, and deploy helpers. Live every.org webhook + named host are operator steps. AGI continues as the public explanatory workbench.
 
 - [docs/PRODUCT-ALLOCATION-MIDDLEWARE.md](docs/PRODUCT-ALLOCATION-MIDDLEWARE.md)  
-- [Full design (Specs)](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Specs/blob/main/docs/superpowers/specs/2026-08-03-allocation-middleware-design.md)
+- [Full design (Specs)](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Specs/blob/main/docs/superpowers/specs/2026-08-03-allocation-middleware-design.md)  
+- [Fund-Intel pilot runbook](https://github.com/scrimshawlife-ctrl/Fund-Intel/blob/main/docs/HACKER-DOJO-ALLOCATION-PILOT.md)
 
 ## Current status
 

@@ -20,9 +20,13 @@ AGI is the explanatory public entry point to the AGI product suite:
 
 The products share a visual and navigation foundation but keep separate authority and data responsibilities.
 
-## Allocation middleware (approved product direction)
+## Allocation middleware
 
-In addition to the public workbench, the suite product direction is a **transaction-light allocation middleware**: connect donation platforms (canonical **every.org**), maintain campaign/program **pots**, human-approve **allocations**, automate the rest via an **exception inbox**, and produce board **packets**. Full design: [PRODUCT-ALLOCATION-MIDDLEWARE.md](PRODUCT-ALLOCATION-MIDDLEWARE.md) and the [Specs design doc](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Specs/blob/main/docs/superpowers/specs/2026-08-03-allocation-middleware-design.md).
+In addition to the public workbench, the suite ships a **transaction-light allocation middleware**: connect donation platforms (canonical **every.org**), maintain campaign/program **pots**, human-approve **allocations**, automate the rest via an **exception inbox**, and produce board **packets**.
+
+**Status:** MVP implemented in Fund-Intel (`services/allocation-middleware/`); Hacker Dojo pilot seed ready; live webhook + hosted host operator-owned. This AGI repo remains the public narrative surface.
+
+Full product note: [PRODUCT-ALLOCATION-MIDDLEWARE.md](PRODUCT-ALLOCATION-MIDDLEWARE.md). Design: [Specs design doc](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Specs/blob/main/docs/superpowers/specs/2026-08-03-allocation-middleware-design.md).
 
 ## Current experience
 
