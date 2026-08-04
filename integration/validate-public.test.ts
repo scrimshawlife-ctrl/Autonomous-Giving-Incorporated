@@ -87,10 +87,11 @@ describe("validatePublicImpact", () => {
   });
 
   it("accepts VERIFIED outcomes without allocationId", () => {
-    const { allocationId: _omit, ...rest } = validImpact.outcomes[0];
+    const outcome = { ...validImpact.outcomes[0] };
+    delete outcome.allocationId;
     const result = validatePublicImpact({
       ...validImpact,
-      outcomes: [rest],
+      outcomes: [outcome],
     });
     assert.ok(!("kind" in result));
     assert.equal(result.outcome.allocationId, null);

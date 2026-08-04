@@ -21,14 +21,20 @@ Do not add payments, authentication, persistent storage, donor-level data, or wr
 
 ## Required checks
 
+Use Node.js 22+ and the committed lockfile (`npm ci`).
+
 ```bash
+npm ci
 npm run lint
 npm run typecheck
+npm test
 GITHUB_ACTIONS=true npm run build
 git diff --check
 ```
 
 For interface changes, also review narrow mobile and desktop layouts, keyboard operation, focus visibility, reduced motion, and source/fallback states.
+
+Documentation-only changes under `docs/**` (and other non-site paths) do not trigger the GitHub Pages deploy workflow. Use **Actions → Deploy GitHub Pages → Run workflow** if a docs-only merge must refresh the published site.
 
 ## Code conventions
 

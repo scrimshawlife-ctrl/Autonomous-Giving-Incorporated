@@ -3,6 +3,14 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: [main]
+    # Skip Pages when only docs, scripts, or non-site metadata change.
+    # Use workflow_dispatch to force a redeploy after those-only merges.
+    paths-ignore:
+      - "docs/**"
+      - "scripts/**"
+      - "platform-spec/**"
+      - ".hallmark/**"
+      - "**/*.md"
   workflow_dispatch:
 
 permissions:
