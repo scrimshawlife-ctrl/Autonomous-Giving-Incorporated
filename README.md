@@ -17,6 +17,13 @@ Autonomously Giving Incorporated (AGI) is the corporate brand and public, eviden
 
 The visitor journey is **AGI → Fund Intel → Impact Relay**. The data narrative is **Fund Intel decision → AGI explanation → Impact Relay evidence**.
 
+## Suite GitHub Project
+
+Cross-repo delivery board for AGI, Fund Intel, Impact Relay, and Specs:
+
+- [docs/GITHUB-PROJECT.md](docs/GITHUB-PROJECT.md)
+- Bootstrap: [`scripts/setup-github-project.sh`](scripts/setup-github-project.sh)
+
 ## Platform specification
 
 Pinned platform canon: **[Autonomous Giving Specs v1.0.0](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Specs/releases/tag/v1.0.0)**.
