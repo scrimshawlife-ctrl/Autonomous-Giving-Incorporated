@@ -1,5 +1,8 @@
 version: 2
 updates:
+  # Security updates still arrive via Dependabot security PRs when enabled.
+  # Version updates below are limited to minor/patch to avoid accidental
+  # Next.js / ESLint major jumps on a static marketing site.
   - package-ecosystem: npm
     directory: /
     schedule:
@@ -8,6 +11,10 @@ updates:
     open-pull-requests-limit: 5
     labels:
       - dependencies
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
     groups:
       production-minor:
         dependency-type: production
@@ -27,3 +34,7 @@ updates:
     open-pull-requests-limit: 5
     labels:
       - dependencies
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
