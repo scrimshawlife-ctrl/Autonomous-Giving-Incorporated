@@ -2,6 +2,27 @@
 
 Material production changes are recorded newest first. Each entry links the reviewed change and its deployment evidence.
 
+## 2026-08-04 — Next.js 16.3 framework upgrade
+
+- **Merge commit:** [`8f56546`](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Incorporated/commit/8f5654658b1089b2bdf751eea87cc23c72ee069d)
+- **Pull request:** [#38](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Incorporated/pull/38)
+- **CI:** [successful run](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Incorporated/actions/runs/30927150224)
+- **Pages deployment:** [successful run](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Incorporated/actions/runs/30927150062)
+- **Production:** [scrimshawlife-ctrl.github.io/Autonomous-Giving-Incorporated](https://scrimshawlife-ctrl.github.io/Autonomous-Giving-Incorporated/)
+
+### Shipped
+
+- Upgraded static workbench from Next.js 15.5 to **16.3** (Turbopack default build).
+- Migrated ESLint to v9 flat config (`eslint.config.mjs`).
+- Dropped temporary postcss/sharp npm overrides; Next 16.3 vendors patched releases.
+- Refreshed React 19.2 types and agent docs pointer.
+
+### Verification
+
+- Lint, typecheck, 18 integration tests, and Pages-mode static export passed.
+- `main` CI and GitHub Pages deploy completed successfully after merge.
+- Live Pages returned HTTP 200 with repository base-path assets.
+
 ## 2026-08-02 — Zero State harmonization and launch hardening
 
 - **Merge commit:** [`80271a2`](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Incorporated/commit/80271a215c4efda4f5aaf89d9818618e2c12a96d)
