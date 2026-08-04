@@ -125,3 +125,7 @@ Start with the [documentation index](docs/README.md). Key references include:
 ## Contributing
 
 Read [CONTRIBUTING.md](CONTRIBUTING.md) before changing application behavior or documentation. Preserve the static, read-only MVP boundary unless a separately reviewed plan explicitly expands it.
+
+## License
+
+Licensed under the [Apache License 2.0](LICENSE), consistent with the Impact Relay suite surface.
