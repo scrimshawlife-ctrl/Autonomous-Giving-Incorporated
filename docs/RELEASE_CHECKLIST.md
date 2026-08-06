@@ -14,9 +14,9 @@ Use this checklist for every material production release. Copy the completed evi
 - [ ] Run `npm ci` from the committed lockfile.
 - [ ] Run `npm run lint`.
 - [ ] Run `npm run typecheck`.
-- [ ] Run `GITHUB_ACTIONS=true npm run build`.
+- [ ] Run `npm run build` (root path for autogive.app).
 - [ ] Run `git diff --check`.
-- [ ] Confirm the generated export uses `/Autonomous-Giving-Incorporated` exactly once for repository-hosted assets and metadata.
+- [ ] Confirm the export uses root-relative assets (`/_next/...`) and `out/CNAME` is `autogive.app`.
 
 ## Product and accessibility review
 

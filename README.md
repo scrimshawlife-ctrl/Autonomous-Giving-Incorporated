@@ -77,7 +77,8 @@ Open `http://localhost:3000`. The site remains usable when the public sources ar
 | `npm run lint`                      | Run ESLint                                   |
 | `npm run typecheck`                 | Type-check without emitting files            |
 | `npm run build`                     | Create the static export in `out/`           |
-| `GITHUB_ACTIONS=true npm run build` | Reproduce the GitHub Pages base path locally |
+| `npm run build` | Static export for production (`autogive.app` root path) |
+| `GITHUB_PAGES_BASE_PATH=1 npm run build` | Legacy project-site path under github.io (optional) |
 | `npm run format`                    | Format supported files with Prettier         |
 
 Before opening a pull request, run lint, typecheck, and the GitHub Pages-mode build.
