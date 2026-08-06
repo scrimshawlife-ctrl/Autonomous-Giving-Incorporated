@@ -6,34 +6,42 @@
   "outputDirectory": "out",
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [
-    {
-      "source": "/fund-intel",
-      "destination": "/fund-intel/",
-      "permanent": false
-    },
-    {
-      "source": "/impact-relay",
-      "destination": "/impact-relay/",
-      "permanent": false
-    }
-  ],
   "rewrites": [
     {
+      "source": "/fund-intel",
+      "destination": "https://fund-intel-ten.vercel.app/index.html"
+    },
+    {
       "source": "/fund-intel/",
-      "destination": "https://fund-intel-ten.vercel.app/"
+      "destination": "https://fund-intel-ten.vercel.app/index.html"
     },
     {
       "source": "/fund-intel/:path*",
       "destination": "https://fund-intel-ten.vercel.app/:path*"
     },
     {
+      "source": "/impact-relay",
+      "destination": "https://impact-relay.vercel.app/index.html"
+    },
+    {
       "source": "/impact-relay/",
-      "destination": "https://impact-relay.vercel.app/"
+      "destination": "https://impact-relay.vercel.app/index.html"
     },
     {
       "source": "/impact-relay/:path*",
       "destination": "https://impact-relay.vercel.app/:path*"
+    },
+    {
+      "source": "/workspace",
+      "destination": "https://fund-intel-ten.vercel.app/workspace.html"
+    },
+    {
+      "source": "/workspace/",
+      "destination": "https://fund-intel-ten.vercel.app/workspace.html"
+    },
+    {
+      "source": "/workspace.html",
+      "destination": "https://fund-intel-ten.vercel.app/workspace.html"
     }
   ],
   "headers": [
