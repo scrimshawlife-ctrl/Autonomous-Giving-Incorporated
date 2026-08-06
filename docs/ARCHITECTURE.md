@@ -21,12 +21,12 @@ The deployed browser receives only static HTML, CSS, JavaScript, brand assets, a
 
 - **Framework:** Next.js 16 App Router with React 19 and TypeScript.
 - **Output:** static export (`output: "export"`), Turbopack production build by default.
-- **Hosting:** GitHub Pages under `/Autonomous-Giving-Incorporated`.
-- **Build:** Node.js 22 in GitHub Actions.
+- **Hosting:** **Vercel** production at **https://autogive.app**; GitHub Pages remains a github.io fallback.
+- **Build:** Node.js 22; static export to `out/` at site root (`basePath` empty). See [VERCEL.md](VERCEL.md).
 - **State:** local React state for the replayable demonstration; no persistence.
 - **External data:** two fixed HTTPS sources fetched at build time with a bundled fallback.
 
-`site.ts` owns the canonical production origin and base path. `next.config.ts` applies the repository base path during GitHub Actions builds, and the metadata routes use the same URL source.
+`site.ts` owns the canonical production origin (`https://autogive.app`). `next.config.ts` defaults to an empty base path so the custom domain serves assets from `/`. DNS and Pages setup: [CUSTOM-DOMAIN.md](CUSTOM-DOMAIN.md).
 
 ## Component boundaries
 

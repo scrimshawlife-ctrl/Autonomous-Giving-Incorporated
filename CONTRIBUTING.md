@@ -28,7 +28,7 @@ npm ci
 npm run lint
 npm run typecheck
 npm test
-GITHUB_ACTIONS=true npm run build
+npm run build
 git diff --check
 ```
 

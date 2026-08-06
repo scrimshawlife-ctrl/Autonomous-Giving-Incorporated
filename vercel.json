@@ -1,0 +1,105 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build",
+  "outputDirectory": "out",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/fund-intel/workspace",
+      "destination": "https://fund-intel-ten.vercel.app/workspace.html"
+    },
+    {
+      "source": "/fund-intel/workspace.html",
+      "destination": "https://fund-intel-ten.vercel.app/workspace.html"
+    },
+    {
+      "source": "/fund-intel",
+      "destination": "https://fund-intel-ten.vercel.app/index.html"
+    },
+    {
+      "source": "/fund-intel/",
+      "destination": "https://fund-intel-ten.vercel.app/index.html"
+    },
+    {
+      "source": "/fund-intel/:path*",
+      "destination": "https://fund-intel-ten.vercel.app/:path*"
+    },
+    {
+      "source": "/impact-relay",
+      "destination": "https://impact-relay.vercel.app/index.html"
+    },
+    {
+      "source": "/impact-relay/",
+      "destination": "https://impact-relay.vercel.app/index.html"
+    },
+    {
+      "source": "/impact-relay/:path*",
+      "destination": "https://impact-relay.vercel.app/:path*"
+    },
+    {
+      "source": "/workspace",
+      "destination": "https://fund-intel-ten.vercel.app/workspace.html"
+    },
+    {
+      "source": "/workspace/",
+      "destination": "https://fund-intel-ten.vercel.app/workspace.html"
+    },
+    {
+      "source": "/workspace.html",
+      "destination": "https://fund-intel-ten.vercel.app/workspace.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ]
+    },
+    {
+      "source": "/_next/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/brand/autogive-hero(.*)\\.jpg",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/brand/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    }
+  ]
+}
