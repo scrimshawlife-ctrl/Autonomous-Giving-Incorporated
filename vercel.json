@@ -6,19 +6,11 @@
   "outputDirectory": "out",
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [
+  "rewrites": [
     {
       "source": "/fund-intel",
-      "destination": "/fund-intel/",
-      "permanent": false
+      "destination": "https://fund-intel-ten.vercel.app/"
     },
-    {
-      "source": "/impact-relay",
-      "destination": "/impact-relay/",
-      "permanent": false
-    }
-  ],
-  "rewrites": [
     {
       "source": "/fund-intel/",
       "destination": "https://fund-intel-ten.vercel.app/"
@@ -26,6 +18,10 @@
     {
       "source": "/fund-intel/:path*",
       "destination": "https://fund-intel-ten.vercel.app/:path*"
+    },
+    {
+      "source": "/impact-relay",
+      "destination": "https://impact-relay.vercel.app/"
     },
     {
       "source": "/impact-relay/",

@@ -22,9 +22,17 @@ check() {
 echo "Smoke public suite @ ${BASE_URL}"
 check "/"
 check "/robots.txt"
-check "/sitemap.xml"
-check "/fund-intel/"
-check "/impact-relay/"
+# sitemap may be /sitemap.xml or /sitemap (cleanUrls)
+code_sm=$(curl -sS -o /dev/null -w "%{http_code}" -L -m 25 "${BASE_URL}/sitemap.xml" || echo 000)
+code_sm2=$(curl -sS -o /dev/null -w "%{http_code}" -L -m 25 "${BASE_URL}/sitemap" || echo 000)
+if [[ "$code_sm" == "200" || "$code_sm2" == "200" ]]; then
+  echo "OK    sitemap (${code_sm}/${code_sm2})"
+else
+  echo "FAIL  sitemap (${code_sm}/${code_sm2})"
+  FAIL=1
+fi
+check "/fund-intel"
+check "/impact-relay"
 check "/fund-intel/data/public-campaign.json"
 check "/impact-relay/data/public-impact.json"
 
