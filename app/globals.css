@@ -230,9 +230,9 @@ button:disabled,
       var(--color-paper) 45%,
       var(--color-verified-soft) 100%
     );
-  aspect-ratio: 2.4 / 1;
-  max-height: min(28rem, 42vh);
-  min-height: 12rem;
+  aspect-ratio: 1168 / 784;
+  max-height: min(32rem, 48vh);
+  min-height: 14rem;
 }
 .hero-visual-image {
   display: block;
@@ -290,6 +290,7 @@ button:disabled,
   margin-top: var(--space-6);
 }
 .hero-instrument {
+  grid-area: instrument;
   align-self: start;
   border-top: 2px solid var(--color-ink);
   border-bottom: 1px solid var(--color-rule);

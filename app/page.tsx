@@ -74,9 +74,9 @@ export default async function Home() {
             <Image
               className="hero-visual-image"
               src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/brand/hero-header.jpg`}
-              alt=""
-              width={1920}
-              height={1080}
+              alt="Autonomously Giving Incorporated — evidence from funding to impact"
+              width={1168}
+              height={784}
               priority
               sizes="(max-width: 900px) 100vw, min(76rem, 100vw)"
             />
