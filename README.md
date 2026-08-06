@@ -42,7 +42,7 @@ Transaction-light **middleware** between donation platforms (canonical **every.o
 
 ## Current status
 
-AGI is a static Next.js export deployed from `main` to GitHub Pages. During the production build it requests two approved public aggregate documents:
+AGI is a static Next.js export. **Production** deploys on [Vercel](docs/VERCEL.md) at [autogive.app](https://autogive.app/); GitHub Pages remains a fallback mirror. During the production build it requests two approved public aggregate documents:
 
 - Fund Intel `data/public-campaign.json`
 - Impact Relay `data/public-impact.json`
@@ -76,11 +76,13 @@ Open `http://localhost:3000`. The site remains usable when the public sources ar
 | `npm run dev`                       | Start the local Next.js development server   |
 | `npm run lint`                      | Run ESLint                                   |
 | `npm run typecheck`                 | Type-check without emitting files            |
-| `npm run build`                     | Create the static export in `out/`           |
-| `GITHUB_ACTIONS=true npm run build` | Reproduce the GitHub Pages base path locally |
+| `npm run build`                     | Static export to `out/` (Vercel / production root path) |
+| `GITHUB_PAGES_BASE_PATH=1 npm run build` | Legacy project-site path under github.io (optional) |
 | `npm run format`                    | Format supported files with Prettier         |
 
-Before opening a pull request, run lint, typecheck, and the GitHub Pages-mode build.
+Deploy: [docs/VERCEL.md](docs/VERCEL.md) · Domain: [docs/CUSTOM-DOMAIN.md](docs/CUSTOM-DOMAIN.md)
+
+Before opening a pull request, run lint, typecheck, and `npm run build`.
 
 ## Repository map
 

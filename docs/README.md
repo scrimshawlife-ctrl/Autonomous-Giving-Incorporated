@@ -9,6 +9,8 @@ This directory is the source of truth for AGI product intent, architecture, desi
 | [Product](PRODUCT.md)                             | Current users, value proposition, scope, and non-goals          |
 | [Allocation middleware](PRODUCT-ALLOCATION-MIDDLEWARE.md) | Client ops product (MVP in Fund-Intel; pilot next)        |
 | [Architecture](ARCHITECTURE.md)                   | Runtime model, trust boundaries, components, and deployment     |
+| [Custom domain](CUSTOM-DOMAIN.md)                 | autogive.app DNS (Vercel primary, Pages optional)               |
+| [Vercel](VERCEL.md)                               | Production deploy, CLI, domain, and static-export settings      |
 | [Integration contracts](INTEGRATION_CONTRACTS.md) | Accepted public inputs, validation rules, and fallback behavior |
 | [Three-repo integration](THREE_REPO_INTEGRATION.md) | Full cross-repository surface, checklist, and ownership       |
 | [Contract governance](CONTRACT_GOVERNANCE.md)     | Phase C field ownership, vocabulary, allocationId proposals     |
