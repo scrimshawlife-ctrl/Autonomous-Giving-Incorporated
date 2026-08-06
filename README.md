@@ -79,6 +79,8 @@ Open `http://localhost:3000`. The site remains usable when the public sources ar
 | `npm run build`                     | Create the static export in `out/`           |
 | `npm run build` | Static export for production (`autogive.app` root path) |
 | `GITHUB_PAGES_BASE_PATH=1 npm run build` | Legacy project-site path under github.io (optional) |
+
+Deploy: [docs/VERCEL.md](docs/VERCEL.md) · Domain: [docs/CUSTOM-DOMAIN.md](docs/CUSTOM-DOMAIN.md)
 | `npm run format`                    | Format supported files with Prettier         |
 
 Before opening a pull request, run lint, typecheck, and the GitHub Pages-mode build.
