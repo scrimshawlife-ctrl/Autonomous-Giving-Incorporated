@@ -58,3 +58,7 @@ From AGI repo after public deploys:
 | Public (now) | Path-prefixed static FI/IR under autogive.app + smoke |
 | Phase 2 | Platform Supabase + AGI admin + tenant director login |
 | Phase 3+ | Agentic ops, allocation middleware, live every.org |
+
+## Phase 2 design
+
+[Platform foundation + workspace login](./superpowers/specs/2026-08-06-agi-platform-foundation-design.md)
