@@ -209,19 +209,22 @@ button:disabled,
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.95fr);
-  grid-template-areas:
-    "copy visual"
-    "instrument visual";
-  gap: clamp(1.5rem, 3vw, 2.5rem) clamp(2rem, 5vw, 4rem);
-  align-items: stretch;
-  padding-block: clamp(1.75rem, 4vh, 3rem) clamp(3.5rem, 7vh, 6rem);
+  grid-template-columns: minmax(0, 1.15fr) minmax(15rem, 0.85fr);
+  gap: clamp(1rem, 2vw, 1.5rem) clamp(1.25rem, 3vw, 2rem);
+  align-items: center;
+  padding-block: clamp(1rem, 2vh, 1.5rem) clamp(2rem, 4vh, 3rem);
+}
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  min-width: 0;
 }
 .hero-visual {
-  grid-area: visual;
   position: relative;
-  align-self: stretch;
-  min-height: min(28rem, 58vh);
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  max-height: 22rem;
   overflow: hidden;
   border: 1px solid var(--color-rule);
   border-top: 2px solid var(--color-ink);
@@ -240,34 +243,31 @@ button:disabled,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Hand + circuits live on the left of the source art */
-  object-position: 18% center;
+  /* Crop into the hand; source art has empty field on the right */
+  object-position: 12% 42%;
 }
 .hero-visual-fade {
   pointer-events: none;
   position: absolute;
   inset: auto 0 0;
-  height: 28%;
+  height: 22%;
   background: linear-gradient(
     to top,
-    color-mix(in srgb, var(--color-paper) 72%, transparent),
+    color-mix(in srgb, var(--color-paper) 70%, transparent),
     transparent
   );
 }
 .hero-copy-block {
-  grid-area: copy;
   min-width: 0;
-  align-self: end;
-  padding-top: var(--space-2);
 }
 .hero-title {
-  max-width: 58rem;
+  max-width: 20ch;
   margin: 0;
   font-family: var(--font-display);
-  font-size: var(--text-display);
+  font-size: clamp(2.5rem, 5.4vw, 4.75rem);
   font-weight: 500;
-  line-height: 0.88;
-  letter-spacing: -0.065em;
+  line-height: 0.92;
+  letter-spacing: -0.055em;
 }
 .hero-title,
 .section-heading,
@@ -280,31 +280,28 @@ button:disabled,
   color: var(--color-accent);
 }
 .hero-copy {
-  max-width: 60ch;
-  margin: var(--space-6) 0 0;
+  max-width: 42ch;
+  margin: var(--space-4) 0 0;
   color: var(--color-ink-soft);
-  font-size: var(--text-lg);
-  line-height: 1.6;
+  font-size: var(--text-base);
+  line-height: 1.55;
 }
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-top: var(--space-6);
+  margin-top: var(--space-4);
 }
 .hero-instrument {
-  grid-area: instrument;
-  align-self: start;
   border-top: 2px solid var(--color-ink);
   border-bottom: 1px solid var(--color-rule);
-  margin-top: 0;
 }
 .instrument-head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: var(--space-4);
-  padding: var(--space-4) 0;
+  padding: var(--space-3) 0;
   border-bottom: 1px solid var(--color-rule);
 }
 .instrument-head strong {
@@ -322,7 +319,7 @@ button:disabled,
   grid-template-columns: 2rem 1fr auto;
   gap: var(--space-3);
   align-items: center;
-  padding: var(--space-3) 0;
+  padding: 0.55rem 0;
   border-bottom: 1px solid var(--color-rule);
   font-size: var(--text-sm);
 }
