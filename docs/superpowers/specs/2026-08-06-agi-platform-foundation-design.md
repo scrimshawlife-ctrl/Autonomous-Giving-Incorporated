@@ -1,16 +1,18 @@
 # AGI Platform Foundation + Workspace Login
 
 **Date:** 2026-08-06  
-**Status:** Design approved for implementation planning  
+**Status:** Implemented  
 **Owner:** Zero State / AGI suite  
 **Depends on:** [2026-08-06-agi-suite-vercel-public-design.md](./2026-08-06-agi-suite-vercel-public-design.md) (public suite live)  
 **Supersedes for data plane:** legacy HD staging project as home for new tenancy  
+
+**Implementation note:** Code and docs ship on Fund-Intel `ops/platform-foundation` (runtime host allowlist, migration scripts retargeted to platform, master_admin SQL templates, Vercel runtime-config generator, documentation cutover). **Operator applies migrations** to `utdioxwiskzatwoejgiu`, invites Auth users, sets Vercel `PLATFORM_*` anon env, and completes magic-link smoke — those live steps are not claimed complete by this status alone.
 
 ---
 
 ## 1. Problem
 
-Public suite surfaces are live under `autogive.app`, but multi-tenant **platform** work is not yet on the canonical Supabase project. Fund-Intel already has migrations for clients, memberships, master admin, workspace context, and MFA hardening — still documented against legacy staging `ecxkhihlbrcwpavfoaoq`. Without a single foundation on **`utdioxwiskzatwoejgiu`**, operator login and client isolation will fragment.
+Public suite surfaces are live under `autogive.app`, but multi-tenant **platform** work must use the canonical Supabase project. Fund-Intel migrations cover clients, memberships, master admin, workspace context, and MFA hardening. Docs and tooling default to platform **`utdioxwiskzatwoejgiu`**; legacy staging `ecxkhihlbrcwpavfoaoq` is frozen for new tenancy so operator login and client isolation do not fragment.
 
 ## 2. Goals
 
@@ -129,7 +131,7 @@ Operator steps that require **service role** or dashboard access stay **out of g
     Operator completes magic link → workspace loads → context shows master admin.
 
 12. **Doc cutover**  
-    STAGING-BOOTSTRAP / AUTHENTICATED-WORKSPACE / START_HERE point at platform; legacy project marked freeze/retire.
+    STAGING-BOOTSTRAP / AUTHENTICATED-WORKSPACE / PLATFORM / DATA-PLACEMENT (and AGI PLATFORM.md) point at platform; legacy project marked freeze/retire. **Done** in Task 9.
 
 ## 7. Security and privacy
 
@@ -166,11 +168,12 @@ Operator steps that require **service role** or dashboard access stay **out of g
 
 ## 10. Follow-ups (explicitly deferred)
 
-1. Invite **Qi Diaz** (or second email) as additional `master_admin`.  
+1. Invite **Qi Diaz** (or second email) as additional `master_admin` via `platform_administrators` insert with rationale ≥ 12 chars.  
 2. Full commercial onboarding path: provision → publish config → activate client.  
 3. Real import authority gates.  
 4. Allocation middleware host + every.org.  
-5. Retire legacy Supabase project after data confirmation.
+5. Retire legacy Supabase project after data confirmation.  
+6. Operator residual: apply migrations on platform, Auth invite for `scrimshawlife@gmail.com`, Vercel `PLATFORM_SUPABASE_URL` / `PLATFORM_SUPABASE_ANON_KEY`, login smoke on https://autogive.app/fund-intel/workspace .
 
 ## 11. Implementation units (for planning)
 

@@ -16,10 +16,12 @@ See [superpowers/specs/2026-08-06-agi-suite-vercel-public-design.md](./superpowe
 | --- | --- | --- | --- |
 | AGI workbench | `/` | `autonomous-giving-incorporated` | Autonomous-Giving-Incorporated |
 | Fund Intel public | `/fund-intel/` | `fund-intel` → https://fund-intel-ten.vercel.app | Fund-Intel |
+| Fund Intel workspace | `/fund-intel/workspace` | same `fund-intel` project | Fund-Intel |
 | Impact Relay public | `/impact-relay/` | `impact-relay` → https://impact-relay.vercel.app | Impact-Relay |
 
 **Apex domain:** `https://autogive.app` (www also attached).  
-**Team:** `scrimshawlife-8819s-projects`.
+**Team:** `scrimshawlife-8819s-projects`.  
+**Workspace production URL:** https://autogive.app/fund-intel/workspace
 
 GitHub Pages remains optional fallback only.
 
@@ -33,10 +35,19 @@ GitHub Pages remains optional fallback only.
 
 **Rules:**
 
-1. New tenancy, AGI admin, and multi-client work use **platform** only.
+1. New tenancy, AGI admin, and multi-client work use **platform** only (`utdioxwiskzatwoejgiu`).
 2. Do not create a third Supabase project without updating this file first.
 3. Browser may use **anon** key only; never commit service-role keys.
-4. Schema source of truth: Fund-Intel `supabase/migrations` (link to platform when applying).
+4. Schema source of truth: Fund-Intel `supabase/migrations`. **Operator applies migrations** to platform when linking (`supabase link --project-ref utdioxwiskzatwoejgiu`).
+5. Legacy `ecxkhihlbrcwpavfoaoq` is frozen for new tenancy.
+
+## Platform administration
+
+| Item | Value |
+| --- | --- |
+| Primary `master_admin` | `scrimshawlife@gmail.com` |
+| Second admin (deferred) | Qi Diaz — `platform_administrators` insert with rationale ≥ 12 chars |
+| Operator SQL | Fund-Intel `scripts/platform/` (bootstrap + isolation) |
 
 ## Shared identifiers
 
@@ -53,12 +64,18 @@ From AGI repo after public deploys:
 
 ## Phase map
 
-| Phase | Deliverable |
-| --- | --- |
-| Public (now) | Path-prefixed static FI/IR under autogive.app + smoke |
-| Phase 2 | Platform Supabase + AGI admin + tenant director login |
-| Phase 3+ | Agentic ops, allocation middleware, live every.org |
+| Phase | Deliverable | Status |
+| --- | --- | --- |
+| Public (now) | Path-prefixed static FI/IR under autogive.app + smoke | Live |
+| Phase 2 | Platform Supabase + AGI admin + tenant director login | **Foundation shipped in Fund-Intel** (code + docs); **operator applies migrations**, Auth invite, Vercel `PLATFORM_*` anon env, login smoke |
+| Phase 3+ | Agentic ops, allocation middleware, live every.org | Planned |
 
 ## Phase 2 design
 
-[Platform foundation + workspace login](./superpowers/specs/2026-08-06-agi-platform-foundation-design.md)
+[Platform foundation + workspace login](./superpowers/specs/2026-08-06-agi-platform-foundation-design.md) — **Implemented** (implementation plan and Fund-Intel branch deliverables; residual operator steps listed above).
+
+Fund-Intel operator docs (retargeted to platform):
+
+- Bootstrap: Fund-Intel `docs/STAGING-BOOTSTRAP.md`
+- Workspace: Fund-Intel `docs/AUTHENTICATED-WORKSPACE.md`
+- Alignment: Fund-Intel `docs/PLATFORM.md`
