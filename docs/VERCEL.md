@@ -8,12 +8,14 @@ The app is a **static Next.js export** (`output: "export"` → `out/`). No serve
 
 | Setting | Value |
 | --- | --- |
-| Framework | Next.js (static export) |
+| Framework | **Other** / none (static export — not the Next.js serverless preset) |
 | Install | `npm ci` |
-| Build | `npm run build` |
+| Build | `npm run build` (`next build` with `output: "export"`) |
 | Output directory | `out` |
 | Node | 22 (see `.node-version` / `engines`) |
 | Root directory | `.` (repo root) |
+
+> Do not set the Vercel framework preset to **Next.js** while using `output: "export"`. That preset expects a server build and fails looking for `routes-manifest.json` under `out/`.
 
 Config in repo: [`vercel.json`](../vercel.json).
 
