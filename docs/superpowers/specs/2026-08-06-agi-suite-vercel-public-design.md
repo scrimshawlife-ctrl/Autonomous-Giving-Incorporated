@@ -88,7 +88,8 @@ Autonomously Giving Incorporated must stay **demoable and operable daily**. AGI 
 | Fund Intel | GitHub Pages `.../Fund-Intel/` | Relative assets; `data/public-campaign.json` |
 | Impact Relay | GitHub Pages `.../Impact-Relay/` | Relative assets; `data/public-impact.json` |
 | AGI signal fetch | `raw.githubusercontent.com/.../main/data/*.json` | Fail-closed validation already implemented |
-| Supabase staging | Project provisioned | Not required for public shell |
+| Supabase platform | **`utdioxwiskzatwoejgiu`** (canonical) | Phase 2 multi-tenant; GH-linked |
+| Supabase legacy HD staging | `ecxkhihlbrcwpavfoaoq` | Frozen for new tenancy; migrate/retire |
 
 ## 5. Architecture
 
@@ -227,12 +228,16 @@ All automated smoke checks pass. Manual walk finds no broken primary navigation 
 
 ## 9. Phase 2 (documented, not implemented now)
 
-Supabase director path (staging first):
+**AGI platform admin + tenant-scoped Fund Intel / Impact Relay** (staging first):
 
-1. Confirm staging project URL + anon key for FI only (never service role in browser).
-2. Set Vercel env for `fund-intel` preview/production as needed for `runtime-config.js` generation pattern already used on Pages.
-3. Smoke: director login, role visibility, no PII leakage on public routes.
-4. Only then: allocation middleware host + every.org webhook.
+1. Use platform Supabase **`utdioxwiskzatwoejgiu`** (`https://utdioxwiskzatwoejgiu.supabase.co`) — not legacy HD staging.
+2. Confirm anon key for FI only (never service role in browser); link migrations from Fund-Intel `supabase/`.
+3. **AGI admin (`master_admin`)**: provision client/tenant, assign initial director, suspend/recover as needed.
+4. **Per-client**: isolated login + dataset; Fund Intel and Impact Relay operate against that tenant only (`clients.id` = IR `tenant_id`).
+5. Set Vercel env for `fund-intel` as needed for `runtime-config.js` (pattern already used on Pages).
+6. Smoke: platform admin creates client → director login → role visibility → no PII on public routes.
+7. Only then: allocation middleware host + every.org webhook as sellable agentic ops path.
+8. Retire or freeze `ecxkhihlbrcwpavfoaoq` after cutover so tenancy is not split.
 
 ## 10. Implementation units (for planning)
 
