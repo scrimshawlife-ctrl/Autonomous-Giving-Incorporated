@@ -2,52 +2,51 @@
 
 Canonical production origin for the AGI public workbench is **https://autogive.app**.
 
-GitHub Pages hosts the static export. Namecheap currently holds the domain registration (and was pointing at Namecheap parking / hosting nameservers).
+**Primary host: Vercel** (see [VERCEL.md](VERCEL.md)).  
+**Fallback host: GitHub Pages** at the github.io project URL.
+
+Namecheap holds registration; DNS currently points at Namecheap parking / hosting.
 
 ## Target end state
 
 | Host | Role |
 | --- | --- |
-| `https://autogive.app/` | Production AGI workbench (this repo) |
-| `https://www.autogive.app/` | Optional → apex (via CNAME + Pages) |
-| `https://scrimshawlife-ctrl.github.io/Autonomous-Giving-Incorporated/` | Fallback; Pages redirects to custom domain once DNS verifies |
+| `https://autogive.app/` | Production on **Vercel** |
+| `https://www.autogive.app/` | Redirect to apex (Vercel) |
+| `https://scrimshawlife-ctrl.github.io/Autonomous-Giving-Incorporated/` | Fallback mirror |
 
-Suite path URLs (`/fund-intel/`, `/impact-relay/`) remain **product links** in copy. Those products still ship as separate GitHub Pages project sites unless a reverse-proxy or monorepo export is added later.
+Suite path URLs (`/fund-intel/`, `/impact-relay/`) remain **product links** in copy. Those products still ship as separate sites unless a reverse-proxy or monorepo export is added later.
 
-## GitHub Pages settings
+Point the apex at **one** platform only (Vercel **or** GitHub Pages), not both.
 
-Repo → **Settings → Pages → Custom domain**: `autogive.app`  
-Enforce HTTPS after DNS verifies.
+---
 
-The deploy artifact includes `public/CNAME` → `out/CNAME` with:
-
-```text
-autogive.app
-```
-
-## DNS at Namecheap
-
-Nameservers are currently Namecheap **hosting** DNS (`dns1.namecheaphosting.com` / `dns2.namecheaphosting.com`). Either edit DNS in that hosting panel, **or** switch the domain to Namecheap **BasicDNS** / PremiumDNS and manage records there.
-
-### Apex (`autogive.app`)
-
-Create **A** records (remove parking / hosting A records that point at LiteSpeed):
-
-| Type | Host | Value | TTL |
-| --- | --- | --- | --- |
-| A | `@` | `185.199.108.153` | Automatic |
-| A | `@` | `185.199.109.153` | Automatic |
-| A | `@` | `185.199.110.153` | Automatic |
-| A | `@` | `185.199.111.153` | Automatic |
-
-Optional IPv6 (**AAAA**):
+## Recommended: Vercel DNS
 
 | Type | Host | Value |
 | --- | --- | --- |
-| AAAA | `@` | `2606:50c0:8000::153` |
-| AAAA | `@` | `2606:50c0:8001::153` |
-| AAAA | `@` | `2606:50c0:8002::153` |
-| AAAA | `@` | `2606:50c0:8003::153` |
+| A | `@` | `76.76.21.21` |
+| CNAME | `www` | `cname.vercel-dns.com` |
+
+Add the domain in the Vercel project **Settings → Domains**. Full runbook: [VERCEL.md](VERCEL.md).
+
+---
+
+## Optional: GitHub Pages DNS
+
+Only if production is Pages instead of Vercel.
+
+Repo → **Settings → Pages → Custom domain**: `autogive.app`  
+Enforce HTTPS after DNS verifies. Artifact includes `public/CNAME` → `out/CNAME`.
+
+### Apex A records
+
+| Type | Host | Value |
+| --- | --- | --- |
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
 
 ### www
 
@@ -55,15 +54,19 @@ Optional IPv6 (**AAAA**):
 | --- | --- | --- |
 | CNAME | `www` | `scrimshawlife-ctrl.github.io.` |
 
-### Email (if you use Namecheap email / cPanel mail)
+---
 
-Keep existing **MX** / **TXT** (SPF) records. Do not delete mail-related records when replacing the apex A records.
+## Namecheap notes
+
+Nameservers may be hosting DNS (`dns1.namecheaphosting.com` / `dns2.namecheaphosting.com`). Edit records there, or switch to BasicDNS / PremiumDNS first.
+
+Keep **MX** / **TXT** (SPF) if you use email. Remove LiteSpeed / parking A records when switching production.
 
 ## Build path
 
 Production builds use **empty** `basePath` so assets resolve at `https://autogive.app/_next/...`.
 
-Legacy project-site path (only if needed):
+Legacy project-site path (github.io only):
 
 ```bash
 GITHUB_PAGES_BASE_PATH=1 npm run build
@@ -71,10 +74,10 @@ GITHUB_PAGES_BASE_PATH=1 npm run build
 
 ## Verification checklist
 
-1. DNS: `dig +short autogive.app A` returns the four GitHub Pages IPs (or a subset after propagation).
-2. Repo Pages settings show custom domain **Verified** / HTTPS **Enabled**.
-3. `curl -sI https://autogive.app/` → `200` from `GitHub.com` (not LiteSpeed parking).
-4. HTML source references `/_next/` assets, not `/Autonomous-Giving-Incorporated/_next/`.
-5. Open Graph / canonical in page source use `https://autogive.app`.
+1. `dig +short autogive.app A` returns Vercel (`76.76.21.21`) or the four Pages IPs — matching the chosen host.
+2. Domain shows **Verified** in Vercel (or Pages) and HTTPS works.
+3. `curl -sI https://autogive.app/` → `200` from Vercel/GitHub (not LiteSpeed parking).
+4. HTML references `/_next/` assets at the site root.
+5. Canonical / Open Graph use `https://autogive.app`.
 
 Propagation often takes minutes; can take up to 24–48 hours.

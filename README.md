@@ -42,7 +42,7 @@ Transaction-light **middleware** between donation platforms (canonical **every.o
 
 ## Current status
 
-AGI is a static Next.js export deployed from `main` to GitHub Pages. During the production build it requests two approved public aggregate documents:
+AGI is a static Next.js export. **Production** deploys on [Vercel](docs/VERCEL.md) at [autogive.app](https://autogive.app/); GitHub Pages remains a fallback mirror. During the production build it requests two approved public aggregate documents:
 
 - Fund Intel `data/public-campaign.json`
 - Impact Relay `data/public-impact.json`

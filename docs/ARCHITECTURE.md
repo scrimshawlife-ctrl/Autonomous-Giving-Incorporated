@@ -21,8 +21,8 @@ The deployed browser receives only static HTML, CSS, JavaScript, brand assets, a
 
 - **Framework:** Next.js 16 App Router with React 19 and TypeScript.
 - **Output:** static export (`output: "export"`), Turbopack production build by default.
-- **Hosting:** GitHub Pages with custom domain **https://autogive.app** (project-site URL remains a fallback).
-- **Build:** Node.js 22 in GitHub Actions; static export at site root (`basePath` empty).
+- **Hosting:** **Vercel** production at **https://autogive.app**; GitHub Pages remains a github.io fallback.
+- **Build:** Node.js 22; static export to `out/` at site root (`basePath` empty). See [VERCEL.md](VERCEL.md).
 - **State:** local React state for the replayable demonstration; no persistence.
 - **External data:** two fixed HTTPS sources fetched at build time with a bundled fallback.
 
