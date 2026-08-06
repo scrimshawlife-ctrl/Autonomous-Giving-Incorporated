@@ -828,11 +828,14 @@ button:disabled,
     grid-column: 3;
   }
   .hero {
-    gap: var(--space-8);
-    padding-bottom: var(--space-7);
+    gap: var(--space-5);
+    padding-bottom: var(--space-6);
   }
   .hero-title {
-    font-size: clamp(3.35rem, 18vw, 5.4rem);
+    font-size: clamp(2.4rem, 11vw, 3.6rem);
+  }
+  .kicker {
+    margin-bottom: var(--space-3);
   }
   .section {
     padding-block: var(--space-8);
