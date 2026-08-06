@@ -70,6 +70,42 @@ export default async function Home() {
       <Navbar />
       <main id="top">
         <section className="hero page-shell" aria-labelledby="hero-heading">
+          <div className="hero-content">
+            <div className="hero-copy-block">
+              <p className="kicker">Autonomously Giving Incorporated</p>
+              <h1 id="hero-heading" className="hero-title">
+                Giving should not end <span>with a receipt.</span>
+              </h1>
+              <p className="hero-copy">
+                Follow a contribution from funding intent to verified community
+                impact—with the evidence needed to understand what happened next.
+              </p>
+              <div className="hero-actions">
+                <a className="button button-primary focus-ring" href="#demo">
+                  Experience the proof <ArrowDown aria-hidden="true" size={16} />
+                </a>
+                <a className="button button-quiet focus-ring" href="#platform">
+                  Inspect the system <ArrowRight aria-hidden="true" size={16} />
+                </a>
+              </div>
+            </div>
+            <aside
+              className="hero-instrument"
+              aria-label="Example contribution lifecycle"
+            >
+              <div className="instrument-head">
+                <strong>$250</strong>
+                <span>Evidence chain 04/04</span>
+              </div>
+              {lifecycle.map(([index, label, state]) => (
+                <div className="instrument-row" key={index}>
+                  <span className="instrument-index">{index}</span>
+                  <span>{label}</span>
+                  <span className="instrument-state">{state}</span>
+                </div>
+              ))}
+            </aside>
+          </div>
           <div className="hero-visual">
             <Image
               className="hero-visual-image"
@@ -78,44 +114,10 @@ export default async function Home() {
               width={1168}
               height={784}
               priority
-              sizes="(max-width: 900px) 100vw, min(40rem, 48vw)"
+              sizes="(max-width: 900px) 100vw, min(36rem, 42vw)"
             />
             <div className="hero-visual-fade" aria-hidden="true" />
           </div>
-          <div className="hero-copy-block">
-            <p className="kicker">Autonomously Giving Incorporated</p>
-            <h1 id="hero-heading" className="hero-title">
-              Giving should not end <span>with a receipt.</span>
-            </h1>
-            <p className="hero-copy">
-              Follow a contribution from funding intent to verified community
-              impact—with the evidence needed to understand what happened next.
-            </p>
-            <div className="hero-actions">
-              <a className="button button-primary focus-ring" href="#demo">
-                Experience the proof <ArrowDown aria-hidden="true" size={16} />
-              </a>
-              <a className="button button-quiet focus-ring" href="#platform">
-                Inspect the system <ArrowRight aria-hidden="true" size={16} />
-              </a>
-            </div>
-          </div>
-          <aside
-            className="hero-instrument"
-            aria-label="Example contribution lifecycle"
-          >
-            <div className="instrument-head">
-              <strong>$250</strong>
-              <span>Evidence chain 04/04</span>
-            </div>
-            {lifecycle.map(([index, label, state]) => (
-              <div className="instrument-row" key={index}>
-                <span className="instrument-index">{index}</span>
-                <span>{label}</span>
-                <span className="instrument-state">{state}</span>
-              </div>
-            ))}
-          </aside>
         </section>
 
         <section className="section">
