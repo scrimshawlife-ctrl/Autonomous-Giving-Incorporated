@@ -73,7 +73,7 @@ export default async function Home() {
           <div className="hero-visual">
             <Image
               className="hero-visual-image"
-              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/brand/hero-header.jpg`}
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/brand/autogive-hero-v2.jpg`}
               alt="Autonomously Giving Incorporated — evidence from funding to impact"
               width={1168}
               height={784}
