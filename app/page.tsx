@@ -78,7 +78,7 @@ export default async function Home() {
               width={1168}
               height={784}
               priority
-              sizes="(max-width: 900px) 100vw, min(76rem, 100vw)"
+              sizes="(max-width: 900px) 100vw, min(40rem, 48vw)"
             />
             <div className="hero-visual-fade" aria-hidden="true" />
           </div>
