@@ -770,23 +770,20 @@ button:disabled,
     grid-template-columns: 1fr;
   }
   .hero {
-    grid-template-areas:
-      "visual"
-      "copy"
-      "instrument";
-    gap: var(--space-6);
-    padding-top: var(--space-5);
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    padding-top: var(--space-4);
   }
   .hero-visual {
-    min-height: 0;
-    aspect-ratio: 16 / 10;
-    max-height: 18rem;
+    order: -1;
+    max-height: 14rem;
+    aspect-ratio: 16 / 9;
   }
   .hero-visual-image {
-    object-position: 25% center;
+    object-position: 20% 40%;
   }
-  .hero-copy-block {
-    align-self: start;
+  .hero-content {
+    gap: var(--space-5);
   }
   .hero-instrument {
     max-width: 36rem;
