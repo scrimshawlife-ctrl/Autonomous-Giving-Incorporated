@@ -23,12 +23,25 @@ Point the apex at **one** platform only (Vercel **or** GitHub Pages), not both.
 
 ## Recommended: Vercel DNS
 
+Domains are already attached on project **autonomous-giving-incorporated**. Confirm with:
+
+```bash
+vercel domains verify autogive.app --scope scrimshawlife-8819s-projects
+```
+
+**Apex (Namecheap BasicDNS / registrar-servers)** — use the records Vercel shows (example):
+
 | Type | Host | Value |
 | --- | --- | --- |
 | A | `@` | `76.76.21.21` |
+
+If verify suggests alternate A targets (e.g. `216.198.79.1` / `64.29.17.1`), prefer the values from the live `vercel domains verify` output.
+
+| Type | Host | Value |
+| --- | --- | --- |
 | CNAME | `www` | `cname.vercel-dns.com` |
 
-Add the domain in the Vercel project **Settings → Domains**. Full runbook: [VERCEL.md](VERCEL.md).
+Full runbook: [VERCEL.md](VERCEL.md).
 
 ---
 

@@ -50,8 +50,11 @@ Nameservers are currently Namecheap **hosting** DNS. Edit records in that panel 
 
 | Type | Host | Value |
 | --- | --- | --- |
-| A | `@` | `76.76.21.21` |
+| A | `@` | `76.76.21.21` (or the A targets from `vercel domains verify`) |
 | CNAME | `www` | `cname.vercel-dns.com` |
+
+Live production URL (until custom domain verifies):  
+https://autonomous-giving-incorporated.vercel.app
 
 **Option B — Vercel nameservers**
 
