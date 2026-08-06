@@ -1,7 +1,7 @@
 # AGI Platform Foundation + Workspace Login
 
 **Date:** 2026-08-06  
-**Status:** Implemented  
+**Status:** Approved — code path in progress; operator migrate/login pending  
 **Owner:** Zero State / AGI suite  
 **Depends on:** [2026-08-06-agi-suite-vercel-public-design.md](./2026-08-06-agi-suite-vercel-public-design.md) (public suite live)  
 **Supersedes for data plane:** legacy HD staging project as home for new tenancy  
