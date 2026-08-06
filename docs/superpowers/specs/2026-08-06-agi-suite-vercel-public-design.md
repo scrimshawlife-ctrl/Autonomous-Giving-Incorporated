@@ -8,6 +8,56 @@
 
 ---
 
+## 0. Product canon (locked)
+
+Autonomously Giving Incorporated (**AGI**) is the **company and platform operator**. It sells:
+
+1. **Services** delivered through Fund Intel and Impact Relay capabilities.
+2. The **agentic framework** that proposes and routes work under human approval gates (money truth stays deterministic + authorized humans).
+
+### Multi-tenant commercial model
+
+| Concept | Meaning |
+| --- | --- |
+| **Client = tenant** | Own login, own dataset, isolated configuration |
+| **AGI admin** (`master_admin` class) | Provisions and manages clients; does not inherently access tenant-private fundraising data |
+| **Client director / roles** | Operate inside one tenant only |
+| **Fund Intel + Impact Relay per client** | Same product **capabilities**, tenant-scoped **data and config** — not one shared campaign database |
+| **What is sold** | Service + agentic system for decision → allocate → evidence → receipts under policy |
+
+```text
+                 AGI (company / platform)
+                           │
+           sells services + agentic framework
+                           │
+      ┌────────────────────┼────────────────────┐
+      ▼                    ▼                    ▼
+ Platform admin        Tenant A              Tenant B
+ (AGI staff)         login + data          login + data
+                           │                    │
+                 Fund Intel + Impact     Fund Intel + Impact
+                 Relay (tenant-scoped)   Relay (tenant-scoped)
+```
+
+### Two meanings of “AGI” (do not conflate)
+
+| Meaning | What it is | Role |
+| --- | --- | --- |
+| **AGI company / platform** | Seller, tenancy, admin, agentic ops | Control plane (Phase 2+: Fund Intel / Supabase path, may be branded “AGI Admin”) |
+| **autogive.app public site** | Static brand + evidence **narrative** workbench | How the world understands the story; **not** multi-tenant client CRUD |
+
+Public Fund Intel / Impact Relay under path prefixes are **demo / reference / privacy-safe projections** (e.g. Hacker Dojo), not every client’s private workspace.
+
+### Phase mapping
+
+| Phase | Proves |
+| --- | --- |
+| **Today (this spec)** | Public story on one domain: narrative + public FI + public IR shells/JSON |
+| **Phase 2** | AGI admin creates client → client director login → isolated data → tenant-scoped FI/IR |
+| **Phase 3+** | Agentic workflows + middleware/webhooks as the sellable operating product |
+
+---
+
 ## 1. Problem
 
 Autonomously Giving Incorporated must stay **demoable and operable daily**. AGI is already live on Vercel at **https://autogive.app**. Fund Intel and Impact Relay still only ship on GitHub Pages, so suite links under `autogive.app/fund-intel/` and `autogive.app/impact-relay/` break. We need one domain, three public surfaces, and a short smoke path that proves the product story without private backends.
