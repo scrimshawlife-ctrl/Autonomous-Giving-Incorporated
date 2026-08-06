@@ -1,4 +1,5 @@
 import { ArrowDown, ArrowRight } from "lucide-react";
+import Image from "next/image";
 import { DonationDemo } from "@/components/donation-demo";
 import { Navbar } from "@/components/navbar";
 import { PublicSignals } from "@/components/public-signals";
@@ -68,10 +69,22 @@ export default async function Home() {
     <>
       <Navbar />
       <main id="top">
-        <section className="hero page-shell">
-          <div>
+        <section className="hero page-shell" aria-labelledby="hero-heading">
+          <div className="hero-visual">
+            <Image
+              className="hero-visual-image"
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/brand/hero-header.jpg`}
+              alt=""
+              width={1920}
+              height={1080}
+              priority
+              sizes="(max-width: 900px) 100vw, min(76rem, 100vw)"
+            />
+            <div className="hero-visual-fade" aria-hidden="true" />
+          </div>
+          <div className="hero-copy-block">
             <p className="kicker">Autonomously Giving Incorporated</p>
-            <h1 className="hero-title">
+            <h1 id="hero-heading" className="hero-title">
               Giving should not end <span>with a receipt.</span>
             </h1>
             <p className="hero-copy">
