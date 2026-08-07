@@ -49,6 +49,8 @@ GitHub Pages remains optional fallback only.
 | Second admin (deferred) | Qi Diaz — `platform_administrators` insert with rationale ≥ 12 chars |
 | Operator SQL | Fund-Intel `scripts/platform/` (bootstrap + isolation) |
 
+Operator people path (Fund-Intel): see Fund-Intel `docs/OPERATOR-ACCESS-ONBOARDING.md` (suite Project #3 Ops track).
+
 ## Shared identifiers
 
 - Portfolio Signals `clients.id` = Impact Relay `tenant_id`.
