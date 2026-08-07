@@ -58,6 +58,10 @@ Use the board **Status** field (Todo → In Progress → Done). Filter by **Trac
 
 - AGI Pages, Portfolio Signals portal, Impact Relay public aggregate  
 
+### Ops — operator access
+
+- People path (master_admin / director): Fund-Intel `docs/OPERATOR-ACCESS-ONBOARDING.md`
+
 ## Bootstrap
 
 ```bash
