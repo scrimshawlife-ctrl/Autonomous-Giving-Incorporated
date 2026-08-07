@@ -2,7 +2,7 @@
 
 Giving should remain understandable after the transaction.
 
-AGI exists to make the path from funding intent to verified public outcome legible without collapsing recommendation, execution, evidence, and attribution into one claim. Fund Intel improves decision visibility, AGI explains the journey, and Impact Relay preserves approved aggregate evidence.
+AGI exists to make the path from funding intent to verified public outcome legible without collapsing recommendation, execution, evidence, and attribution into one claim. Portfolio Signals improves decision visibility, AGI explains the journey, and Impact Relay preserves approved aggregate evidence.
 
 ## Principles
 

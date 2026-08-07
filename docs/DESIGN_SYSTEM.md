@@ -1,6 +1,6 @@
 # AGI corporate design system
 
-AGI is the corporate master brand and explanatory entry point to the product suite. It introduces the allocation-to-evidence journey and links directly to Fund Intel and Impact Relay without collapsing their distinct jobs. Zero State is credited only as the software builder in the footer.
+AGI is the corporate master brand and explanatory entry point to the product suite. It introduces the allocation-to-evidence journey and links directly to Portfolio Signals and Impact Relay without collapsing their distinct jobs. Zero State is credited only as the software builder in the footer.
 
 ## Shared brand foundation
 
@@ -20,7 +20,7 @@ The masthead always reads in this order:
 2. Product name or current corporate surface
 3. Current page or workflow context
 
-Fund Intel and Impact Relay appear as reciprocal suite links. Tenant or campaign identity may add context but never replace AGI or product identity. Canonical public links use `autogive.app`; footer governance links are Tokens, Logo use, and Legal, alongside “Software by Zero State.”
+Portfolio Signals and Impact Relay appear as reciprocal suite links. Tenant or campaign identity may add context but never replace AGI or product identity. Canonical public links use `autogive.app`; footer governance links are Tokens, Logo use, and Legal, alongside “Software by Zero State.”
 
 ## Composition
 

@@ -10,7 +10,7 @@
 - P0: none
 - P1: none
 - P2: none
-- Identity: AGI wordmark is primary; Fund Intel and Impact Relay are subordinate suite links.
+- Identity: AGI wordmark is primary; Portfolio Signals and Impact Relay are subordinate suite links.
 - Tokens: AGI ink, graphite, green, mint, cool gray, paper, and gold are represented through semantic variables.
 - Typography: Space Grotesk display and Inter interface typography match the reference direction.
 - Responsive/accessibility: keyboard focus, semantic navigation, and existing responsive structure are preserved.

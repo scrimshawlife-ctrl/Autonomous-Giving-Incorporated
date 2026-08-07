@@ -24,7 +24,7 @@ The **allocation middleware** product ([PRODUCT-ALLOCATION-MIDDLEWARE.md](PRODUC
 | Host | GitHub Pages | Fund-Intel Node package (Fly-ready) |
 | Specs | Pin v1.x | Capability-first modular monolith |
 
-Cross-repo implementation should keep **public aggregate JSON** contracts stable while middleware modules map to Fund Intel (observe/credit), Autonomous Giving (allocate/approve), and Impact Relay (proof/trail) **capabilities**—not three mandatory deployables.
+Cross-repo implementation should keep **public aggregate JSON** contracts stable while middleware modules map to Portfolio Signals (observe/credit), Autonomous Giving (allocate/approve), and Impact Relay (proof/trail) **capabilities**—not three mandatory deployables.
 
 ## Current live integration (build-time only)
 

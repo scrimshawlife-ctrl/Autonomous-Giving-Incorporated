@@ -43,7 +43,7 @@ Material production changes are recorded newest first. Each entry links the revi
 - Lint, typecheck, production build, and Pages-mode build passed.
 - Generated output referenced the repository-prefixed Zero State asset.
 - CI and Pages build/deploy completed successfully on `main`.
-- The production page returned the Zero State identity and reciprocal Fund Intel/Impact Relay navigation.
+- The production page returned the Zero State identity and reciprocal Portfolio Signals/Impact Relay navigation.
 
 ## 2026-08-02 — Evidence Workbench
 
@@ -55,7 +55,7 @@ Material production changes are recorded newest first. Each entry links the revi
 ### Shipped
 
 - Introduced the responsive evidence workbench and replayable lifecycle.
-- Added approved public aggregate signals from Fund Intel and Impact Relay.
+- Added approved public aggregate signals from Portfolio Signals and Impact Relay.
 - Added deterministic fallback behavior and public-data boundaries.
 
 ### Verification

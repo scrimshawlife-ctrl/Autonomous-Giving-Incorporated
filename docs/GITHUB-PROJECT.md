@@ -56,7 +56,7 @@ Use the board **Status** field (Todo → In Progress → Done). Filter by **Trac
 
 ### Public suite surfaces
 
-- AGI Pages, Fund Intel portal, Impact Relay public aggregate  
+- AGI Pages, Portfolio Signals portal, Impact Relay public aggregate  
 
 ## Bootstrap
 

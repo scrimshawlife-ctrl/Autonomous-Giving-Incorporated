@@ -9,11 +9,11 @@ const links = [
   ["Proof", "#demo"],
   ["Signals", "#signals"],
   ["About", "#about"],
-  ["Sign in", "https://autogive.app/fund-intel/workspace.html"],
+  ["Sign in", "https://autogive.app/portfolio-signals/workspace.html"],
 ] as const;
 
 const suiteLinks = [
-  ["Fund Intel", "https://autogive.app/fund-intel/"],
+  ["Portfolio Signals", "https://autogive.app/portfolio-signals/"],
   ["Impact Relay", "https://autogive.app/impact-relay/"],
 ] as const;
 

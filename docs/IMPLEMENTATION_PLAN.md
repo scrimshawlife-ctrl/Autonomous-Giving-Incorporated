@@ -7,7 +7,7 @@ This plan translates the roadmap into an engineering sequence. It is intentional
 - Static Next.js export deployed to GitHub Pages.
 - AGI visual system and reciprocal suite navigation.
 - Deterministic contribution lifecycle.
-- Build-time Fund Intel and Impact Relay public projections.
+- Build-time Portfolio Signals and Impact Relay public projections.
 - Fail-closed fallback for unavailable or disallowed source data.
 - CI for lint, typecheck, and production build.
 
