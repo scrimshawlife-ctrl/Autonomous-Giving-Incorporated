@@ -67,12 +67,13 @@ From AGI repo after public deploys:
 | Phase | Deliverable | Status |
 | --- | --- | --- |
 | Public (now) | Path-prefixed static FI/IR under autogive.app + smoke | Live |
-| Phase 2 | Platform Supabase + AGI admin + tenant director login | **Foundation shipped in Fund-Intel** (code + docs); **operator applies migrations**, Auth invite, Vercel `PLATFORM_*` anon env, login smoke |
-| Phase 3+ | Agentic ops, allocation middleware, live every.org | Planned |
+| Phase 2 | Platform Supabase + AGI admin + tenant director login | **Operator-complete** — migrations on `utdioxwiskzatwoejgiu`, Vercel `PLATFORM_*` anon, master_admin + HD director, workspace magic-link login verified |
+| Phase 3 | Allocation middleware pilot + IR live cohort + every.org | **In progress** — middleware unit tests + local pilot host smoke; production host and every.org webhook still open |
+| Phase 3+ | Agentic ops, dual-control at scale | Planned |
 
 ## Phase 2 design
 
-[Platform foundation + workspace login](./superpowers/specs/2026-08-06-agi-platform-foundation-design.md) — **Implemented** (implementation plan and Fund-Intel branch deliverables; residual operator steps listed above).
+[Platform foundation + workspace login](./superpowers/specs/2026-08-06-agi-platform-foundation-design.md) — **Implemented and operator-verified** (workspace login on production). Residual hygiene: rotate chat-shared secrets; optional custom SMTP for email OTP volume.
 
 Fund-Intel operator docs (retargeted to platform):
 
