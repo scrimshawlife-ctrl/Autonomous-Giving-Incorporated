@@ -34,7 +34,7 @@ Conformance declaration: [`platform-spec/conformance.yml`](platform-spec/conform
 
 Transaction-light **middleware** between donation platforms (canonical **every.org**) and human allocation: pots → allocate → proof → exception inbox → board packet. Not a finance ledger.
 
-**Status (2026-08-07):** MVP in [Fund-Intel `services/allocation-middleware/`](https://github.com/scrimshawlife-ctrl/Fund-Intel/tree/main/services/allocation-middleware); unit tests + **local pilot smoke green** against platform Supabase. Production middleware host + live every.org webhook remain open. AGI stays the public explanatory workbench.
+**Status (2026-08-07):** MVP in [Fund-Intel `services/allocation-middleware/`](https://github.com/scrimshawlife-ctrl/Fund-Intel/tree/main/services/allocation-middleware); unit tests + local pilot + director JWT + ephemeral public HTTPS OBSERVED; seed allocate→proof→packet OBSERVED. **Live every.org webhook** still open (operator). AGI stays the public explanatory workbench.
 
 - [docs/PRODUCT-ALLOCATION-MIDDLEWARE.md](docs/PRODUCT-ALLOCATION-MIDDLEWARE.md)  
 - [Full design (Specs)](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Specs/blob/main/docs/superpowers/specs/2026-08-03-allocation-middleware-design.md)  
@@ -50,7 +50,7 @@ AGI is a static Next.js export. **Production** deploys on [Vercel](docs/VERCEL.m
 | `/portfolio-signals/` | Portfolio Signals public + **workspace** login |
 | `/impact-relay/` | Impact Relay public aggregates |
 
-**Phase 2 (platform Auth + workspace)** is **operator-complete** (2026-08-07): platform Supabase `utdioxwiskzatwoejgiu`, migrations, Vercel anon env, master_admin login verified. **Phase 3** (allocation middleware public host + IR live cohort) is in progress. See [docs/PLATFORM.md](docs/PLATFORM.md).
+**Phase 2 (platform Auth + workspace)** is **operator-complete** (2026-08-07): platform Supabase `utdioxwiskzatwoejgiu`, migrations, Vercel anon env, master_admin login verified. **Phase 3** allocation pilot is in progress: director JWT + ephemeral HTTPS OBSERVED; live every.org webhook and full director sign-off remain. See [docs/PLATFORM.md](docs/PLATFORM.md).
 
 During the production build AGI requests two approved public aggregate documents:
 

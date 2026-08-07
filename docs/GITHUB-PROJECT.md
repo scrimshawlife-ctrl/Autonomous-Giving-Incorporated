@@ -31,19 +31,19 @@ Use the board **Status** field (Todo → In Progress → Done). Filter by **Trac
 
 | Issue | Priority | Status |
 | --- | --- | --- |
-| [#71](https://github.com/scrimshawlife-ctrl/Fund-Intel/issues/71) optional public host | P1 | Todo |
-| [#72](https://github.com/scrimshawlife-ctrl/Fund-Intel/issues/72) Supabase director membership | P0 | Todo |
-| [#73](https://github.com/scrimshawlife-ctrl/Fund-Intel/issues/73) live every.org webhook | P0 | Todo |
-| [#74](https://github.com/scrimshawlife-ctrl/Fund-Intel/issues/74) director acceptance | P0 | Todo |
+| [#71](https://github.com/scrimshawlife-ctrl/Fund-Intel/issues/71) optional public host | P1 | **Done** — ephemeral HTTPS (cloudflared) OBSERVED; durable named host optional |
+| [#72](https://github.com/scrimshawlife-ctrl/Fund-Intel/issues/72) Supabase director membership | P0 | **Done** — director JWT path OBSERVED |
+| [#73](https://github.com/scrimshawlife-ctrl/Fund-Intel/issues/73) live every.org webhook | P0 | **Open** — operator setup |
+| [#74](https://github.com/scrimshawlife-ctrl/Fund-Intel/issues/74) director acceptance | P0 | **Partial** — seed-loop allocate→proof→packet OBSERVED; live gift + browser sign-off remain |
 
 ## Tracks (current)
 
 ### Allocation middleware (active)
 
 - MVP package in Fund-Intel `services/allocation-middleware/`  
-- Docker Compose default host; Fly/Render optional  
-- AGI shell UI  
-- Remaining: [#71](https://github.com/scrimshawlife-ctrl/Fund-Intel/issues/71)–[#74](https://github.com/scrimshawlife-ctrl/Fund-Intel/issues/74)
+- Local Node default; Compose optional; public HTTPS via cloudflared (ephemeral) or Render/Railway/Fly (durable)  
+- Director JWT path closed (#72); seed-loop accept closed partial (#74)  
+- Remaining: [#73](https://github.com/scrimshawlife-ctrl/Fund-Intel/issues/73) every.org webhook · full [#74](https://github.com/scrimshawlife-ctrl/Fund-Intel/issues/74) browser sign-off
 
 ### Hacker Dojo campaign (HD-OI)
 
@@ -58,9 +58,12 @@ Use the board **Status** field (Todo → In Progress → Done). Filter by **Trac
 
 - AGI Pages, Portfolio Signals portal, Impact Relay public aggregate  
 
-### Ops — operator access
+### Ops — operator access / commercial onboarding
 
-- People path (master_admin / director): Fund-Intel `docs/OPERATOR-ACCESS-ONBOARDING.md`
+- People path (C): Fund-Intel `docs/OPERATOR-ACCESS-ONBOARDING.md`  
+- Client lifecycle (B): Fund-Intel `docs/COMMERCIAL-CLIENT-LIFECYCLE.md`  
+- Second tenant (D): Fund-Intel `docs/SECOND-TENANT-ONBOARDING.md`  
+- Allocation pilot: Fund-Intel `docs/HACKER-DOJO-ALLOCATION-PILOT.md` · `docs/CURRENT-STATE.md`
 
 ## Bootstrap
 

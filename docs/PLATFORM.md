@@ -70,7 +70,7 @@ From AGI repo after public deploys:
 | --- | --- | --- |
 | Public (now) | Path-prefixed static FI/IR under autogive.app + smoke | Live |
 | Phase 2 | Platform Supabase + AGI admin + tenant director login | **Operator-complete** — migrations on `utdioxwiskzatwoejgiu`, Vercel `PLATFORM_*` anon, master_admin + HD director, workspace magic-link login verified |
-| Phase 3 | Allocation middleware pilot + IR live cohort + every.org | **In progress** — middleware unit tests + local pilot host smoke; production host and every.org webhook still open |
+| Phase 3 | Allocation middleware pilot + IR live cohort + every.org | **In progress** — unit tests + local Node pilot + director JWT + ephemeral public HTTPS OBSERVED; seed allocate→proof→packet OBSERVED; **live every.org webhook (#73) and full director sign-off (#74) still open** |
 | Phase 3+ | Agentic ops, dual-control at scale | Planned |
 
 ## Phase 2 design
