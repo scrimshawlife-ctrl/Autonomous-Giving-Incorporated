@@ -43,7 +43,7 @@ export function PublicSignals({ signals }: { signals: PublicSignals }) {
 
         <div className="signal-table" aria-label="Public evidence signals">
           <article className="signal-row">
-            <p className="signal-source">Fund Intel</p>
+            <p className="signal-source">Portfolio Signals</p>
             <p className="signal-value">
               Execution: {signals.fundIntel.executionState}
             </p>

@@ -10,7 +10,7 @@ The complete cross-repository checklist lives in [THREE_REPO_INTEGRATION.md](THR
 
 | Source                                 | Required authority      | Data used by AGI                                      |
 | -------------------------------------- | ----------------------- | ----------------------------------------------------- |
-| Fund Intel `data/public-campaign.json` | `advisory_only`         | update timestamp and execution state                  |
+| Portfolio Signals `data/public-campaign.json` | `advisory_only`         | update timestamp and execution state                  |
 | Impact Relay `data/public-impact.json` | `public_aggregate_only` | update timestamp and one `VERIFIED` aggregate outcome |
 
 The adapter normalizes accepted data into `PublicSignals`. Any failed request, parsing error, unexpected authority, or missing verified outcome returns the bundled deterministic fallback.
@@ -45,6 +45,6 @@ A contract change must include:
 3. source ownership for every new field;
 4. public-data, retention, and redaction review;
 5. validation and fallback tests;
-6. corresponding updates in Fund Intel and Impact Relay when the shared vocabulary changes.
+6. corresponding updates in Portfolio Signals and Impact Relay when the shared vocabulary changes.
 
 Runtime APIs, authentication, credentials, and write operations remain outside this contract. See [ARCHITECTURE.md](ARCHITECTURE.md), [CONTINUATION_PLAN.md](CONTINUATION_PLAN.md), and [THREE_REPO_INTEGRATION.md](THREE_REPO_INTEGRATION.md).

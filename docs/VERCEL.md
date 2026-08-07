@@ -96,6 +96,6 @@ Vercel builds must keep **empty** `basePath` (default).
 
 ## Security / trust boundary (unchanged)
 
-- Build-time fetch of public Fund Intel / Impact Relay aggregates only
+- Build-time fetch of public Portfolio Signals / Impact Relay aggregates only
 - Fail closed to deterministic local scenario
 - No donor PII, no payments, no server writes

@@ -6,7 +6,7 @@ AGI is a static Next.js App Router application. GitHub Actions builds the site f
 
 ```mermaid
 flowchart LR
-  FI["Fund Intel public campaign JSON"] --> V["Build-time validation"]
+  FI["Portfolio Signals public campaign JSON"] --> V["Build-time validation"]
   IR["Impact Relay public impact JSON"] --> V
   FX["Bundled deterministic fixture"] --> F["Fallback selection"]
   V -->|"approved inputs"| P["Static AGI pages"]
@@ -15,7 +15,7 @@ flowchart LR
   P --> GH["GitHub Pages"]
 ```
 
-The deployed browser receives only static HTML, CSS, JavaScript, brand assets, and the selected public-safe projection. It does not call Fund Intel or Impact Relay at runtime.
+The deployed browser receives only static HTML, CSS, JavaScript, brand assets, and the selected public-safe projection. It does not call Portfolio Signals or Impact Relay at runtime.
 
 ## Runtime and deployment model
 
@@ -46,10 +46,10 @@ The page component is the server entry point. Interactive state stays in focused
 
 ## Trust boundaries
 
-Fund Intel and Impact Relay documents are external, untrusted input even though they come from repositories in the same suite. The adapter must:
+Portfolio Signals and Impact Relay documents are external, untrusted input even though they come from repositories in the same suite. The adapter must:
 
 1. require successful HTTP responses;
-2. require Fund Intel authority `advisory_only`;
+2. require Portfolio Signals authority `advisory_only`;
 3. require Impact Relay authority `public_aggregate_only`;
 4. select only an outcome whose evidence state is `VERIFIED`;
 5. return the deterministic fixture on any fetch, parse, policy, or evidence failure.

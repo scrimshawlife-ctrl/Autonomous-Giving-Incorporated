@@ -19,8 +19,8 @@ Public suite surfaces are live under `autogive.app`, but multi-tenant **platform
 1. Apply Fund-Intel schema to platform Supabase **`utdioxwiskzatwoejgiu`** only.
 2. Establish **scrimshawlife@gmail.com** as first **`master_admin`** (Qi Diaz / second admin later without redesign).
 3. Seed **synthetic** tenants for isolation proof (including Hacker Dojo reference + second tenant).
-4. Enable **magic-link** sign-in to Fund Intel **workspace** on production path  
-   `https://autogive.app/fund-intel/workspace` (and/or `workspace.html` as implemented).
+4. Enable **magic-link** sign-in to Portfolio Signals **workspace** on production path  
+   `https://autogive.app/portfolio-signals/workspace` (and/or `workspace.html` as implemented).
 5. Wire **anon-only** runtime config on Vercel project `fund-intel`.
 6. Keep public suite smoke green; no service role in browser or public env.
 
@@ -39,10 +39,10 @@ Public suite surfaces are live under `autogive.app`, but multi-tenant **platform
 
 From suite product canon:
 
-- AGI sells multi-tenant Fund Intel + Impact Relay + agentic framework.
+- AGI sells multi-tenant Portfolio Signals + Impact Relay + agentic framework.
 - **AGI admin (`master_admin`)** provisions clients; does not inherently access tenant-private fundraising data.
 - **Client director** operates inside one tenant (`client_memberships`).
-- `clients.id` (Fund Intel) = `tenant_id` (Impact Relay).
+- `clients.id` (Portfolio Signals) = `tenant_id` (Impact Relay).
 - Public `autogive.app` narrative is not the multi-tenant control plane.
 
 ## 5. Architecture
@@ -64,7 +64,7 @@ Postgres + RLS   project: utdioxwiskzatwoejgiu
         └── synthetic fixtures (HD + tenant B)
 
 Browser
-  https://autogive.app/fund-intel/workspace
+  https://autogive.app/portfolio-signals/workspace
         │ runtime-config.js (URL + anon key only)
         ▼
   workspace.html shell → Supabase JS client
@@ -78,7 +78,7 @@ Browser
 | API host | `https://utdioxwiskzatwoejgiu.supabase.co` |
 | Dashboard | https://supabase.com/dashboard/project/utdioxwiskzatwoejgiu |
 | Schema source | `Fund-Intel/supabase/migrations` |
-| Workspace URL | `https://autogive.app/fund-intel/workspace` (rewrite to fund-intel project) |
+| Workspace URL | `https://autogive.app/portfolio-signals/workspace` (rewrite to fund-intel project) |
 | Vercel project | `fund-intel` (team `scrimshawlife-8819s-projects`) |
 | Legacy staging (freeze) | `ecxkhihlbrcwpavfoaoq` |
 
@@ -99,7 +99,7 @@ Operator steps that require **service role** or dashboard access stay **out of g
 
 3. **Auth configuration (dashboard)**  
    - Enable email magic link (or keep if already on).  
-   - Site URL / additional redirect URLs must include production workspace URLs under `autogive.app/fund-intel/`.  
+   - Site URL / additional redirect URLs must include production workspace URLs under `autogive.app/portfolio-signals/`.  
    - Optional: localhost for local workspace testing.
 
 4. **Create operator user**  
@@ -173,7 +173,7 @@ Operator steps that require **service role** or dashboard access stay **out of g
 3. Real import authority gates.  
 4. Allocation middleware host + every.org.  
 5. Retire legacy Supabase project after data confirmation.  
-6. Operator residual: apply migrations on platform, Auth invite for `scrimshawlife@gmail.com`, Vercel `PLATFORM_SUPABASE_URL` / `PLATFORM_SUPABASE_ANON_KEY`, login smoke on https://autogive.app/fund-intel/workspace .
+6. Operator residual: apply migrations on platform, Auth invite for `scrimshawlife@gmail.com`, Vercel `PLATFORM_SUPABASE_URL` / `PLATFORM_SUPABASE_ANON_KEY`, login smoke on https://autogive.app/portfolio-signals/workspace .
 
 ## 11. Implementation units (for planning)
 

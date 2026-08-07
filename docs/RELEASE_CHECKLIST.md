@@ -25,7 +25,7 @@ Use this checklist for every material production release. Copy the completed evi
 - [ ] Confirm focus visibility, heading order, landmarks, contrast, and status labels.
 - [ ] Enable reduced motion and verify that the experience remains usable.
 - [ ] Review both live-public-projection and deterministic-fallback states.
-- [ ] Verify AGI, Fund Intel, and Impact Relay navigation destinations.
+- [ ] Verify AGI, Portfolio Signals, and Impact Relay navigation destinations.
 
 ## Pull request and deployment
 

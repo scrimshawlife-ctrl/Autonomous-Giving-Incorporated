@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Apply Fund-Intel schema to Supabase platform `utdioxwiskzatwoejgiu`, appoint `scrimshawlife@gmail.com` as `master_admin`, seed synthetic tenants, and enable magic-link login to `https://autogive.app/fund-intel/workspace` via anon-only Vercel runtime config.
+**Goal:** Apply Fund-Intel schema to Supabase platform `utdioxwiskzatwoejgiu`, appoint `scrimshawlife@gmail.com` as `master_admin`, seed synthetic tenants, and enable magic-link login to `https://autogive.app/portfolio-signals/workspace` via anon-only Vercel runtime config.
 
 **Architecture:** Single data plane on platform Supabase. Existing migrations in Fund-Intel are the schema source of truth. Workspace static shell already exists; only config generation and host allowlisting need retargeting from legacy staging. Public AGI/FI/IR shells stay anon-free of service role.
 
@@ -264,7 +264,7 @@ Document:
 1. Dashboard invite `scrimshawlife@gmail.com`
 2. Copy user uuid
 3. Run bootstrap SQL
-4. Set Auth redirect URLs to `https://autogive.app/fund-intel/workspace` and `.../workspace.html`
+4. Set Auth redirect URLs to `https://autogive.app/portfolio-signals/workspace` and `.../workspace.html`
 5. Never paste service role into README
 
 - [ ] **Step 4: Commit**
@@ -336,10 +336,10 @@ No commit of `.temp` credentials.
 - [ ] **Step 4: Authentication → URL configuration**
 
 Add:
-- Site URL: `https://autogive.app/fund-intel/workspace` (or project default + additional redirects)
+- Site URL: `https://autogive.app/portfolio-signals/workspace` (or project default + additional redirects)
 - Redirect allow list:
-  - `https://autogive.app/fund-intel/workspace`
-  - `https://autogive.app/fund-intel/workspace.html`
+  - `https://autogive.app/portfolio-signals/workspace`
+  - `https://autogive.app/portfolio-signals/workspace.html`
   - `https://fund-intel-ten.vercel.app/workspace`
   - `https://fund-intel-ten.vercel.app/workspace.html`
 
@@ -478,15 +478,15 @@ Expected: SMOKE PASSED (or 200s for suite paths when DNS hits Vercel).
 - [ ] **Step 2: Unauthenticated workspace gate**
 
 ```bash
-curl -sS https://autogive.app/fund-intel/workspace | grep -qi 'sign in'
-curl -sS https://autogive.app/fund-intel/workspace.html | grep -qi 'sign in'
+curl -sS https://autogive.app/portfolio-signals/workspace | grep -qi 'sign in'
+curl -sS https://autogive.app/portfolio-signals/workspace.html | grep -qi 'sign in'
 ```
 
 Expected: auth gate copy visible; no private table dumps.
 
 - [ ] **Step 3: Magic-link login (manual)**
 
-Open `https://autogive.app/fund-intel/workspace`, enter `scrimshawlife@gmail.com`, complete email link, land in workspace.
+Open `https://autogive.app/portfolio-signals/workspace`, enter `scrimshawlife@gmail.com`, complete email link, land in workspace.
 
 - [ ] **Step 4: Confirm master admin context**
 
@@ -521,7 +521,7 @@ Every "staging ref ecxkhihl…" intro becomes "platform ref utdioxwiskzatwoejgiu
 
 - [ ] **Step 2: Document workspace production URL**
 
-`https://autogive.app/fund-intel/workspace`
+`https://autogive.app/portfolio-signals/workspace`
 
 - [ ] **Step 3: Note second admin**
 

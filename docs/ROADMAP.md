@@ -6,7 +6,7 @@ Roadmap items describe product outcomes, not calendar commitments. Work advances
 
 - Responsive AGI public narrative and reciprocal suite navigation.
 - Replayable deterministic contribution lifecycle.
-- Approved Fund Intel and Impact Relay aggregate signals with fail-closed fallback.
+- Approved Portfolio Signals and Impact Relay aggregate signals with fail-closed fallback.
 - Canonical metadata, social preview, robots, sitemap, CI, and GitHub Pages deployment.
 - Documented public-data, attribution, and product-scope boundaries.
 

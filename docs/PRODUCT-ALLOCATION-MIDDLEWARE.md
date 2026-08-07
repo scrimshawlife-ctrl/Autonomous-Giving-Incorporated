@@ -1,7 +1,7 @@
 # Product: Allocation middleware
 
-**Status:** MVP implemented (Fund-Intel) · Hacker Dojo pilot next  
-**Date:** Design approved 2026-08-03 · Implementation refresh 2026-08-03  
+**Status:** MVP implemented (Fund-Intel) · **local pilot smoke PASS** (platform Supabase) · production host pending  
+**Date:** Design approved 2026-08-03 · Status refresh 2026-08-07  
 **Canonical design:** [Autonomous-Giving-Specs design doc](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Specs/blob/main/docs/superpowers/specs/2026-08-03-allocation-middleware-design.md)
 
 ## One-sentence pitch
@@ -35,7 +35,7 @@ Available · Allocate · Inbox · Trail · Packet · Settings (every.org + mappi
 | Surface | Contribution | Status |
 | --- | --- | --- |
 | **AGI** | Brand + public narrative of funding-to-evidence | Public workbench shipped; middleware UX entry still via Fund-Intel package |
-| **Fund Intel** | Hosts MVP package: gift credit, pots, allocate, proof, packet | **MVP shipped** (`services/allocation-middleware/`) |
+| **Portfolio Signals** | Hosts MVP package: gift credit, pots, allocate, proof, packet | **MVP shipped**; local pilot against platform Auth green; public host open |
 | **Impact Relay** | Long-term proof/trail discipline and public-safe projections | Role documented; deep IR ledger binding later |
 
 Platform pin: Specs **v1.x** capability-first modular monolith ([SPEC-002A](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Specs/blob/main/specs/SPEC-002A-architectural-principles.md), [SPEC-020](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Specs/blob/main/specs/SPEC-020-reference-deployment-profiles.md)).

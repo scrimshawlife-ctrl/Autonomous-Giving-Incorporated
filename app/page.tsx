@@ -16,7 +16,7 @@ const lifecycle = [
 const system = [
   [
     "01",
-    "Fund Intel",
+    "Portfolio Signals",
     "Finds high-impact opportunities and documents allocation rationale.",
     "advisory",
   ],
@@ -36,8 +36,8 @@ const system = [
 
 const products = [
   {
-    id: "fund-intel",
-    name: "Fund Intel",
+    id: "portfolio-signals",
+    name: "Portfolio Signals",
     sub: "Decision intelligence",
     copy: "A demonstration of the decision layer—where high-impact opportunities, allocation strategies, and the reasoning behind them come into focus.",
     points: [
@@ -222,7 +222,7 @@ export default async function Home() {
             </div>
             <pre className="contract-code" aria-label="Platform data flow">
               <code>{`static scenario
-  → Fund Intel recommendation
+  → Portfolio Signals recommendation
   → approved allocation
   → Impact Relay evidence event
   → AGI donor notification`}</code>
@@ -237,7 +237,7 @@ export default async function Home() {
             </h2>
             <p>
               Autonomously Giving Incorporated is the public flagship for a more
-              legible form of philanthropy: Fund Intel informs decisions, AGI
+              legible form of philanthropy: Portfolio Signals informs decisions, AGI
               makes their journey understandable, and Impact Relay preserves
               what was verified after resources moved.
             </p>

@@ -4,7 +4,7 @@ Single source of truth for **where** the suite lives so work does not fragment a
 
 ## Product (locked)
 
-- **AGI** sells multi-tenant Fund Intel + Impact Relay + agentic framework.
+- **AGI** sells multi-tenant Portfolio Signals + Impact Relay + agentic framework.
 - **AGI admin** provisions clients; each client has isolated login and data.
 - **autogive.app** public site is brand + evidence narrative — not the admin console.
 
@@ -15,13 +15,13 @@ See [superpowers/specs/2026-08-06-agi-suite-vercel-public-design.md](./superpowe
 | Surface | Path on apex | Vercel project | Repo |
 | --- | --- | --- | --- |
 | AGI workbench | `/` | `autonomous-giving-incorporated` | Autonomous-Giving-Incorporated |
-| Fund Intel public | `/fund-intel/` | `fund-intel` → https://fund-intel-ten.vercel.app | Fund-Intel |
-| Fund Intel workspace | `/fund-intel/workspace` | same `fund-intel` project | Fund-Intel |
+| Portfolio Signals public | `/portfolio-signals/` | `fund-intel` → https://fund-intel-ten.vercel.app | Fund-Intel |
+| Portfolio Signals workspace | `/portfolio-signals/workspace` | same `fund-intel` project | Fund-Intel |
 | Impact Relay public | `/impact-relay/` | `impact-relay` → https://impact-relay.vercel.app | Impact-Relay |
 
 **Apex domain:** `https://autogive.app` (www also attached).  
 **Team:** `scrimshawlife-8819s-projects`.  
-**Workspace production URL:** https://autogive.app/fund-intel/workspace
+**Workspace production URL:** https://autogive.app/portfolio-signals/workspace
 
 GitHub Pages remains optional fallback only.
 
@@ -51,7 +51,7 @@ GitHub Pages remains optional fallback only.
 
 ## Shared identifiers
 
-- Fund Intel `clients.id` = Impact Relay `tenant_id`.
+- Portfolio Signals `clients.id` = Impact Relay `tenant_id`.
 - Reference regression tenant: Hacker Dojo (`org_hacker_dojo`) — fixture, not global default.
 
 ## Smoke

@@ -4,7 +4,7 @@ This plan starts from the deployed GitHub Pages experience. Every new capability
 
 ## Current baseline
 
-AGI is a static Next.js export deployed from `main` to GitHub Pages. It includes a replayable deterministic scenario and reads two approved public aggregate documents during the build: a Fund Intel advisory state and an Impact Relay verified outcome. Invalid, unavailable, or unapproved source data falls back to the local canonical scenario.
+AGI is a static Next.js export deployed from `main` to GitHub Pages. It includes a replayable deterministic scenario and reads two approved public aggregate documents during the build: a Portfolio Signals advisory state and an Impact Relay verified outcome. Invalid, unavailable, or unapproved source data falls back to the local canonical scenario.
 
 The site does not collect donations, persist records, authenticate people, expose donor-level evidence, or perform write operations against either source system.
 
@@ -81,7 +81,7 @@ Pause or narrow scope if public data cannot be published safely, identifiers do 
 | ------------------------------------------ | ----------------------- | -------- |
 | Pages metadata and release verification    | AGI product/design      | Phase A  |
 | Public-source freshness and fallback tests | AGI engineering         | Phase B  |
-| Fund Intel decision contract               | Fund Intel owner        | Phase C  |
+| Portfolio Signals decision contract               | Portfolio Signals owner        | Phase C  |
 | Impact Relay event contract                | Impact Relay owner      | Phase C  |
 | Runtime adapter and observability          | AGI engineering         | Phase D  |
 | Auth, payments, and notifications          | Product/security owners | Future   |

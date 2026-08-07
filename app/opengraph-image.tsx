@@ -105,7 +105,7 @@ export default function OpenGraphImage() {
         }}
       >
         {[
-          ["01", "Fund Intel", "decision"],
+          ["01", "Portfolio Signals", "decision"],
           ["02", "AGI", "experience"],
           ["03", "Impact Relay", "verified"],
         ].map(([index, label, state], position) => (

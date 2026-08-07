@@ -23,15 +23,15 @@ echo "Smoke public suite @ ${BASE_URL}"
 check "/"
 check "/robots.txt"
 check "/sitemap.xml"
-check "/fund-intel/"
+check "/portfolio-signals/"
 check "/impact-relay/"
-check "/fund-intel/data/public-campaign.json"
+check "/portfolio-signals/data/public-campaign.json"
 check "/impact-relay/data/public-impact.json"
 
 # Authority contracts (privacy-safe public projections)
 if ! grep -q 'advisory_only' /tmp/agi-smoke-body 2>/dev/null; then
   # re-fetch campaign for authority (last body may be impact)
-  curl -sS -L -m 25 "${BASE_URL}/fund-intel/data/public-campaign.json" -o /tmp/agi-smoke-campaign
+  curl -sS -L -m 25 "${BASE_URL}/portfolio-signals/data/public-campaign.json" -o /tmp/agi-smoke-campaign
   if ! grep -q 'advisory_only' /tmp/agi-smoke-campaign; then
     echo "FAIL  public-campaign.json missing authority advisory_only"
     FAIL=1

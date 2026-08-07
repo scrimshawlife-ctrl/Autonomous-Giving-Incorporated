@@ -14,7 +14,7 @@ Traditional giving commonly ends with a transaction receipt. AGI makes the next 
 
 AGI is the explanatory public entry point to the AGI product suite:
 
-- **Fund Intel** publishes decision and campaign context;
+- **Portfolio Signals** publishes decision and campaign context;
 - **AGI** explains the funding-to-evidence journey;
 - **Impact Relay** publishes verified aggregate outcomes and evidence state.
 
@@ -33,7 +33,7 @@ Full product note: [PRODUCT-ALLOCATION-MIDDLEWARE.md](PRODUCT-ALLOCATION-MIDDLEW
 A visitor can:
 
 1. understand the gap between a receipt and evidence of impact;
-2. inspect approved public signals from Fund Intel and Impact Relay;
+2. inspect approved public signals from Portfolio Signals and Impact Relay;
 3. replay a deterministic $250 community-hardware scenario;
 4. see how allocation, purchase, activity, verification, and notification relate;
 5. continue to the decision or evidence product for more context.

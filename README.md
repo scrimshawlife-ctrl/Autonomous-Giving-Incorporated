@@ -12,14 +12,14 @@ Autonomously Giving Incorporated (AGI) is the corporate brand and public, eviden
 | Product      | Role                                     | Live surface                                                                             |
 | ------------ | ---------------------------------------- | ---------------------------------------------------------------------------------------- |
 | AGI          | Explains the funding-to-evidence journey | [Public workbench](https://autogive.app/)             |
-| Fund Intel   | Publishes decision and campaign signals  | [Decision workspace](https://autogive.app/fund-intel/) |
+| Portfolio Signals   | Publishes decision and campaign signals  | [Decision workspace](https://autogive.app/portfolio-signals/) |
 | Impact Relay | Publishes verified aggregate outcomes    | [Public evidence](https://autogive.app/impact-relay/) |
 
-The visitor journey is **AGI → Fund Intel → Impact Relay**. The data narrative is **Fund Intel decision → AGI explanation → Impact Relay evidence**.
+The visitor journey is **AGI → Portfolio Signals → Impact Relay**. The data narrative is **Portfolio Signals decision → AGI explanation → Impact Relay evidence**.
 
 ## Suite GitHub Project
 
-Cross-repo delivery board for AGI, Fund Intel, Impact Relay, and Specs:
+Cross-repo delivery board for AGI, Portfolio Signals, Impact Relay, and Specs:
 
 - [docs/GITHUB-PROJECT.md](docs/GITHUB-PROJECT.md)
 - Bootstrap: [`scripts/setup-github-project.sh`](scripts/setup-github-project.sh)
@@ -34,7 +34,7 @@ Conformance declaration: [`platform-spec/conformance.yml`](platform-spec/conform
 
 Transaction-light **middleware** between donation platforms (canonical **every.org**) and human allocation: pots → allocate → proof → exception inbox → board packet. Not a finance ledger.
 
-**Status:** MVP lives in [Fund-Intel `services/allocation-middleware/`](https://github.com/scrimshawlife-ctrl/Fund-Intel/tree/main/services/allocation-middleware) with Hacker Dojo pilot seed, director login, and deploy helpers. Live every.org webhook + named host are operator steps. AGI continues as the public explanatory workbench.
+**Status (2026-08-07):** MVP in [Fund-Intel `services/allocation-middleware/`](https://github.com/scrimshawlife-ctrl/Fund-Intel/tree/main/services/allocation-middleware); unit tests + **local pilot smoke green** against platform Supabase. Production middleware host + live every.org webhook remain open. AGI stays the public explanatory workbench.
 
 - [docs/PRODUCT-ALLOCATION-MIDDLEWARE.md](docs/PRODUCT-ALLOCATION-MIDDLEWARE.md)  
 - [Full design (Specs)](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Specs/blob/main/docs/superpowers/specs/2026-08-03-allocation-middleware-design.md)  
@@ -42,14 +42,24 @@ Transaction-light **middleware** between donation platforms (canonical **every.o
 
 ## Current status
 
-AGI is a static Next.js export. **Production** deploys on [Vercel](docs/VERCEL.md) at [autogive.app](https://autogive.app/); GitHub Pages remains a fallback mirror. During the production build it requests two approved public aggregate documents:
+AGI is a static Next.js export. **Production** deploys on [Vercel](docs/VERCEL.md) at [autogive.app](https://autogive.app/); GitHub Pages remains a fallback mirror. Path suite:
 
-- Fund Intel `data/public-campaign.json`
+| Path | Product |
+| --- | --- |
+| `/` | AGI public workbench |
+| `/portfolio-signals/` | Portfolio Signals public + **workspace** login |
+| `/impact-relay/` | Impact Relay public aggregates |
+
+**Phase 2 (platform Auth + workspace)** is **operator-complete** (2026-08-07): platform Supabase `utdioxwiskzatwoejgiu`, migrations, Vercel anon env, master_admin login verified. **Phase 3** (allocation middleware public host + IR live cohort) is in progress. See [docs/PLATFORM.md](docs/PLATFORM.md).
+
+During the production build AGI requests two approved public aggregate documents:
+
+- Portfolio Signals `data/public-campaign.json`
 - Impact Relay `data/public-impact.json`
 
 The build accepts only the expected public authority declarations and a verified aggregate outcome. Network failures, malformed data, missing evidence, or disallowed authority values fail closed to the deterministic local scenario.
 
-AGI does **not** collect donations, authenticate users, persist records, expose donor-level evidence, or write to either source repository.
+The **AGI marketing site** does **not** collect donations, authenticate operators, persist private records, or expose donor-level evidence. Operator authentication lives on **Portfolio Signals workspace** (`/portfolio-signals/workspace`).
 
 ## Local development
 

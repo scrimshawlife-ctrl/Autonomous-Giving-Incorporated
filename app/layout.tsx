@@ -3,7 +3,7 @@ import { SITE_ORIGIN, absoluteSiteUrl } from "@/site";
 import "./globals.css";
 
 const description =
-  "Autonomously Giving Incorporated shows how contributions move from funding intent to verified community impact through Fund Intel and Impact Relay.";
+  "Autonomously Giving Incorporated shows how contributions move from funding intent to verified community impact through Portfolio Signals and Impact Relay.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_ORIGIN),

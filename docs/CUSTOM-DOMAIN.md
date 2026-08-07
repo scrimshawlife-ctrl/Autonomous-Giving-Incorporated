@@ -15,7 +15,7 @@ Namecheap holds registration; DNS currently points at Namecheap parking / hostin
 | `https://www.autogive.app/` | Redirect to apex (Vercel) |
 | `https://scrimshawlife-ctrl.github.io/Autonomous-Giving-Incorporated/` | Fallback mirror |
 
-Suite path URLs (`/fund-intel/`, `/impact-relay/`) remain **product links** in copy. Those products still ship as separate sites unless a reverse-proxy or monorepo export is added later.
+Suite path URLs (`/portfolio-signals/`, `/impact-relay/`) remain **product links** in copy. Those products still ship as separate sites unless a reverse-proxy or monorepo export is added later.
 
 Point the apex at **one** platform only (Vercel **or** GitHub Pages), not both.
 

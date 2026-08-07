@@ -6,25 +6,37 @@
   "outputDirectory": "out",
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    {
-      "source": "/fund-intel/workspace",
-      "destination": "https://fund-intel-ten.vercel.app/workspace.html"
-    },
-    {
-      "source": "/fund-intel/workspace.html",
-      "destination": "https://fund-intel-ten.vercel.app/workspace.html"
-    },
+  "redirects": [
     {
       "source": "/fund-intel",
-      "destination": "https://fund-intel-ten.vercel.app/index.html"
-    },
-    {
-      "source": "/fund-intel/",
-      "destination": "https://fund-intel-ten.vercel.app/index.html"
+      "destination": "/portfolio-signals",
+      "permanent": true
     },
     {
       "source": "/fund-intel/:path*",
+      "destination": "/portfolio-signals/:path*",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/portfolio-signals/workspace",
+      "destination": "https://fund-intel-ten.vercel.app/workspace.html"
+    },
+    {
+      "source": "/portfolio-signals/workspace.html",
+      "destination": "https://fund-intel-ten.vercel.app/workspace.html"
+    },
+    {
+      "source": "/portfolio-signals",
+      "destination": "https://fund-intel-ten.vercel.app/index.html"
+    },
+    {
+      "source": "/portfolio-signals/",
+      "destination": "https://fund-intel-ten.vercel.app/index.html"
+    },
+    {
+      "source": "/portfolio-signals/:path*",
       "destination": "https://fund-intel-ten.vercel.app/:path*"
     },
     {
