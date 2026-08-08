@@ -60,6 +60,7 @@ Use the board **Status** field (Todo → In Progress → Done). Filter by **Trac
 
 ### Ops — operator access / commercial onboarding
 
+- **Hub:** Fund-Intel `docs/SUITE-ONBOARDING.md`  
 - People path (C): Fund-Intel `docs/OPERATOR-ACCESS-ONBOARDING.md`  
 - Client lifecycle (B): Fund-Intel `docs/COMMERCIAL-CLIENT-LIFECYCLE.md`  
 - Second tenant (D): Fund-Intel `docs/SECOND-TENANT-ONBOARDING.md`  
